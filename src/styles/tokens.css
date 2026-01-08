@@ -1,0 +1,61 @@
+/* =========================
+   Color tokens (default)
+========================= */
+:root {
+    /* Brand */
+    --color-primary: #00643F;
+    --color-secondary: #E8EBE4;
+    --color-punctal: #FF6421;
+
+    /* Text */
+    --color-text-primary: #00643F;
+    --color-text-secondary: #FBFFF6;
+    --color-text-muted: #64A990;
+
+    /* Background */
+    --color-bg: #FBFFF6;
+    --color-bg-secondary: #00643F;
+
+    /* if Border there is */
+    /* --color-border: white; */
+}
+
+/* =========================
+   Color tokens - Dark
+========================= */
+:root[data-theme="dark"] {
+    /* Brand */
+    --color-primary: white;
+    --color-secondary: black;
+
+    /* Text */
+    --color-text-primary: white;
+    --color-text-secondary: blue;
+
+    /* Background */
+    --color-bg: white;
+    --color-bg-muted: blue;
+
+    /* if Border there is */
+    --color-border: white;
+}
+
+/* =========================
+   Typography tokens
+========================= */
+:root {
+    --font-sans: 'Helvetica', sans-serif;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+}
+
+
+/* =========================
+   Spacing tokens
+========================= */
+:root {
+    --space-2: 0.5rem;
+    --space-4: 1rem;
+    --space-8: 2rem;
+}

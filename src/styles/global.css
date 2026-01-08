@@ -1,0 +1,28 @@
+@import "./tokens.css";
+
+h1 {
+    color: var(--color-primary);
+    font-family: var(--font-sans);
+}
+
+
+.icon {
+    color: var(--color-punctal);
+}
+
+/* Home page */
+
+.header {
+    display: flex;
+    flex-direction: row;
+}
+
+.titleHome {
+    display: flex;
+    justify-content: space-around;
+}
+
+.rightPart {
+    display: flex;
+    flex-direction: column;
+}
