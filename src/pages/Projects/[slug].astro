@@ -1,0 +1,57 @@
+---
+import { projects } from "../../data/projects";
+import Layout from "@/layouts/BaseLayout.astro";
+
+/**
+ * Astro va appeler cette fonction au build
+ * pour générer une page par projet
+ */
+export async function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+// Le projet correspondant au slug courant
+const { project } = Astro.props;
+---
+
+<Layout title={project.hero.title}>
+  <article class="project">
+    <!-- HERO -->
+    <section class="project-hero">
+      <img src={project.hero.image} alt="" />
+      <h1>{project.hero.title}</h1>
+    </section>
+
+    <!-- CONTEXTE -->
+    <section class="project-context">
+      <p>{project.context.description}</p>
+
+      <ul>
+        {
+          project.context.details.map((item) => (
+            <li>
+              <strong>{item.label}</strong>
+              <span>
+                {Array.isArray(item.value)
+                  ? item.value.join(" · ")
+                  : item.value}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <!-- CARROUSEL -->
+    <!-- <section class="project-carousel">
+      {
+        project.carousel.images.map((img) => (
+          <img src={img.src} alt={img.alt} />
+        ))
+      }
+    </section> -->
+  </article>
+</Layout>

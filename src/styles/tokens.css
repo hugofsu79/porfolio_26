@@ -12,10 +12,12 @@
     --color-text-secondary: #FBFFF6;
     --color-text-muted: #64A990;
     --color-text-punctal: #FF6421;
+    --color-text-punctal-bg-green: #FFDDAD;
 
     /* Background */
     --color-bg: #FBFFF6;
     --color-bg-secondary: #00643F;
+    --color-bg-muted: hsla(80, 13%, 91%, 0.10);
 
     /* if Border there is */
     /* --color-border: white; */

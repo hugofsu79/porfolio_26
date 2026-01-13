@@ -5,6 +5,7 @@ body {
     background-color: var(--color-bg);
     max-width: 100%;
     overflow-x: hidden;
+    margin: 0px;
 }
 
 *,
@@ -29,11 +30,27 @@ th {
     font-weight: bold;
 }
 
+li {
+    list-style-type: none;
+}
 
 h1 {
     color: var(--color-primary);
 }
 
+h3 {
+    font-size: 24px;
+
+}
+
+h4 {
+    font-size: 18px;
+    color: var(--color-text-punctal-bg-green);
+}
+
+p {
+    font-weight: 200;
+}
 
 .icon {
     color: var(--color-punctal);
@@ -62,11 +79,27 @@ table {
 .cities-table th,
 .cities-table td {
     text-align: left;
-    padding-left: 0;
-    /* <- clé pour "collé à gauche" */
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+}
+
+.table tbody tr:not(:last-child) th,
+.table tbody tr:not(:last-child) td {
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.table {
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 10px 12px;
+    vertical-align: middle;
+}
+
+th,
+td {
+    font-size: 12px;
 }
 
 td {
@@ -76,6 +109,7 @@ td {
 /* Home page */
 
 .header {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -89,16 +123,56 @@ td {
     gap: 22px;
 }
 
+.navbarHome {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
 .titleHome {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    /* important */
     gap: 22px;
+}
+
+.titleText {
+}
+
+.titleIcons svg {
+    height: 64px;
+    /* ou ce que tu veux */
+    width: auto;
+}
+
+.titleHome {
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+}
+
+.titleHome h1,
+.titleHome h2 {
+    line-height: 1;
+}
+
+.coverProfil {
+    background-image: url(../assets/images/cover_profil.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    width: 100%;
+    height: 100%;
 }
 
 .rightPart {
     overflow: visible;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     margin: 20px;
     width: 100%;
     flex: 1 1 auto;
@@ -168,7 +242,6 @@ ul {
 }
 
 .rightPart ul li {
-    list-style-type: none;
     font-size: 54px;
     color: var(--color-text-primary);
 }
@@ -190,4 +263,226 @@ ul {
 
 .marquee li {
     flex-shrink: 0;
+}
+
+/* Section À propos
+Mes alliés */
+.allies {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    white-space: nowrap;
+    will-change: transform;
+}
+
+.icons {
+    position: relative;
+    width: 64px;
+    height: 64px;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+    /* IMPORTANT pour le marquee */
+}
+
+
+
+.miniSection {
+    overflow: hidden;
+    padding-bottom: 1rem;
+}
+
+.icons li {
+    padding: 8px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icons svg {
+    width: 64px;
+    height: auto;
+}
+
+.textPerso {
+    display: flex;
+    flex-direction: row;
+}
+
+.textPerso:nth-child(1) {
+    gap: 8px;
+}
+
+.icons::after {
+    content: attr(data-label);
+    text-transform: none;
+
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+
+    background: var(--color-bg-muted);
+    color: var(--color-bg-primary);
+
+    border-radius: 6px;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.icons::before {
+    content: "";
+
+    position: absolute;
+    bottom: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 0;
+    height: 0;
+
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--color-bg-muted);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.2s ease;
+}
+
+.icons:hover::after,
+.icons:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.icons svg {
+    transition: transform 0.2s ease;
+}
+
+.icons:hover svg {
+    transform: scale(1.05);
+}
+
+/* Mes passions */
+.about {
+    padding: 50px;
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-secondary);
+
+}
+
+.aboutMe {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 48px;
+}
+
+
+.AboutTitle {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.AboutTitle table {
+    width: fit-content;
+}
+
+.position {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+/* Mes autres vies */
+.col-l .AboutTitle {
+    justify-self: start;
+    width: fit-content;
+}
+
+.table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.table tr {
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    text-align: left;
+}
+
+.table td {
+    /* text-align: center; */
+    width: 120px;
+}
+
+.table tbody tr:not(:last-child) td,
+.table tbody tr:not(:last-child) th {
+    border-bottom: .5px solid var(--color-secondary);
+}
+
+.aboutMe .col-r {
+    display: flex;
+    flex-direction: column;
+}
+
+.miniSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.listPassions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    /* espace entre les tags */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.listPassions li {
+    font-size: 12px;
+    border-radius: 20px;
+    width: fit-content;
+    /* hug contents */
+    white-space: nowrap;
+    padding: 8px 12px 8px 12px;
+    text-transform: none;
+    font-weight: 200;
+    background-color: var(--color-bg-muted);
+}
+
+.moulure {
+    height: 3vmin;
+}
+
+
+
+
+@media (max-width: 900px) {
+    .aboutMe {
+        grid-template-columns: 1fr;
+    }
 }

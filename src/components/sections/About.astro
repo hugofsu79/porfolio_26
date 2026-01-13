@@ -1,0 +1,141 @@
+---
+import Icon from "../ui/Icon.astro";
+
+const allies = [
+  { name: "figma", label: "Figma" },
+  { name: "ableton", label: "Ableton" },
+  { name: "animejs", label: "Anime.js" },
+  { name: "anytype", label: "Anytype" },
+  { name: "github", label: "GitHub" },
+  { name: "gsap", label: "GSAP" },
+  { name: "illustrator", label: "Adobe Illustrator" },
+  { name: "javascript", label: "JavaScript" },
+  { name: "lottiefiles", label: "LottieFiles" },
+  { name: "make", label: "Make" },
+  { name: "motiondev", label: "Motion Dev" },
+  { name: "notion", label: "Notion" },
+  { name: "slack", label: "Slack" },
+  { name: "tailwind", label: "Tailwind CSS" },
+  { name: "useberry", label: "Useberry" },
+  { name: "wordpress", label: "WordPress" },
+  { name: "zeroheight", label: "Zeroheight" },
+];
+---
+
+<img class="moulure" src="src/assets/icons/Hugo_point.svg" alt="" />
+<h3>À propos</h3>
+<div class="aboutMe">
+  <div class="col-l">
+    <div class="AboutTitle">
+      <div class="textPerso">
+        <img src="src/assets/icons/about/iconeVie.svg" alt="Mes autres vies" />
+        <h4>Mes autres vies</h4>
+      </div>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">Agent de quai</th>
+            <td>ELIS</td>
+            <td>Chauray</td>
+          </tr>
+          <tr>
+            <th scope="row">Logisticien</th>
+            <td>SDIS</td>
+            <td>Chauray</td>
+          </tr>
+          <tr>
+            <th scope="row">Mise sous pli</th>
+            <td>La Poste</td>
+            <td>Labège</td>
+          </tr>
+          <tr>
+            <th scope="row">Sound-designer</th>
+            <td>Micro-entreprise</td>
+            <td>Niort</td>
+          </tr>
+          <tr>
+            <th scope="row">Vendeur</th>
+            <td>Duty-free</td>
+            <td>Blagnac</td>
+          </tr>
+          <tr>
+            <th scope="row">Manutentionnaire</th>
+            <td>Deya</td>
+            <td>La Crèche</td>
+          </tr>
+          <tr>
+            <th scope="row">Maçon</th>
+            <td>Moreau Laurent</td>
+            <td>Vallans</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-r">
+    <div class="miniSection">
+      <h4>Ma pomme</h4>
+      <div class="textPerso">
+        <p>
+          Je suis un designer au profil hybride, animé par une curiosité
+          insatiable. Passionné par de nombreux univers comme la musique, la
+          botanique, la cuisine ou le code, j’aime comprendre ce qui motive les
+          gens, qu’ils soient clients, utilisateurs ou collaborateurs. Je
+          m’intéresse aussi à des domaines qui sortent d’un cursus classique,
+          mais qui nourrissent ma pratique.
+        </p>
+        <p>
+          La rhétorique m’aide à mieux saisir la logique derrière les décisions
+          et à affiner ma communication, tandis que le développement me permet
+          de comprendre le langage des développeurs, mes principaux
+          interlocuteurs, et de concevoir des interfaces plus cohérentes avec
+          leurs contraintes.
+        </p>
+      </div>
+    </div>
+    <div class="miniSection">
+      <h4>mes alliés</h4>
+      <div class="allies-wrap">
+        <ul class="allies">
+          {
+            allies.map((a) => (
+              <li class="icons" data-label={a.label}>
+                <Icon name={a.name} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+    <div class="miniSection">
+      <h4>Mes passions</h4>
+      <p>
+        Dans mon métier, être animé par autant de passions et de curiosité est
+        essentiel, car ce sont elles qui nourrissent mes idées, élargissent ma
+        vision et me permettent de concevoir des expériences réellement vivantes
+        et pertinentes.
+      </p>
+      <ul class="listPassions">
+        <li>L'agrumiculture</li>
+        <li>Muscu</li>
+        <li>Cuisine</li>
+        <li>Concert</li>
+        <li>Musée</li>
+        <li>Théâtre</li>
+        <li>Composer</li>
+        <li>Synthétiseur</li>
+        <li>Documentaire</li>
+        <li>Jardinage</li>
+        <li>Technologie</li>
+        <li>Canvas</li>
+        <li>Écologie</li>
+        <li>IDM</li>
+        <li>Figma</li>
+        <li>Déco</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="position">
+  <img class="moulure" src="src/assets/icons/Foisseau_point.svg" alt="" />
+</div>

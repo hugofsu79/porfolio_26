@@ -1,24 +1,25 @@
-export function initMarquee() {
-  const marquee = document.querySelector(".marquee");
-  if (!marquee) return;
+export function initLoopingRow(selector, options = {}) {
+  const el = document.querySelector(selector);
+  if (!el) return;
 
-  // Dupliquer le contenu pour la boucle infinie
-  marquee.innerHTML += marquee.innerHTML;
+  // options
+  const baseSpeed = options.speed ?? 0.6;
+  const slowSpeed = options.slowSpeed ?? 0.05;
+  const ease = options.ease ?? 0.08;
+
+  // Dupliquer le contenu
+  el.innerHTML += el.innerHTML;
 
   let position = 0;
-  let speed = 1;
-  let targetSpeed = speed;
+  let speed = baseSpeed;
+  let targetSpeed = baseSpeed;
 
-  const slowSpeed = 0.05;
-  const ease = 0.08;
-
-  let marqueeWidth = 0;
+  let loopWidth = 0;
 
   function updateWidth() {
-    marqueeWidth = marquee.scrollWidth / 2;
+    loopWidth = el.scrollWidth / 2;
   }
 
-  // Attendre que le layout soit stable
   requestAnimationFrame(() => {
     updateWidth();
     animate();
@@ -28,22 +29,19 @@ export function initMarquee() {
     speed += (targetSpeed - speed) * ease;
     position -= speed;
 
-    if (position <= -marqueeWidth) {
-      position = 0;
-    }
+    if (position <= -loopWidth) position = 0;
 
-    marquee.style.transform = `translate3d(${position}px, 0, 0)`;
+    el.style.transform = `translate3d(${position}px, 0, 0)`;
     requestAnimationFrame(animate);
   }
 
-  marquee.addEventListener("mouseenter", () => {
+  el.addEventListener("mouseenter", () => {
     targetSpeed = slowSpeed;
   });
 
-  marquee.addEventListener("mouseleave", () => {
-    targetSpeed = 0.6;
+  el.addEventListener("mouseleave", () => {
+    targetSpeed = baseSpeed;
   });
 
-  // Recalcul si resize
   window.addEventListener("resize", updateWidth);
 }

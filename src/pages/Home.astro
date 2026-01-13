@@ -1,37 +1,46 @@
 ---
 import NavbarHome from "../components/layout/Navigation.astro";
 import Title from "../components/sections/titleHome.astro";
+import About from "../components/sections/About.astro";
 ---
 
 <div class="header">
   <NavbarHome />
 
   <div class="rightPart">
-    <Title />
+    <div class="titleHome">
+      <div class="titleText">
+        <Title />
+      </div>
 
-    <ul class="marquee">
-      <li>Designer UI/UX</li>
-      <li>Intégrateur front</li>
-      <li>Concepteur d'application</li>
-      <li>Product Designer</li>
-    </ul>
-
-    <svg
-      class="bg-rect"
-      viewBox="0 0 100 100"
-      preserveAspectRatio="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect x="0" y="0" width="100%" height="50%"></rect>
-    </svg>
+      <ul class="marquee">
+        <li>Designer UI/UX</li>
+        <li>Intégrateur front</li>
+        <li>Concepteur d'application</li>
+        <li>Product Designer</li>
+      </ul>
+      <div class="coverProfil"></div>
+    </div>
   </div>
 </div>
 
-<script is:inline type="module">
-  import { initMarquee } from "/src/scripts/marquee.js";
+<section class="about">
+  <About />
+</section>
 
-  window.addEventListener("DOMContentLoaded", () => {
-    console.log("DOM READY");
-    initMarquee();
+<script>
+  import { initLoopingRow } from "../scripts/marquee.js";
+
+  // debug: tu dois voir ça dans la console
+  console.log("HOME SCRIPT OK", {
+    marquee: document.querySelector(".marquee"),
+    allies: document.querySelector(".allies"),
+  });
+
+  initLoopingRow(".marquee", { speed: 0.6, slowSpeed: 0.05 });
+
+  // on attend le prochain frame pour être 100% safe
+  requestAnimationFrame(() => {
+    initLoopingRow(".allies", { speed: 0.6, slowSpeed: 0.05 });
   });
 </script>
