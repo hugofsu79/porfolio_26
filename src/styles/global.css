@@ -1,4 +1,5 @@
 @import "./tokens.css";
+@import "./components/contact.css";
 
 body {
     font-family: var(--font-sans);
@@ -6,6 +7,10 @@ body {
     max-width: 100%;
     overflow-x: hidden;
     margin: 0px;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 *,
@@ -40,7 +45,6 @@ h1 {
 
 h3 {
     font-size: 24px;
-
 }
 
 h4 {
@@ -52,16 +56,43 @@ p {
     font-weight: 200;
 }
 
+.textContact + hr,
+.container hr {
+  width: calc(100%); /* 2 × 40px de padding */
+  border: none;
+  border-top: 1px solid  var(--color-secondary);
+}
+
+button span {
+    font-size: 20px;
+    color: var(--color-secondary);
+}
+
 .icon {
     color: var(--color-punctal);
     width: 50%;
 }
+
+/* Navbar Home page */
 
 .bottomNav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 1rem;
+}
+.buttonNav{
+padding: 0;
+}
+
+.cv{
+    display: flex;
+    flex-direction: row;
+     align-items: center;
+     gap: 20px;
+}
+.cv img {
+    height: 40px;
 }
 
 table {
@@ -145,6 +176,11 @@ td {
     width: auto;
 }
 
+.titleText {
+    min-height: auto;
+    /* rétablit le comportement normal */
+}
+
 .titleHome {
     display: inline-flex;
     align-items: center;
@@ -164,6 +200,8 @@ td {
 
     width: 100%;
     height: 100%;
+
+    border-radius: var(--radius-S);
 }
 
 .rightPart {
@@ -195,6 +233,16 @@ td {
 ul {
     align-items: center;
     padding-left: 0px;
+}
+
+.navbar_home a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+.navbar_home li:hover a {
+    color: var(--color-text-primary);
 }
 
 .navbar_home ul li {
@@ -473,7 +521,7 @@ Mes alliés */
 }
 
 .moulure {
-    height: 3vmin;
+    height: 4vh;
 }
 
 

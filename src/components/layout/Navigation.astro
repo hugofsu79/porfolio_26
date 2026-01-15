@@ -1,10 +1,15 @@
 <nav class="navbar_home">
   <ul>
-    <li>À propos</li>
+    <li><a href="#about">À propos</a></li>
     <li>Mes projets</li>
-    <li>Me contacter</li>
+    <li>
+      <button class="buttonNav" type="button" data-open-contact
+        ><li>Contact</li>
+      </button>
+    </li>
     <li>Labo</li>
-    <li>CV</li>
+    <div class="cv"><li>CV</li>
+    <img src="src/assets/icons/divers/Cloud_download.svg" alt="Télécharger Cv d'Hugo Foisseau"></div>
   </ul>
   <div class="bottomNav">
     <svg
@@ -48,8 +53,3 @@
     </table>
   </div>
 </nav>
-
-<script type="module">
-  import { initNavbarAnimation } from "../../scripts/navbarAnimation";
-  initNavbarAnimation();
-</script>

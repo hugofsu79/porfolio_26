@@ -62,3 +62,12 @@
     --space-4: 1rem;
     --space-8: 2rem;
 }
+
+/* =========================
+   Border radius tokens
+========================= */
+
+:root {
+    --radius-S: 4px;
+    --radius-L: 15px;
+}

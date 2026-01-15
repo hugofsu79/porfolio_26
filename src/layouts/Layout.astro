@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import ContactMe from "../components/layout/Contact.astro";
+import { Code } from "astro:components";
 const { title = "Hugofolio" } = Astro.props;
 ---
 
@@ -12,9 +14,12 @@ const { title = "Hugofolio" } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>Portfolio Hugo Foisseau</title>
   </head>
+
   <body>
-    <nav></nav>
+    <ContactMe />
     <slot />
     <footer></footer>
+
+    <script type="module" src="/src/scripts/contactPanel.js"></script>
   </body>
 </html>
