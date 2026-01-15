@@ -1,15 +1,35 @@
 <nav class="navbar_home">
+  <a href="/" aria-label="Retour à l’accueil">
+    <img class="logoNavbar" src="src/assets/icons/logo.svg" alt="Home" />
+  </a>
+
   <ul>
     <li><a href="#about">À propos</a></li>
-    <li>Mes projets</li>
+    <li><a href="/projects#myProjects">Mes projets</a></li>
     <li>
       <button class="buttonNav" type="button" data-open-contact
         ><li>Contact</li>
       </button>
     </li>
-    <li>Labo</li>
-    <div class="cv"><li>CV</li>
-    <img src="src/assets/icons/divers/Cloud_download.svg" alt="Télécharger Cv d'Hugo Foisseau"></div>
+    <li><a href="#labo">Labo</a></li>
+    <div class="cv">
+      <li class="cv">
+        <a
+          href="public/cv/cv - Hugo Foisseau.pdf"
+          download
+          class="cv-link"
+          aria-label="Télécharger le CV de Hugo Foisseau"
+        >
+          <span>CV</span>
+          <img
+            class="downloadCV"
+            src="/src/assets/icons/divers/Cloud_download.svg"
+            alt=""
+            aria-hidden="true"
+          />
+        </a>
+      </li>
+    </div>
   </ul>
   <div class="bottomNav">
     <svg

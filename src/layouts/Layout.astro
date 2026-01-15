@@ -3,6 +3,7 @@ import "../styles/global.css";
 import ContactMe from "../components/layout/Contact.astro";
 import { Code } from "astro:components";
 const { title = "Hugofolio" } = Astro.props;
+const { isHome = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -12,14 +13,13 @@ const { title = "Hugofolio" } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/public/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Portfolio Hugo Foisseau</title>
+    <title>{title}</title>
   </head>
 
-  <body>
+  <body class={isHome ? "is-home" : "is-page"}>
     <ContactMe />
     <slot />
     <footer></footer>
-
     <script type="module" src="/src/scripts/contactPanel.js"></script>
   </body>
 </html>

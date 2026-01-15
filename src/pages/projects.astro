@@ -1,18 +1,32 @@
 ---
 import { projects } from "../data/projects";
+import Layout from "../layouts/Layout.astro";
+import NavbarHome from "../components/layout/Navigation.astro";
 ---
 
-<h1>Projets</h1>
+<Layout title="Mes projets">
+  <NavbarHome />
 
-<ul class="projects-list">
-  {
-    projects.map((project) => (
-      <li>
-        <a href={`/projects/${project.slug}`}>
-          <h2>{project.hero.title}</h2>
-          <p>{project.context}</p>
-        </a>
-      </li>
-    ))
-  }
-</ul>
+  <section id="myProjects">
+    <h2>Projets</h2>
+
+    <ul class="projects-list">
+      {
+        projects.map((project) => (
+          <li class="project-card">
+            <a
+              href={`/projects/${project.slug}`}
+              aria-label={`Ouvrir le projet ${project.hero.title}`}>
+              <img
+                src={project.hero.image}
+                alt={project.hero.title}
+                loading="lazy"
+                class="project-hero-image"
+              />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>

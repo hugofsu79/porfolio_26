@@ -1,5 +1,7 @@
 @import "./tokens.css";
 @import "./components/contact.css";
+@import "./components/navbar.css";
+@import "./components/projet.css";
 
 body {
     font-family: var(--font-sans);
@@ -49,18 +51,22 @@ h3 {
 
 h4 {
     font-size: 18px;
+    margin-bottom: 0;
     color: var(--color-text-punctal-bg-green);
 }
 
 p {
     font-weight: 200;
+    font-size: 14px;
+    margin: 0;
 }
 
-.textContact + hr,
+.textContact+hr,
 .container hr {
-  width: calc(100%); /* 2 × 40px de padding */
-  border: none;
-  border-top: 1px solid  var(--color-secondary);
+    width: calc(100%);
+    /* 2 × 40px de padding */
+    border: none;
+    border-top: 1px solid var(--color-secondary);
 }
 
 button span {
@@ -73,24 +79,14 @@ button span {
     width: 50%;
 }
 
-/* Navbar Home page */
 
-.bottomNav {
+.cv {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    gap: 1rem;
-}
-.buttonNav{
-padding: 0;
+    align-items: center;
+    gap: 20px;
 }
 
-.cv{
-    display: flex;
-    flex-direction: row;
-     align-items: center;
-     gap: 20px;
-}
 .cv img {
     height: 40px;
 }
@@ -218,69 +214,12 @@ td {
     overflow: hidden;
 }
 
-/* Navbar variables */
-.navbar_home {
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 40px;
-    display: inline-flex;
-    gap: 1.5rem;
-
-    white-space: nowrap;
-    /* empêche les retours à la ligne */
-}
 
 ul {
     align-items: center;
     padding-left: 0px;
 }
 
-.navbar_home a {
-    text-decoration: none;
-    color: inherit;
-    display: inline-block;
-}
-
-.navbar_home li:hover a {
-    color: var(--color-text-primary);
-}
-
-.navbar_home ul li {
-    display: flex;
-    gap: 1.25rem;
-
-    margin: 0;
-    padding: 0;
-
-    font-size: 48px;
-    list-style-type: none;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.navbar_home li {
-    overflow: hidden;
-}
-
-.navbar_home li .clip {
-    display: inline-block;
-}
-
-.navbar_home li .clip {
-    display: inline-block;
-}
-
-.navbar_home li {
-    white-space: nowrap;
-    cursor: pointer;
-
-    color: var(--color-text-muted);
-    transition: color 0.25s ease;
-}
-
-.navbar_home li:hover {
-    color: var(--color-text-primary);
-}
 
 .rightPart ul {
     display: flex;
@@ -342,6 +281,7 @@ Mes alliés */
 
 
 .miniSection {
+    gap: 8px;
     overflow: hidden;
     padding-bottom: 1rem;
 }
@@ -360,12 +300,9 @@ Mes alliés */
 }
 
 .textPerso {
+    gap: 12px;
     display: flex;
     flex-direction: row;
-}
-
-.textPerso:nth-child(1) {
-    gap: 8px;
 }
 
 .icons::after {
@@ -528,7 +465,26 @@ Mes alliés */
 
 
 @media (max-width: 900px) {
+    .about {
+        padding: 20px;
+    }
+
+    .table {
+        margin-inline: auto;
+        border-collapse: collapse;
+    }
+
     .aboutMe {
         grid-template-columns: 1fr;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    .textPerso:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
     }
 }

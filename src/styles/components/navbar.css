@@ -1,0 +1,166 @@
+/* Navbar variables */
+body.is-home .navbar_home {
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 40px;
+    display: inline-flex;
+
+    white-space: nowrap;
+    /* empêche les retours à la ligne */
+}
+
+body.is-home .logoNavbar {
+    display: none;
+}
+
+.navbar_home a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+.navbar_home li:hover a {
+    color: var(--color-text-primary);
+}
+
+body.is-home .navbar_home ul li {
+    display: flex;
+    gap: 1.25rem;
+
+    margin: 0;
+    padding: 0;
+
+    font-size: 48px;
+    list-style-type: none;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.navbar_home li {
+    overflow: hidden;
+}
+
+.navbar_home li .clip {
+    display: inline-block;
+}
+
+.navbar_home li .clip {
+    display: inline-block;
+}
+
+.navbar_home li {
+    white-space: nowrap;
+    cursor: pointer;
+
+    color: var(--color-text-muted);
+    transition: color 0.25s ease;
+}
+
+.navbar_home li:hover {
+    color: var(--color-text-primary);
+}
+
+body.is-home .bottomNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.buttonNav {
+    padding: 0;
+}
+
+.downloadCV {
+    opacity: 0;
+}
+
+.downloadCV:hover {
+    opacity: 1;
+    left: 0px;
+}
+
+/* ========================= */
+/* PAGE (default navbar) */
+/* ========================= */
+
+body.is-page nav.navbar_home {
+    background-color: var(--color-bg);
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 14px;
+}
+
+body.is-page .navbar_home ul {
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+}
+
+body.is-page .navbar_home ul li {
+    font-size: 14px;
+}
+
+body.is-page .bottomNav,
+body.is-page .downloadCV {
+    display: none;
+}
+
+body.is-page .logoNavbar {
+    display: block;
+    height: 14px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+
+    .rightPart {
+        padding-top: 48px;
+    }
+
+    nav {
+        margin: 0px;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        width: 100vw;
+        align-items: center;
+    }
+
+    body.is-home .navbar_home {
+        margin: 0px;
+        padding: 0px 14px 0px 14px;
+        background-color: var(--color-bg)
+    }
+
+    body.is-home nav.navbar_home {
+        position: fixed;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .navbar_home ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        gap: 18px;
+    }
+
+    body.is-home .navbar_home ul li {
+        font-size: 14px;
+    }
+
+    body.is-home .bottomNav,
+    .downloadCV {
+        display: none;
+    }
+
+    body.is-home .logoNavbar {
+        display: block;
+        height: 14px;
+    }
+}

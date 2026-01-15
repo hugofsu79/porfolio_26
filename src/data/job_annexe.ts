@@ -1,3 +1,5 @@
+import type { Jobs } from "../types/job_annexe";
+
 export const job: Jobs[] = [{
 
     slug: "Mes autres métiers",

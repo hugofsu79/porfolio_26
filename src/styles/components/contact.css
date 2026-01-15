@@ -13,9 +13,11 @@
     transform: translateX(100%);
     will-change: transform;
 }
+
 .container h3 {
     color: var(--color-text-secondary);
 }
+
 .contact .container {
     height: 100%;
     display: flex;
@@ -90,12 +92,10 @@ button.cta:hover {
     transition: border-color 0.25s ease;
 }
 
-/* ✅ Hover groupé */
 .contactRow:hover span {
     border-color: var(--color-text-muted);
 }
 
-/* Accessibilité */
 .contactRow:focus-visible span {
     border-color: var(--color-text-muted);
 }
@@ -122,14 +122,14 @@ button.cta:hover {
     color: var(--color-text-muted);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .contact {
         width: 100vw;
     }
 
-    .closed{
+    .closed {
         width: 30px;
-    top: 30px;
-    right: 30px;
+        top: calc(30px + 48px);
+        right: 30px;
     }
 }

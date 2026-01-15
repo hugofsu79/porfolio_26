@@ -1,9 +1,11 @@
+import type { Project } from "../types/project";
+
 export const projects: Project[] = [
     {
         slug: "Siko mobility",
 
         hero: {
-            image: "/images/projects/siko/hero.jpg",
+            image: "/src/assets/icons/projets/sikoMobility_logo.svg",
             tags: ["Développeur web", "Tailwind CSS"],
             title: "Concepteur d’application chez Siko Mobility",
             year: 2025,
@@ -64,7 +66,7 @@ export const projects: Project[] = [
         slug: "Rhizome",
 
         hero: {
-            image: "/images/projects/rhizome/hero.jpg",
+            image: "/src/assets/icons/projets/rhizome_logo.svg",
             tags: ["UI/UX Designer"],
             title: "Rhizome, le vinted des plantes",
             year: 2025,
@@ -125,7 +127,7 @@ export const projects: Project[] = [
         slug: "Kiro",
 
         hero: {
-            image: "/images/projects/rhizome/hero.jpg",
+            image: "/src/assets/icons/projets/kiro_logo.svg",
             tags: ["UI/UX Designer"],
             title: "Kiro, concevoir une expérience de suivi pour kinésithérapeutes",
             year: 2025,
@@ -186,7 +188,7 @@ export const projects: Project[] = [
         slug: "Oneiro",
 
         hero: {
-            image: "/images/projects/rhizome/hero.jpg",
+            image: "/src/assets/icons/projets/Oneiro_logo.svg",
             tags: ["UI/UX Designer"],
             title: "Oneiro, application de génération d’histoires pour enfants assistée par l’IA",
             year: 2023,
