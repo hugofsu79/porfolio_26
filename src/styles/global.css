@@ -1,7 +1,11 @@
 @import "./tokens.css";
 @import "./components/contact.css";
 @import "./components/navbar.css";
-@import "./components/projet.css";
+@import "./components/project.css";
+
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     font-family: var(--font-sans);
@@ -9,10 +13,6 @@ body {
     max-width: 100%;
     overflow-x: hidden;
     margin: 0px;
-}
-
-html {
-    scroll-behavior: smooth;
 }
 
 *,
@@ -189,7 +189,7 @@ td {
 }
 
 .coverProfil {
-    background-image: url(../assets/images/cover_profil.png);
+    background-image: url(../public/images/cover_profil.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -305,6 +305,10 @@ Mes alliés */
     flex-direction: row;
 }
 
+.textPerso h4 {
+    margin-top: 0;
+}
+
 .icons::after {
     content: attr(data-label);
     text-transform: none;
@@ -369,7 +373,7 @@ Mes alliés */
 
 /* Mes passions */
 .about {
-    padding: 50px;
+    padding: 25px;
     background-color: var(--color-bg-secondary);
     color: var(--color-text-secondary);
 
@@ -390,6 +394,10 @@ Mes alliés */
 
 .AboutTitle table {
     width: fit-content;
+}
+
+.content {
+    margin: 2rem 0rem 2rem 0rem;
 }
 
 .position {
@@ -464,7 +472,7 @@ Mes alliés */
 
 
 
-@media (max-width: 900px) {
+@media (max-width: 720px) {
     .about {
         padding: 20px;
     }

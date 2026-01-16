@@ -11,7 +11,6 @@ export function getStaticPaths() {
   }));
 }
 
-// 2) On récupère le projet correspondant à la page
 const { project } = Astro.props;
 ---
 
@@ -20,37 +19,71 @@ const { project } = Astro.props;
 
   <main class="project-page">
     <header class="project-hero">
-      <img src={project.hero.image} alt={project.hero.title} loading="lazy" />
-      <h1>{project.hero.title}</h1>
-      <p>{project.hero.year}</p>
+      <img src={project.hero.cover} alt={project.slug} />
     </header>
+    <section class="projetAll">
+      <p>{project.hero.year}</p>
+      <p>{project.hero.tags}</p>
+      <h1>{project.hero.title}</h1>
+      <div class="grid">
+        {
+          project.sections?.context?.description && (
+            <section class="context">
+              <h4>Contexte</h4>
+              <p>{project.sections.context.description}</p>
+              <table class="tableContexte">
+                <tbody>
+                  <tr>
+                    <th scope="row">Agent de quai</th>
+                    <td>ELIS</td>
+                    <td>Chauray</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Logisticien</th>
+                    <td>SDIS</td>
+                    <td>Chauray</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Mise sous pli</th>
+                    <td>La Poste</td>
+                    <td>Labège</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Sound-designer</th>
+                    <td>Micro-entreprise</td>
+                    <td>Niort</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Vendeur</th>
+                    <td>Duty-free</td>
+                    <td>Blagnac</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          )
+        }
 
-    {/* Exemple : adapte selon ta structure exacte de data */}
-    {
-      project.sections?.context?.description && (
-        <section>
-          <h2>Contexte</h2>
-          <p>{project.sections.context.description}</p>
-        </section>
-      )
-    }
+        <div class="projetDetail">
+          {
+            project.sections?.objectifs?.description && (
+              <div class="grid-mini">
+                <div class="textGrid">
+                  <h4>Objectifs</h4>
+                  <p>{project.sections.objectifs.description}</p>
+                </div>
 
-    {
-      project.sections?.objectifs && (
-        <section>
-          <h2>Objectifs</h2>
-          <p>{project.sections.objectifs}</p>
-        </section>
-      )
-    }
-
-    {
-      project.sections?.role && (
-        <section>
-          <h2>Rôle</h2>
-          <p>{project.sections.role}</p>
-        </section>
-      )
-    }
+                {project.sections.objectifs.image && (
+                  <img
+                    src={project.sections.objectifs.image}
+                    alt="Section du design system"
+                  />
+                )}
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </section>
   </main>
 </Layout>

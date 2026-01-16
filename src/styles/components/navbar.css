@@ -95,6 +95,15 @@ body.is-page nav.navbar_home {
     padding: 0 14px;
 }
 
+nav.navbar_home {
+    transition: transform 0.3s ease;
+    top: 0;
+}
+
+body.is-page nav.navbar_home.navbar--hidden {
+    transform: translateY(-100%);
+}
+
 body.is-page .navbar_home ul {
     display: flex;
     flex-direction: row;
@@ -112,11 +121,21 @@ body.is-page .downloadCV {
 
 body.is-page .logoNavbar {
     display: block;
-    height: 14px;
+    height: 31px;
 }
 
 /* Tablet */
 @media (max-width: 1024px) {
+
+    body.is-page nav.navbar_home.navbar--hidden {
+        transform: translateY(-60%);
+    }
+
+
+    body.is-page nav.navbar_home.navbar--hidden {
+        transform: translateY(0);
+    }
+
 
     .rightPart {
         padding-top: 48px;
@@ -161,6 +180,6 @@ body.is-page .logoNavbar {
 
     body.is-home .logoNavbar {
         display: block;
-        height: 14px;
+        height: 32px;
     }
 }

@@ -4,6 +4,8 @@ export interface Project {
     slug: string;
 
     hero: {
+        entreprise: string;
+        cover: string;
         image: string;
         tags: string[];
         title: string;
@@ -18,7 +20,10 @@ export interface Project {
                 value: string | string[];
             }[];
         };
-        objectifs: string;
+        objectifs: {
+            description: string;
+            image: string;
+        }
         role: string;
     };
 

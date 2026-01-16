@@ -2,10 +2,12 @@ import type { Project } from "../types/project";
 
 export const projects: Project[] = [
     {
-        slug: "Siko mobility",
+        slug: "siko-mobility",
 
         hero: {
-            image: "/src/assets/icons/projets/sikoMobility_logo.svg",
+            entreprise: "Siko Mobility",
+            cover: "/images/projects/siko-mobility/cover_siko.webp",
+            image: "/icons/projets/sikoMobility_logo.svg",
             tags: ["Développeur web", "Tailwind CSS"],
             title: "Concepteur d’application chez Siko Mobility",
             year: 2025,
@@ -14,7 +16,7 @@ export const projects: Project[] = [
         sections: {
             context: {
                 description:
-                    "Siko Mobility est une startup de la fintech spécialisée dans le financement de véhicules. J’y ai travaillé pendant un an dans le cadre d’une alternance afin de valider ma licence. L’entreprise évoluait dans un environnement startup avec une équipe réduite, impliquant une forte autonomie et une prise de responsabilité rapide. Ce contexte m’a amené à comprendre des notions complexes dès mon arrivée, notamment liées aux mécanismes de financement et aux enjeux contractuels. L’objectif principal était de concevoir des parcours utilisateurs simples et fiables, tout en intégrant des contraintes légales et opérationnelles fortes, afin de sécuriser la création de contrats sans erreur. J’ai du reprendre le DS mais aussi les parcours de financement, et les différents dashboard client et marchand.",
+                    "Siko Mobility est une startup fintech spécialisée dans le financement de véhicules. J’y ai travaillé un an en alternance, dans un contexte startup à forte autonomie, nécessitant une compréhension rapide des mécanismes de financement et des enjeux contractuels.",
 
                 details: [
                     {
@@ -39,8 +41,10 @@ export const projects: Project[] = [
                     },
                 ],
             },
-            objectifs:
-                "Structurer et simplifier des parcours utilisateurs complexes liés au financement de véhicules, tout en garantissant la fiabilité des interfaces face aux contraintes légales, opérationnelles et métiers.",
+            objectifs: {
+                description: "Structurer et simplifier des parcours utilisateurs complexes liés au financement de véhicules, tout en garantissant la fiabilité des interfaces face aux contraintes légales, opérationnelles et métiers.",
+                image: "/images/projects/siko-mobility/Objectifs_image_siko.png"
+            },
             role:
                 "En tant que designer UI et concepteur d’application, j’ai travaillé sur la conception UX, les wireframes, l’UI finale et l’évolution des parcours de financement et des dashboards, dans un contexte de forte autonomie.",
         },
@@ -63,10 +67,12 @@ export const projects: Project[] = [
         },
     },
     {
-        slug: "Rhizome",
+        slug: "rhizome",
 
         hero: {
-            image: "/src/assets/icons/projets/rhizome_logo.svg",
+            entreprise: "Rhizome",
+            cover: "../public/images/projects/siko-mobility",
+            image: "/icons/projets/rhizome_logo.svg",
             tags: ["UI/UX Designer"],
             title: "Rhizome, le vinted des plantes",
             year: 2025,
@@ -100,8 +106,11 @@ export const projects: Project[] = [
                     },
                 ],
             },
-            objectifs:
-                "Concevoir un produit de marketplace de A à Z autour des plantes, en structurant des parcours simples et engageants, tout en posant les bases d’un design system léger et cohérent pour garantir la scalabilité du projet.",
+
+            objectifs: {
+                description: "Concevoir un produit de marketplace de A à Z autour des plantes, en structurant des parcours simples et engageants, tout en posant les bases d’un design system léger et cohérent pour garantir la scalabilité du projet.",
+                image: ""
+            },
             role:
                 "En tant que porteur du projet, j’ai assuré l’ensemble de la conception : définition du concept, recherche UX, conception des parcours, création des maquettes UI et mise en place du produit sur WordPress, incluant les fonctionnalités de marketplace C2C.",
         },
@@ -124,10 +133,12 @@ export const projects: Project[] = [
         },
     },
     {
-        slug: "Kiro",
+        slug: "kiro",
 
         hero: {
-            image: "/src/assets/icons/projets/kiro_logo.svg",
+            entreprise: "Kiro",
+            cover: "../public/images/projects/siko-mobility",
+            image: "/icons/projets/kiro_logo.svg",
             tags: ["UI/UX Designer"],
             title: "Kiro, concevoir une expérience de suivi pour kinésithérapeutes",
             year: 2025,
@@ -161,8 +172,10 @@ export const projects: Project[] = [
                     },
                 ],
             },
-            objectifs:
-                "Faciliter le suivi de la rééducation pour les kinésithérapeutes en proposant des parcours clairs permettant de visualiser les exercices, la progression des patients et les informations essentielles au suivi.",
+            objectifs: {
+                description: "Faciliter le suivi de la rééducation pour les kinésithérapeutes en proposant des parcours clairs permettant de visualiser les exercices, la progression des patients et les informations essentielles au suivi.",
+                image: ""
+            },
             role:
                 "Dans le cadre de cet exercice, j’ai travaillé sur la compréhension du besoin métier des kinésithérapeutes, la conception des parcours utilisateurs en particulier un dashboard où l'on retrouve la patientel, je me suis donc occupé de la réalisation des wireframes et interfaces UI, en mettant l’accent sur la clarté, la fiabilité des informations et l’adaptation aux usages professionnels."
         },
@@ -170,7 +183,7 @@ export const projects: Project[] = [
         carousel: {
             images: [
                 {
-                    src: "/images/projects/siko/screen-1.jpg",
+                    src: "public/images/projects/siko/screen-1.jpg",
                     alt: "Dashboard Siko Mobility",
                 },
                 {
@@ -185,10 +198,12 @@ export const projects: Project[] = [
         },
     },
     {
-        slug: "Oneiro",
+        slug: "oneiro",
 
         hero: {
-            image: "/src/assets/icons/projets/Oneiro_logo.svg",
+            entreprise: "Oneiro",
+            cover: "../public/images/projects/siko-mobility",
+            image: "/icons/projets/Oneiro_logo.svg",
             tags: ["UI/UX Designer"],
             title: "Oneiro, application de génération d’histoires pour enfants assistée par l’IA",
             year: 2023,
@@ -222,8 +237,11 @@ export const projects: Project[] = [
                     },
                 ],
             },
-            objectifs:
-                "Concevoir une expérience créative accessible aux enfants, leur permettant de co-créer des histoires à l’aide de l’IA, tout en favorisant l’imaginaire, l’autonomie et le passage du numérique à une activité créative hors écran.",
+
+            objectifs: {
+                description: "Concevoir une expérience créative accessible aux enfants, leur permettant de co-créer des histoires à l’aide de l’IA, tout en favorisant l’imaginaire, l’autonomie et le passage du numérique à une activité créative hors écran.",
+                image: ""
+            },
             role:
                 "J’ai conçu le projet de bout en bout : définition du concept, réflexion sur les parcours enfants, conception UX/UI, structuration des choix narratifs et design des supports générés (texte, audio et illustration), avec une attention particulière portée à la simplicité, à l’accessibilité et à l’expérience utilisateur enfant.",
         },

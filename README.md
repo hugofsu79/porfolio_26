@@ -14,6 +14,12 @@ Inside of your Astro project, you'll see the following folders and files:
 /
 ├── public/
 │   └── favicon.svg
+│   └── images
+│   │   └── projects
+│   │   │   └── kiro
+│   │   │   └── oneiro
+│   │   │   └── rhizome
+│   │   │   └── siko-mobility
 ├── src
 │   ├── assets
 │   │   └── astro.svg
