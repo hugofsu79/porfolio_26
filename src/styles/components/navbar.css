@@ -26,11 +26,11 @@ body.is-home .logoNavbar {
 body.is-home .navbar_home ul li {
     display: flex;
     gap: 1.25rem;
+    font-size: 48px;
 
     margin: 0;
     padding: 0;
 
-    font-size: 48px;
     list-style-type: none;
     white-space: nowrap;
     overflow: hidden;
@@ -95,6 +95,10 @@ body.is-page nav.navbar_home {
     padding: 0 14px;
 }
 
+body.is-page .navbar_home li:nth-last-child(-n+2) {
+    width: 40px;
+}
+
 nav.navbar_home {
     transition: transform 0.3s ease;
     top: 0;
@@ -119,9 +123,18 @@ body.is-page .downloadCV {
     display: none;
 }
 
+body.is-home .logoNavbar,
 body.is-page .logoNavbar {
     display: block;
     height: 31px;
+
+    color: var(--color-primary);
+    transition: color 0.25s ease;
+}
+
+body.is-home .logoNavbar:hover,
+body.is-page .logoNavbar:hover {
+    color: var(--color-punctal);
 }
 
 /* Tablet */
@@ -142,7 +155,7 @@ body.is-page .logoNavbar {
     }
 
     nav {
-        margin: 0px;
+        margin: 0;
         z-index: 1000;
         display: flex;
         justify-content: space-between;
@@ -151,7 +164,7 @@ body.is-page .logoNavbar {
     }
 
     body.is-home .navbar_home {
-        margin: 0px;
+        margin: 0;
         padding: 0px 14px 0px 14px;
         background-color: var(--color-bg)
     }
@@ -169,7 +182,8 @@ body.is-page .logoNavbar {
         gap: 18px;
     }
 
-    body.is-home .navbar_home ul li {
+    body.is-home .navbar_home ul li,
+    body.is-page body.is-home .navbar_home ul li {
         font-size: 14px;
     }
 

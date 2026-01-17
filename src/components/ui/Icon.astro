@@ -1,12 +1,12 @@
 ---
 const { name } = Astro.props;
 
-const icons = import.meta.glob("../../assets/icons/about/app/*.svg", {
+const icons = import.meta.glob("/public/icons/about/app/*.svg", {
   eager: true,
   import: "default",
 }) as Record<string, any>;
 
-const Svg = icons[`../../assets/icons/about/app/${name}.svg`];
+const Svg = icons[`/public/icons/about/app/${name}.svg`];
 ---
 
-{Svg && <Svg class="icon"/>}
+{Svg && <Svg class="icon" />}

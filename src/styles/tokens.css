@@ -6,6 +6,8 @@
     --color-primary: #00643F;
     --color-secondary: #E8EBE4;
     --color-punctal: #FF6421;
+    --color-secondary-opacity-50: hsla(86, 15%, 91%, 0.5);
+    --color-secondary-opacity-25: hsla(86, 15%, 91%, 0.25);
 
     /* Text */
     --color-text-primary: #00643F;

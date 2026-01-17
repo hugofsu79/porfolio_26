@@ -24,7 +24,10 @@ export interface Project {
             description: string;
             image: string;
         }
-        role: string;
+        role: {
+            description: string;
+            image: string;
+        }
     };
 
     carousel: {

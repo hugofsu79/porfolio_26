@@ -1,0 +1,30 @@
+---
+type CarouselImage = { src: string; alt: string };
+const { images } = Astro.props as { images: CarouselImage[] };
+---
+
+<div class="carousel__viewport">
+  <ul class="carousel__track">
+    {
+      images.map((img, index) => (
+        <li
+          class={`carousel__slide ${index === 0 ? "is-active" : ""}`}
+          aria-hidden={index !== 0}
+        >
+          <img src={img.src} alt={img.alt} loading="lazy" />
+        </li>
+      ))
+    }
+  </ul>
+  <div class="carousel__stepper" aria-hidden="true">
+    {
+      images.map((_, index) => (
+        <button
+          class={`carousel__step ${index === 0 ? "is-active" : ""}`}
+          aria-label={`Slide ${index + 1}`}
+          type="button"
+        />
+      ))
+    }
+  </div>
+</div>

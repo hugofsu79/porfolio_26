@@ -1,3 +1,5 @@
+@import "./carousel.css";
+
 #myProjects {
     min-height: 100vh;
     display: flex;
@@ -22,6 +24,13 @@ header img {
     object-position: center top;
 
     display: block;
+}
+
+.project-page hr {
+    border: none;
+    height: 1px;
+    background-color: var(--color-text-punctal);
+
 }
 
 #myProjects .projects-list {
@@ -58,6 +67,10 @@ header img {
     color: var(--color-text-punctal);
 }
 
+.leftCorridor {
+    top: 20px;
+}
+
 .tableContexte {
     color: var(--color-text-all);
 }
@@ -70,11 +83,17 @@ header img {
     display: grid;
     grid-template-columns: 1fr 2fr;
     overflow: hidden;
-    gap: 30px;
+    gap: 50px;
 }
 
-.grid-min img {
+.textGrid {
+    position: sticky;
+    top: 20px; height: fit-content;
+}
+
+.objectifIllustration {
     width: 100%;
+
 
 }
 
@@ -83,12 +102,15 @@ header img {
     .grid {
         gap: 30px;
     }
+    .grid-mini{
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 720px) {
 
-    .grid,
-    .grid-mini {
+    .grid {
+        position: none;
         grid-template-columns: 1fr;
     }
 }

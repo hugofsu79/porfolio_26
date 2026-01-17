@@ -46,21 +46,24 @@ export const projects: Project[] = [
                 image: "/images/projects/siko-mobility/Objectifs_image_siko.png"
             },
             role:
-                "En tant que designer UI et concepteur d’application, j’ai travaillé sur la conception UX, les wireframes, l’UI finale et l’évolution des parcours de financement et des dashboards, dans un contexte de forte autonomie.",
+            {
+                description: "En tant que designer UI et concepteur d’application, j’ai travaillé sur la conception UX, les wireframes, l’UI finale et l’évolution des parcours de financement et des dashboards, dans un contexte de forte autonomie.",
+                image: ""
+            }
         },
 
         carousel: {
             images: [
                 {
-                    src: "/images/projects/siko/screen-1.jpg",
+                    src: "/public/images/projects/siko-mobility/carousel/paysage.png",
                     alt: "Dashboard Siko Mobility",
                 },
                 {
-                    src: "/images/projects/siko/screen-2.jpg",
+                    src: "/public/images/projects/siko-mobility/carousel/AdobeStock_282275837.png",
                     alt: "Parcours utilisateur",
                 },
                 {
-                    src: "/images/projects/siko/screen-3.jpg",
+                    src: "/public/images/projects/siko-mobility/carousel/Sophora-prostrata-Little-Baby.jpg",
                     alt: "Écran mobile",
                 },
             ],
@@ -112,7 +115,10 @@ export const projects: Project[] = [
                 image: ""
             },
             role:
-                "En tant que porteur du projet, j’ai assuré l’ensemble de la conception : définition du concept, recherche UX, conception des parcours, création des maquettes UI et mise en place du produit sur WordPress, incluant les fonctionnalités de marketplace C2C.",
+            {
+                description: "En tant que porteur du projet, j’ai assuré l’ensemble de la conception : définition du concept, recherche UX, conception des parcours, création des maquettes UI et mise en place du produit sur WordPress, incluant les fonctionnalités de marketplace C2C.",
+                image: ""
+            }
         },
 
         carousel: {
@@ -177,7 +183,10 @@ export const projects: Project[] = [
                 image: ""
             },
             role:
-                "Dans le cadre de cet exercice, j’ai travaillé sur la compréhension du besoin métier des kinésithérapeutes, la conception des parcours utilisateurs en particulier un dashboard où l'on retrouve la patientel, je me suis donc occupé de la réalisation des wireframes et interfaces UI, en mettant l’accent sur la clarté, la fiabilité des informations et l’adaptation aux usages professionnels."
+            {
+                description: "Dans le cadre de cet exercice, j’ai travaillé sur la compréhension du besoin métier des kinésithérapeutes, la conception des parcours utilisateurs en particulier un dashboard où l'on retrouve la patientel, je me suis donc occupé de la réalisation des wireframes et interfaces UI, en mettant l’accent sur la clarté, la fiabilité des informations et l’adaptation aux usages professionnels.",
+                image: ""
+            }
         },
 
         carousel: {
@@ -243,7 +252,10 @@ export const projects: Project[] = [
                 image: ""
             },
             role:
-                "J’ai conçu le projet de bout en bout : définition du concept, réflexion sur les parcours enfants, conception UX/UI, structuration des choix narratifs et design des supports générés (texte, audio et illustration), avec une attention particulière portée à la simplicité, à l’accessibilité et à l’expérience utilisateur enfant.",
+            {
+                description: "J’ai conçu le projet de bout en bout : définition du concept, réflexion sur les parcours enfants, conception UX/UI, structuration des choix narratifs et design des supports générés (texte, audio et illustration), avec une attention particulière portée à la simplicité, à l’accessibilité et à l’expérience utilisateur enfant.",
+                image: ""
+            }
         },
 
         carousel: {
