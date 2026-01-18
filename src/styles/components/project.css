@@ -8,8 +8,91 @@
 
 #myProjects h2 {
     padding-left: 40px;
+    top: 68px;
 }
 
+.headerProject {
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Effet follow et sticky du titre */
+.project-title {
+    margin: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* TItre du hero <h2> */
+.project-title--hero {
+    font-size: 56px;
+    transition: opacity 0.25s ease;
+}
+
+/* Titre dans le context */
+.project-title--context {
+    color: var(--color-text-primary);
+    font-size: 24px;
+
+    max-height: 0;
+    overflow: hidden;
+
+    opacity: 0;
+    transform: translateY(6px);
+
+    transition:
+        max-height 0.35s ease,
+        opacity 0.45s ease,
+        transform 0.45s ease;
+}
+
+.elementproject {
+    color: var(--color-text-primary);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+/* tableau  */
+.tableContexte tr:not(:last-child) th,
+.tableContexte tr:not(:last-child) td {
+    border-bottom: 0.5px solid var(--color-primary);
+}
+
+.tableContexte th,
+.tableContexte td {
+    vertical-align: center;
+    padding: 6px;
+}
+
+.tableContexte th {
+    text-align: left;
+    /* optionnel, plus éditorial */
+    white-space: nowrap;
+}
+
+.tableContexte tr:not(:last-child) th {
+    padding-right: 24px;
+}
+
+
+.elementproject p {
+    width: 100%;
+}
+
+.context {
+    position: sticky;
+    top: 68px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/*  */
+/*  */
 header {
     padding-top: 40px;
     width: 100vw;
@@ -54,7 +137,7 @@ header img {
 
 /* Slug page */
 .projetAll {
-    padding: 60px 40px 40px 40px;
+    padding: 40px;
 }
 
 .grid {
@@ -87,14 +170,58 @@ header img {
 }
 
 .textGrid {
-    position: sticky;
-    top: 20px; height: fit-content;
+    /* position: sticky; */
+    /* top: 20px; */
+    height: fit-content;
 }
 
 .objectifIllustration {
     width: 100%;
+}
 
+/* Mini Modale Follower */
+.modaleFollower {
+    z-index: 999;
+    padding: 24px;
+    background-color: var(--color-bg-secondary);
+    bottom: 20px;
+    right: 20px;
+    border-radius: var(--radius-S);
 
+    transform: translate(120%, 60%);
+    pointer-events: none;
+}
+
+.modaleFollower ul {
+    margin: 0;
+}
+
+.modaleFollower ul li {
+    cursor: pointer;
+    gap: 6px;
+
+    font-weight: 200;
+    color: var(--color-text-secondary);
+    opacity: 50%;
+    transition: opacity 0.25s ease;
+}
+
+.modaleFollower ul li a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.modaleFollower ul li:hover,
+.modaleFollower ul li.is-active {
+    color: var(--color-text-secondary);
+    opacity: 100%;
+}
+
+.project-page hr {
+    border: none;
+    height: .5px;
+    background-color: var(--color-secondary) !important;
+    opacity: 10%;
 }
 
 /* Tablet */
@@ -102,7 +229,8 @@ header img {
     .grid {
         gap: 30px;
     }
-    .grid-mini{
+
+    .grid-mini {
         grid-template-columns: 1fr;
     }
 }

@@ -1,0 +1,131 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<style>
+    .modaleFollower {
+        z-index: 999;
+        padding: 24px;
+        background-color: var(--color-bg-secondary);
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        border-radius: var(--radius-S);
+
+        /* initial state for animation */
+        transform: translate(120%, 60%);
+        pointer-events: none;
+        will-change: transform;
+    }
+
+    .modaleFollower.is-visible {
+        pointer-events: auto;
+    }
+</style>
+
+<div class="modaleFollower">
+    <ul>
+        <li
+            class={currentPath.includes("/projects/siko-mobility")
+                ? "is-active"
+                : ""}
+        >
+            <a href="/projects/siko-mobility">Siko Mobility</a>
+        </li>
+        <hr />
+
+        <li
+            class={currentPath.includes("/projects/rhizome") ? "is-active" : ""}
+        >
+            <a href="/projects/rhizome">Rhizome</a>
+        </li>
+        <hr />
+
+        <li class={currentPath.includes("/projects/kiro") ? "is-active" : ""}>
+            <a href="/projects/kiro">Kiro</a>
+        </li>
+        <hr />
+
+        <li class={currentPath.includes("/projects/oneiro") ? "is-active" : ""}>
+            <a href="/projects/oneiro">Oneiro</a>
+        </li>
+    </ul>
+</div>
+
+<script type="module">
+    const modal = document.querySelector(".modaleFollower");
+
+    // Nothing to animate if the component isn't on the page
+    if (!modal) {
+        console.warn("[ModaleFollower] element not found");
+    } else {
+        let hasAnimated = false;
+
+        // Run once we are sure DOM is ready (DOMContentLoaded may have already fired)
+        const onReady = (fn) => {
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", fn, {
+                    once: true,
+                });
+            } else {
+                fn();
+            }
+        };
+
+        const animateIn = async () => {
+            if (hasAnimated) return;
+            hasAnimated = true;
+
+            // mark visible (re-enables pointer events)
+            modal.classList.add("is-visible");
+
+            // Try Anime.js first (if installed/resolvable)
+            try {
+                const mod = await import("animejs");
+                const anime = mod.default ?? mod;
+
+                anime({
+                    targets: modal,
+                    translateX: ["120%", "0%"],
+                    translateY: ["60%", "0%"],
+                    easing: "easeOutCubic",
+                    duration: 900,
+                });
+                return;
+            } catch (err) {
+                console.warn(
+                    "[ModaleFollower] Anime.js import failed, falling back to WAAPI",
+                    err,
+                );
+            }
+
+            // Fallback: Web Animations API (works in modern browsers)
+            modal.animate(
+                [
+                    { transform: "translate(120%, 60%)" },
+                    { transform: "translate(0%, 0%)" },
+                ],
+                {
+                    duration: 900,
+                    easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+                    fill: "forwards",
+                },
+            );
+        };
+
+        onReady(() => {
+            // If user has already scrolled a bit (e.g., refresh mid-page), animate immediately
+            if (window.scrollY > 80) animateIn();
+
+            // Otherwise animate on first scroll past threshold
+            const onScroll = () => {
+                if (window.scrollY > 80) {
+                    animateIn();
+                    window.removeEventListener("scroll", onScroll);
+                }
+            };
+
+            window.addEventListener("scroll", onScroll, { passive: true });
+        });
+    }
+</script>

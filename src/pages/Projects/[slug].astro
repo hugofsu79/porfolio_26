@@ -3,6 +3,7 @@ import { projects } from "../../data/projects";
 import Layout from "../../layouts/Layout.astro";
 import NavbarHome from "../../components/layout/Navigation.astro";
 import Carousel from "../../components/sections/Carousel.astro";
+import Modale_follower from "../../components/ui/ModaleFollow.astro";
 
 // 1) Astro va générer une page par item retourné ici
 export function getStaticPaths() {
@@ -22,45 +23,42 @@ const { project } = Astro.props;
     <header class="project-hero">
       <img src={project.hero.cover} alt={project.slug} />
     </header>
+
+    <Modale_follower />
     <section class="projetAll">
-      <p>{project.hero.year}</p>
-      <p>{project.hero.tags}</p>
-      <h1>{project.hero.title}</h1>
+      <div class="headerProject">
+        <div class="elementproject">
+          <p>{project.hero.year}</p>
+          <p>{project.hero.tags}</p>
+        </div>
+        <h2 class="project-title project-title--hero">{project.hero.title}</h2>
+        <hr />
+      </div>
       <div class="grid">
         <div class="leftCorridor">
           {
             project.sections?.context?.description && (
               <section class="context">
-                <h4>Contexte</h4>
-                <hr />
-                <p>{project.sections.context.description}</p>
+                <h3 class="project-title project-title--context">
+                  {project.hero.title}
+                </h3>
+                <div class="">
+                  <h4>Contexte</h4>
+                  <hr />
+                  <p>{project.sections.context.description}</p>
+                </div>
                 <table class="tableContexte">
                   <tbody>
-                    <tr>
-                      <th scope="row">Agent de quai</th>
-                      <td>ELIS</td>
-                      <td>Chauray</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Logisticien</th>
-                      <td>SDIS</td>
-                      <td>Chauray</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Mise sous pli</th>
-                      <td>La Poste</td>
-                      <td>Labège</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Sound-designer</th>
-                      <td>Micro-entreprise</td>
-                      <td>Niort</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Vendeur</th>
-                      <td>Duty-free</td>
-                      <td>Blagnac</td>
-                    </tr>
+                    {project.sections.context.details.map((item) => (
+                      <tr>
+                        <th scope="row">{item.label}</th>
+                        <td>
+                          {Array.isArray(item.value)
+                            ? item.value.join(" · ")
+                            : item.value}
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </section>
@@ -105,5 +103,42 @@ const { project } = Astro.props;
         </div>
       </div>
     </section>
+    <script type="module">
+      const heroTitle = document.querySelector(".project-title--hero");
+      const contextTitle = document.querySelector(".project-title--context");
+      const context = document.querySelector(".context");
+
+      if (!heroTitle || !contextTitle || !context) {
+        console.warn("Missing title elements");
+      } else {
+        const threshold =
+          context.getBoundingClientRect().top + window.scrollY - 120;
+
+        function onScroll() {
+          if (window.scrollY >= threshold) {
+            // Hero title disparaît doucement
+            heroTitle.style.opacity = "0";
+            heroTitle.style.pointerEvents = "none";
+
+            // Context title apparaît progressivement
+            contextTitle.style.maxHeight = "80px"; // assez pour un h3
+            contextTitle.style.opacity = "1";
+            contextTitle.style.transform = "translateY(0)";
+          } else {
+            // Hero title revient
+            heroTitle.style.opacity = "1";
+            heroTitle.style.pointerEvents = "auto";
+
+            // Context title disparaît sans shape
+            contextTitle.style.maxHeight = "0";
+            contextTitle.style.opacity = "0";
+            contextTitle.style.transform = "translateY(6px)";
+          }
+        }
+
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+      }
+    </script>
   </main>
 </Layout>

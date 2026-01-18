@@ -51,11 +51,12 @@ body.is-home .navbar_home ul li {
     white-space: nowrap;
     cursor: pointer;
 
-    color: var(--color-text-muted);
+    color: var(--color-text-muted-bg-light);
     transition: color 0.25s ease;
 }
 
-.navbar_home li:hover {
+.navbar_home li:hover,
+.navbar_home li.is-active {
     color: var(--color-text-primary);
 }
 
@@ -135,6 +136,12 @@ body.is-home .logoNavbar:hover,
 body.is-page .logoNavbar:hover {
     color: var(--color-punctal);
 }
+
+/* Active state if on est sur la page souhaité */
+
+:hover {}
+
+
 
 /* Tablet */
 @media (max-width: 1024px) {

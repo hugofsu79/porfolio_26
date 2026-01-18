@@ -1,3 +1,9 @@
+---
+const path = Astro.url.pathname;
+const isProjects = path.startsWith("/projects");
+const isLabo = path.startsWith("/Labo");
+---
+
 <nav class="navbar_home">
   <a href="/" aria-label="Retour à l’accueil">
     <svg
@@ -18,7 +24,9 @@
 
   <ul>
     <li><a href="/#about">À propos</a></li>
-    <li><a href="/projects#myProjects">Mes projets</a></li>
+    <li class={isProjects ? "is-active" : ""}>
+      <a href="/projects">Mes projets</a>
+    </li>
     <li>
       <button
         type="button"
@@ -29,7 +37,9 @@
         Contact
       </button>
     </li>
-    <li><a href="/Labo">Labo</a></li>
+    <li class={isLabo ? "is-active" : ""}>
+      <a href="/Labo">Labo</a>
+    </li>
     <div class="cv">
       <li class="cv">
         <a
