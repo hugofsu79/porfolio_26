@@ -6,7 +6,6 @@ body.is-home .navbar_home {
     display: inline-flex;
 
     white-space: nowrap;
-    /* empêche les retours à la ligne */
 }
 
 body.is-home .logoNavbar {
