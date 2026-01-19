@@ -13,6 +13,12 @@ export const projects: Project[] = [
             year: 2025,
         },
 
+        leftCorridor: {
+            skills: {
+                value: ["Fintech", "B2C-B2B", "Méthodologie"]
+            }
+        },
+
         sections: {
             context: {
                 description:
@@ -25,21 +31,29 @@ export const projects: Project[] = [
                     },
                     {
                         label: "Collaborateurs",
-                        value: ["Kader Bakayoko", "Jurgita Mahious", "Thibaut Andriamasionro", "Louis Leveneur"],
+                        value: [{
+                            label: "Kader Bakayoko", href: "linkedin.com/in/kader-bakayoko-341b53190/?skipRedirect=true"
+                        },
+                        { label: "Jugurta Mahious", href: "https://www.linkedin.com/in/jugurta-mahious-0a2760237/" },
+                        { label: "Thibault Andriamasionro", href: "https://www.linkedin.com/in/thibault-andriamasinoro/" },
+                        { label: "Louis Leveneur", href: "https://www.linkedin.com/in/louis-leveneur-74410b1b9/" }],
+                        marquee: true,
                     },
                     {
                         label: "Rôle",
                         value: ["Designer UI", "Concepteur d’application"],
+                        marquee: true,
                     },
                     {
                         label: "Link",
-                        value: "www.sikomobility.com",
+                        value: { label: "www.sikomobility.com", href: "https://www.sikomobility.com/" }
                     },
                     {
                         label: "Catégorie",
                         value: "Fintech",
                     },
                 ],
+
             },
             objectifs: {
                 description: "Structurer et simplifier des parcours utilisateurs complexes liés au financement de véhicules, tout en garantissant la fiabilité des interfaces face aux contraintes légales, opérationnelles et métiers.",
@@ -49,7 +63,17 @@ export const projects: Project[] = [
             {
                 description: "En tant que designer UI et concepteur d’application, j’ai travaillé sur la conception UX, les wireframes, l’UI finale et l’évolution des parcours de financement et des dashboards, dans un contexte de forte autonomie.",
                 image: ""
-            }
+            },
+            demarche:
+            {
+                description: "En tant que designer UI et concepteur d’application, j’ai travaillé sur la conception UX, les wireframes, l’UI finale et l’évolution des parcours de financement et des dashboards, dans un contexte de forte autonomie.",
+                image: ""
+            },
+            resultat:
+            {
+                description: "Description....",
+                image: ""
+            },
         },
 
         carousel: {
@@ -81,6 +105,12 @@ export const projects: Project[] = [
             year: 2025,
         },
 
+        leftCorridor: {
+            skills: {
+                value: ["", "", ""]
+            }
+        },
+
         sections: {
             context: {
                 description:
@@ -98,14 +128,15 @@ export const projects: Project[] = [
                     {
                         label: "Rôle",
                         value: ["Designer UI", "Concepteur d’application"],
+                        marquee: true,
                     },
                     {
                         label: "Link",
-                        value: "www.rhizome.com/lienFigma",
+                        value: ["www.rhizome.com/lienFigma"],
                     },
                     {
                         label: "Catégorie",
-                        value: "Marketplace",
+                        value: ["Marketplace"],
                     },
                 ],
             },
@@ -115,6 +146,16 @@ export const projects: Project[] = [
                 image: ""
             },
             role:
+            {
+                description: "En tant que porteur du projet, j’ai assuré l’ensemble de la conception : définition du concept, recherche UX, conception des parcours, création des maquettes UI et mise en place du produit sur WordPress, incluant les fonctionnalités de marketplace C2C.",
+                image: ""
+            },
+            demarche:
+            {
+                description: "En tant que porteur du projet, j’ai assuré l’ensemble de la conception : définition du concept, recherche UX, conception des parcours, création des maquettes UI et mise en place du produit sur WordPress, incluant les fonctionnalités de marketplace C2C.",
+                image: ""
+            },
+            resultat:
             {
                 description: "En tant que porteur du projet, j’ai assuré l’ensemble de la conception : définition du concept, recherche UX, conception des parcours, création des maquettes UI et mise en place du produit sur WordPress, incluant les fonctionnalités de marketplace C2C.",
                 image: ""
@@ -148,6 +189,12 @@ export const projects: Project[] = [
             tags: ["UI/UX Designer"],
             title: "Kiro, concevoir une expérience de suivi pour kinésithérapeutes",
             year: 2025,
+        },
+
+        leftCorridor: {
+            skills: {
+                value: ["", "", ""]
+            }
         },
 
         sections: {
@@ -186,6 +233,16 @@ export const projects: Project[] = [
             {
                 description: "Dans le cadre de cet exercice, j’ai travaillé sur la compréhension du besoin métier des kinésithérapeutes, la conception des parcours utilisateurs en particulier un dashboard où l'on retrouve la patientel, je me suis donc occupé de la réalisation des wireframes et interfaces UI, en mettant l’accent sur la clarté, la fiabilité des informations et l’adaptation aux usages professionnels.",
                 image: ""
+            },
+            demarche:
+            {
+                description: "En tant que porteur du projet, j’ai assuré l’ensemble de la conception : définition du concept, recherche UX, conception des parcours, création des maquettes UI et mise en place du produit sur WordPress, incluant les fonctionnalités de marketplace C2C.",
+                image: ""
+            },
+            resultat:
+            {
+                description: "En tant que porteur du projet, j’ai assuré l’ensemble de la conception : définition du concept, recherche UX, conception des parcours, création des maquettes UI et mise en place du produit sur WordPress, incluant les fonctionnalités de marketplace C2C.",
+                image: ""
             }
         },
 
@@ -218,6 +275,12 @@ export const projects: Project[] = [
             year: 2023,
         },
 
+        leftCorridor: {
+            skills: {
+                value: ["", "", ""]
+            }
+        },
+
         sections: {
             context: {
                 description:
@@ -235,6 +298,7 @@ export const projects: Project[] = [
                     {
                         label: "Rôle",
                         value: ["Concepteur d’application", "Développeur full stack"],
+                        marquee: true,
                     },
                     {
                         label: "Link",
@@ -254,6 +318,16 @@ export const projects: Project[] = [
             role:
             {
                 description: "J’ai conçu le projet de bout en bout : définition du concept, réflexion sur les parcours enfants, conception UX/UI, structuration des choix narratifs et design des supports générés (texte, audio et illustration), avec une attention particulière portée à la simplicité, à l’accessibilité et à l’expérience utilisateur enfant.",
+                image: ""
+            },
+            demarche:
+            {
+                description: "En tant que porteur du projet, j’ai assuré l’ensemble de la conception : définition du concept, recherche UX, conception des parcours, création des maquettes UI et mise en place du produit sur WordPress, incluant les fonctionnalités de marketplace C2C.",
+                image: ""
+            },
+            resultat:
+            {
+                description: "En tant que porteur du projet, j’ai assuré l’ensemble de la conception : définition du concept, recherche UX, conception des parcours, création des maquettes UI et mise en place du produit sur WordPress, incluant les fonctionnalités de marketplace C2C.",
                 image: ""
             }
         },

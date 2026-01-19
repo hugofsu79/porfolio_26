@@ -32,7 +32,6 @@ const { project } = Astro.props;
           <p>{project.hero.tags}</p>
         </div>
         <h2 class="project-title project-title--hero">{project.hero.title}</h2>
-        <hr />
       </div>
       <div class="grid">
         <div class="leftCorridor">
@@ -42,29 +41,88 @@ const { project } = Astro.props;
                 <h3 class="project-title project-title--context">
                   {project.hero.title}
                 </h3>
-                <div class="">
+                <div>
+                  <ul class="skill">
+                    {project.leftCorridor.skills.value.map((skill) => {
+                      const hue = Math.floor(Math.random() * 360);
+                      return (
+                        <li style={`--tag-color: hsl(${hue}, 70%, 50%)`}>
+                          {skill}
+                        </li>
+                      );
+                    })}
+                  </ul>
                   <h4>Contexte</h4>
                   <hr />
+
                   <p>{project.sections.context.description}</p>
                 </div>
                 <table class="tableContexte">
                   <tbody>
-                    {project.sections.context.details.map((item) => (
-                      <tr>
-                        <th scope="row">{item.label}</th>
-                        <td>
-                          {Array.isArray(item.value)
-                            ? item.value.join(" · ")
-                            : item.value}
-                        </td>
-                      </tr>
-                    ))}
+                    {project.sections.context.details.map((item) => {
+                      const values = Array.isArray(item.value)
+                        ? item.value
+                        : [item.value];
+
+                      const isLinkObject = (v) =>
+                        typeof v === "object" && "href" in v;
+
+                      const displayNodes = values.map((v, index) =>
+                        isLinkObject(v) ? (
+                          <>
+                            <a
+                              href={v.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              class="external-link"
+                            >
+                              {v.label}
+                            </a>
+                            {index < values.length - 1 && " · "}
+                          </>
+                        ) : (
+                          <>
+                            {v}
+                            {index < values.length - 1 && " · "}
+                          </>
+                        ),
+                      );
+
+                      const duration = 6 + values.length * 2;
+
+                      return (
+                        <tr>
+                          <th scope="row">{item.label}</th>
+
+                          <td class={item.marquee ? "marquee-cell" : ""}>
+                            {item.marquee ? (
+                              <div
+                                class="table-marquee"
+                                style={`--marquee-duration: ${duration}s`}
+                              >
+                                <div class="table-marquee__track">
+                                  <span class="table-marquee__item">
+                                    {displayNodes}
+                                  </span>
+                                  <span class="table-marquee__item">
+                                    {displayNodes}
+                                  </span>
+                                </div>
+                              </div>
+                            ) : (
+                              displayNodes
+                            )}
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </section>
             )
           }
         </div>
+
         <div class="rightCorridor">
           {
             project.sections?.objectifs?.description && (
@@ -91,12 +149,12 @@ const { project } = Astro.props;
           {
             project.sections?.role && (
               <div class="grid-mini">
+                <img src={project.sections.role.image} alt="" />
                 <div class="textGrid">
                   <h4>Mon rôle</h4>
                   <hr />
                   <p>{project.sections.role.description}</p>
                 </div>
-                <img src={project.sections.role.image} alt="" />
               </div>
             )
           }

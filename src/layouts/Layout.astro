@@ -24,5 +24,24 @@ const { isHome = false } = Astro.props;
     <script type="module" src="/src/scripts/contactPanel.js"></script>
     <script type="module" src="/src/scripts/navbarScroll.js"></script>
     <script type="module" src="/src/scripts/carouselEffect.js"></script>
+    <script type="module">
+      import "../scripts/marqueeOverflow.js";
+    </script>
+    <script>
+      import { initLoopingRow } from "../scripts/marquee.js";
+
+      // debug: tu dois voir ça dans la console
+      console.log("HOME SCRIPT OK", {
+        marquee: document.querySelector(".marquee"),
+        allies: document.querySelector(".allies"),
+      });
+
+      initLoopingRow(".marquee", { speed: 0.6, slowSpeed: 0.05 });
+
+      // on attend le prochain frame pour être 100% safe
+      requestAnimationFrame(() => {
+        initLoopingRow(".allies", { speed: 0.6, slowSpeed: 0.05 });
+      });
+    </script>
   </body>
 </html>

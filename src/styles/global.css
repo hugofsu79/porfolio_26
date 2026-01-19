@@ -42,10 +42,14 @@ li {
     list-style-type: none;
 }
 
-h1,h2 {
+h1,
+h2 {
     color: var(--color-primary);
 }
-h2 {font-size: 43px;}
+
+h2 {
+    font-size: 43px;
+}
 
 h3 {
     font-size: 24px;
@@ -60,8 +64,8 @@ h4 {
 
 p {
     font-weight: 200;
-    font-size: 12px;
-    line-height: 1.4;
+    font-size: 14px;
+    line-height: 1.2;
     margin: 0;
 }
 
@@ -417,6 +421,7 @@ Mes alliés */
 .content {
     margin: 2rem 0rem 2rem 0rem;
 }
+
 .content h2 {
     color: var(--color-text-secondary);
 }

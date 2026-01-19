@@ -1,4 +1,23 @@
-// src/types/project.ts
+/* =========================
+   Types utilitaires
+========================= */
+
+export interface ContextLink {
+    label: string;
+    href: string;
+}
+
+export type ContextValue =
+    | string
+    | string[]
+    | ContextLink
+    | ContextLink[];
+
+export interface ContextDetail {
+    label: string;
+    value: ContextValue;
+    marquee?: boolean;
+}
 
 export interface Project {
     slug: string;
@@ -12,22 +31,37 @@ export interface Project {
         year: number;
     };
 
+    leftCorridor: {
+        skills: {
+            value: string[];
+        };
+    };
+
     sections: {
         context: {
             description: string;
-            details: {
-                label: string;
-                value: string | string[];
-            }[];
+            details: ContextDetail[];
         };
+
         objectifs: {
             description: string;
             image: string;
-        }
+        };
+
         role: {
             description: string;
             image: string;
-        }
+        };
+
+        demarche: {
+            description: string;
+            image: string;
+        };
+
+        resultat: {
+            description: string;
+            image: string;
+        };
     };
 
     carousel: {
