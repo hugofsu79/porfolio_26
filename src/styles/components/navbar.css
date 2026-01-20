@@ -8,9 +8,6 @@ body.is-home .navbar_home {
     white-space: nowrap;
 }
 
-body.is-home .logoNavbar {
-    display: none;
-}
 
 .navbar_home a {
     text-decoration: none;
@@ -90,19 +87,24 @@ body.is-page nav.navbar_home {
     display: flex;
     flex-direction: row;
     width: 100vw;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     padding: 0 14px;
 }
+
 
 body.is-page .navbar_home li:nth-last-child(-n+2) {
     width: 40px;
 }
 
 nav.navbar_home {
+    display: flex;
+    justify-content: space-between;
     transition: transform 0.3s ease;
     top: 0;
 }
+
+
 
 body.is-page nav.navbar_home.navbar--hidden {
     transform: translateY(-100%);
@@ -111,8 +113,16 @@ body.is-page nav.navbar_home.navbar--hidden {
 body.is-page .navbar_home ul {
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 18px;
+    flex: 1;
 }
+
+/* Push the last two items (e.g., Labo + CV) to the right */
+body.is-page .navbar_home ul li:nth-last-child(2) {
+    margin-left: auto;
+}
+
 
 body.is-page .navbar_home ul li {
     font-size: 14px;
@@ -123,13 +133,17 @@ body.is-page .downloadCV {
     display: none;
 }
 
+/* Logo SVG base styles */
 body.is-home .logoNavbar,
 body.is-page .logoNavbar {
-    display: block;
     height: 31px;
-
     color: var(--color-primary);
     transition: color 0.25s ease;
+}
+
+/* Explicitly hide logo link on page navbar */
+body.is-page nav.navbar_home > a {
+    display: none !important;
 }
 
 body.is-home .logoNavbar:hover,

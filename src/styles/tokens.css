@@ -14,6 +14,7 @@
     --color-text-primary: #00643F;
     --color-text-all: #013723;
     --color-text-secondary: #FBFFF6;
+    --color-text-secondary-opacity-25: hsla(87, 100%, 98%, 0.25);
     --color-text-muted: #8EDEC1;
     --color-text-punctal: #FF6421;
     --color-text-punctal-bg-green: #FFDDAD;

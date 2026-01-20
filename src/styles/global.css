@@ -15,6 +15,10 @@ body {
     margin: 0px;
 }
 
+textarea {
+    font-family: var(--font-sans);
+}
+
 *,
 *::before,
 *::after {
@@ -62,6 +66,13 @@ h4 {
     color: var(--color-text-punctal-bg-green);
 }
 
+h5,
+.ctaLabel {
+    font-weight: 200;
+    color: var(--color-secondary);
+    margin: 2px;
+}
+
 p {
     font-weight: 200;
     font-size: 14px;
@@ -78,8 +89,13 @@ p {
 }
 
 button span {
-    font-size: 20px;
+    font-size: 12px;
+
     color: var(--color-secondary);
+}
+
+.ctaLabelLink {
+    font-weight: 100;
 }
 
 .icon {
@@ -87,6 +103,11 @@ button span {
     width: 50%;
 }
 
+/* moulures */
+.frontMoulure path,
+.buttomMoulure path {
+    transition: fill 0.5s ease-in-out;
+}
 
 .cv {
     display: flex;
@@ -505,6 +526,12 @@ Mes alliés */
         flex-direction: column;
         gap: 8px;
     }
+}
+
+#path-outer-a,
+#path-outer-b {
+    opacity: 0.3;
+    stroke: red;
 }
 
 
