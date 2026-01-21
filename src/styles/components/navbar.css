@@ -87,7 +87,6 @@ body.is-page nav.navbar_home {
     display: flex;
     flex-direction: row;
     width: 100vw;
-    justify-content: flex-start;
     align-items: center;
     padding: 0 14px;
 }
@@ -102,6 +101,7 @@ nav.navbar_home {
     justify-content: space-between;
     transition: transform 0.3s ease;
     top: 0;
+
 }
 
 
@@ -115,7 +115,6 @@ body.is-page .navbar_home ul {
     flex-direction: row;
     align-items: center;
     gap: 18px;
-    flex: 1;
 }
 
 /* Push the last two items (e.g., Labo + CV) to the right */
@@ -141,19 +140,12 @@ body.is-page .logoNavbar {
     transition: color 0.25s ease;
 }
 
-/* Explicitly hide logo link on page navbar */
-body.is-page nav.navbar_home > a {
-    display: none !important;
-}
-
 body.is-home .logoNavbar:hover,
 body.is-page .logoNavbar:hover {
     color: var(--color-punctal);
 }
 
 /* Active state if on est sur la page souhaité */
-
-:hover {}
 
 
 

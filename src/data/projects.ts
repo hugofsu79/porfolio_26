@@ -6,7 +6,7 @@ export const projects: Project[] = [
 
         hero: {
             entreprise: "Siko Mobility",
-            cover: "/images/projects/siko-mobility/cover_siko.webp",
+            cover: "/public/images/projects/siko-mobility/cover_siko.webp",
             image: "/icons/projets/sikoMobility_logo.svg",
             tags: ["Développeur web", "Tailwind CSS"],
             title: "Concepteur d’application chez Siko Mobility",
@@ -27,12 +27,12 @@ export const projects: Project[] = [
                 details: [
                     {
                         label: "Temps de travail",
-                        value: "02.10.2024 à 27.10.2025",
+                        value: ["02.10.2024 à 27.10.2025"],
                     },
                     {
                         label: "Collaborateurs",
                         value: [{
-                            label: "Kader Bakayoko", href: "linkedin.com/in/kader-bakayoko-341b53190/?skipRedirect=true"
+                            label: "Kader Bakayoko", href: "https://www.linkedin.com/in/kader-bakayoko-341b53190/?skipRedirect=true"
                         },
                         { label: "Jugurta Mahious", href: "https://www.linkedin.com/in/jugurta-mahious-0a2760237/" },
                         { label: "Thibault Andriamasionro", href: "https://www.linkedin.com/in/thibault-andriamasinoro/" },
@@ -46,11 +46,11 @@ export const projects: Project[] = [
                     },
                     {
                         label: "Link",
-                        value: { label: "www.sikomobility.com", href: "https://www.sikomobility.com/" }
+                        value: [{ label: "www.sikomobility.com", href: "https://www.sikomobility.com/" }]
                     },
                     {
                         label: "Catégorie",
-                        value: "Fintech",
+                        value: ["Fintech"],
                     },
                 ],
 
@@ -79,15 +79,15 @@ export const projects: Project[] = [
         carousel: {
             images: [
                 {
-                    src: "/public/images/projects/siko-mobility/carousel/paysage.png",
+                    src: "/images/projects/siko-mobility/carousel/paysage.png",
                     alt: "Dashboard Siko Mobility",
                 },
                 {
-                    src: "/public/images/projects/siko-mobility/carousel/AdobeStock_282275837.png",
+                    src: "/images/projects/siko-mobility/carousel/AdobeStock_282275837.png",
                     alt: "Parcours utilisateur",
                 },
                 {
-                    src: "/public/images/projects/siko-mobility/carousel/Sophora-prostrata-Little-Baby.jpg",
+                    src: "/images/projects/siko-mobility/carousel/Sophora-prostrata-Little-Baby.jpg",
                     alt: "Écran mobile",
                 },
             ],
@@ -98,7 +98,7 @@ export const projects: Project[] = [
 
         hero: {
             entreprise: "Rhizome",
-            cover: "../public/images/projects/siko-mobility",
+            cover: "/images/projects/siko-mobility",
             image: "/icons/projets/rhizome_logo.svg",
             tags: ["UI/UX Designer"],
             title: "Rhizome, le vinted des plantes",
@@ -107,7 +107,7 @@ export const projects: Project[] = [
 
         leftCorridor: {
             skills: {
-                value: ["", "", ""]
+                value: ["Product Design", "UX Research", "Design System"]
             }
         },
 
@@ -119,7 +119,7 @@ export const projects: Project[] = [
                 details: [
                     {
                         label: "Temps de travail",
-                        value: "14.12.2024 à 27.08.2025",
+                        value: ["14.12.2024 à 27.08.2025"],
                     },
                     {
                         label: "Collaborateurs",
@@ -184,7 +184,7 @@ export const projects: Project[] = [
 
         hero: {
             entreprise: "Kiro",
-            cover: "../public/images/projects/siko-mobility",
+            cover: "/images/projects/siko-mobility",
             image: "/icons/projets/kiro_logo.svg",
             tags: ["UI/UX Designer"],
             title: "Kiro, concevoir une expérience de suivi pour kinésithérapeutes",
@@ -193,7 +193,7 @@ export const projects: Project[] = [
 
         leftCorridor: {
             skills: {
-                value: ["", "", ""]
+                value: ["Ux Strategy", "Interface B2B", "Prototypage avancé"]
             }
         },
 
@@ -205,7 +205,7 @@ export const projects: Project[] = [
                 details: [
                     {
                         label: "Temps de travail",
-                        value: "14.12.2024 à 27.08.2025",
+                        value: ["14.12.2024 à 27.08.2025"],
                     },
                     {
                         label: "Collaborateurs",
@@ -217,11 +217,11 @@ export const projects: Project[] = [
                     },
                     {
                         label: "Link",
-                        value: "www.kiro.com/lienFigma",
+                        value: ["https://www.figma.com/design/XujzwV1i7ogDs52f51IDTG/Kiro?node-id=30-192"],
                     },
                     {
                         label: "Catégorie",
-                        value: "Marketplace",
+                        value: ["Marketplace"],
                     },
                 ],
             },
@@ -249,7 +249,7 @@ export const projects: Project[] = [
         carousel: {
             images: [
                 {
-                    src: "public/images/projects/siko/screen-1.jpg",
+                    src: "/images/projects/siko/screen-1.jpg",
                     alt: "Dashboard Siko Mobility",
                 },
                 {
@@ -268,7 +268,7 @@ export const projects: Project[] = [
 
         hero: {
             entreprise: "Oneiro",
-            cover: "../public/images/projects/siko-mobility",
+            cover: "/images/projects/siko-mobility",
             image: "/icons/projets/Oneiro_logo.svg",
             tags: ["UI/UX Designer"],
             title: "Oneiro, application de génération d’histoires pour enfants assistée par l’IA",
@@ -277,7 +277,7 @@ export const projects: Project[] = [
 
         leftCorridor: {
             skills: {
-                value: ["", "", ""]
+                value: ["Ux Narratif", "Interface éducative", "IA Générative"]
             }
         },
 
@@ -289,7 +289,7 @@ export const projects: Project[] = [
                 details: [
                     {
                         label: "Temps de travail",
-                        value: "23.06.2023 à 12.08.2023",
+                        value: ["23.06.2023 à 12.08.2023"],
                     },
                     {
                         label: "Collaborateurs",
@@ -302,11 +302,11 @@ export const projects: Project[] = [
                     },
                     {
                         label: "Link",
-                        value: "www.Oneiro.com/lienFigma",
+                        value: ["https://www.figma.com/design/vketK7TBIhF9WOnvcLrN7z/oneiro?node-id=2003-919&t=2w9s5Pk56QOR0shY-11"],
                     },
                     {
                         label: "Catégorie",
-                        value: "Application éducative",
+                        value: ["Application éducative"],
                     },
                 ],
             },

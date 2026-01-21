@@ -14,17 +14,14 @@
 header {
     padding-top: 40px;
     width: 100vw;
-    height: 40vh;
+    height: 60vh;
     overflow: hidden
 }
 
 header img {
     width: 100%;
     object-fit: cover;
-
-    object-position: center top;
-
-    display: block;
+    /* display: block; */
 }
 
 .headerProject {

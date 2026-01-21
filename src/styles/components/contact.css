@@ -74,12 +74,10 @@ button.cta,
 
     padding: 6px 12px;
     border-radius: var(--radius-S);
-
+border: 1px solid;
     background: transparent;
     color: var(--color-secondary);
     text-transform: none;
-
-    border: 1px solid var(--color-secondary);
 
     transition: border-color 0.25s ease;
 }
@@ -87,10 +85,6 @@ button.cta,
 button.cta {
     background-color: var(--color-bg);
     align-items: center;
-}
-
-button span .ctaLabel {
-    color: var(--color-text-primary) !important;
 }
 
 button.cta:hover,
@@ -106,7 +100,9 @@ button.cta:hover,
 }
 
 .buttomMoulure {
+    position: fixed;
     bottom: 20px;
+    right: 20px;
 
 }
 
@@ -225,6 +221,15 @@ textarea::placeholder {
     /* rouge */
 }
 
+.cta {
+    display: flex;
+    justify-content: center;
+}
+
+.ctaLabel {
+    color: var(--color-text-primary) !important;
+}
+
 
 /* texte */
 .text-secondary {
@@ -251,6 +256,7 @@ textarea::placeholder {
     }
 
     .buttomMoulure {
+        right: 30px;
         bottom: 30px;
     }
 }
