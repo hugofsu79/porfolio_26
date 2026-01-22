@@ -1,0 +1,95 @@
+.page {
+    background-color: var(--color-labo-bg);
+    padding: 12px;
+}
+
+.page h2,
+.page h3,
+.page p {
+    color: var(--color-labo-font);
+}
+
+.page p {
+    font-size: 18px;
+}
+
+.headTitle h2 {
+    font-size: 10vw;
+    margin: 0;
+    font-family: "Inter var", system-ui, sans-serif;
+    font-variation-settings: "wght" 900, "wdth" 100;
+    white-space: nowrap;
+    will-change: font-variation-settings, font-size;
+}
+
+.titleRubrique h3 {
+    font-size: 30px;
+    text-transform: none;
+    margin: 0;
+}
+
+
+.rubrique {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.rubrique .rightColumn {
+    width: 100%;
+}
+
+.leftColumn,
+.rightColumn {
+    border-radius: 12px;
+    padding: 12px;
+    background-color: var(--color-labo-bg-punctuel);
+}
+
+.leftColumn {
+    width: 40%;
+}
+
+.morceau {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--color-labo-bg-punctuel-secondary);
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.morceau p {
+    font-size: 0.875rem;
+    white-space: nowrap;
+}
+
+/* Player musique */
+
+.player {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+/* Container de l’onde */
+.osc {
+    display: flex;
+    align-items: center;
+    /* centrage vertical */
+    gap: 2px;
+    height: 64px;
+    cursor: pointer;
+}
+
+/* Rectangle (slice temporel) */
+.osc-bar {
+    width: 6px;
+    border-radius: 1.4px;
+
+    background: linear-gradient(to right,
+            var(--color-labo-onde-punctal) 0%,
+            var(--color-labo-onde-punctal) var(--fill, 0%),
+            var(--color-labo-onde-punctal-secondary) var(--fill, 0%),
+            var(--color-labo-onde-punctal-secondary) 100%);
+}

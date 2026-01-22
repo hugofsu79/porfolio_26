@@ -2,6 +2,7 @@
 @import "./components/contact.css";
 @import "./components/navbar.css";
 @import "./components/project.css";
+@import url(./components/labo.css);
 
 html {
     scroll-behavior: smooth;
@@ -29,7 +30,9 @@ textarea {
     min-width: 0;
     min-height: 0;
 }
-
+.page{
+    margin-top: 46px;
+}
 /* Points communs typographies */
 h1,
 h2,
@@ -449,6 +452,8 @@ Mes alliés */
 
 .position {
     width: 100%;
+    max-width: 100%;
+    overflow: hidden;
     display: flex;
     flex-direction: row-reverse;
 }

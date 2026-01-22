@@ -2,26 +2,7 @@
 const currentPath = Astro.url.pathname;
 ---
 
-<style>
-    .modaleFollower {
-        z-index: 999;
-        padding: 24px;
-        background-color: var(--color-bg-secondary);
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        border-radius: var(--radius-S);
 
-        /* initial state for animation */
-        transform: translate(120%, 60%);
-        pointer-events: none;
-        will-change: transform;
-    }
-
-    .modaleFollower.is-visible {
-        pointer-events: auto;
-    }
-</style>
 
 <div class="modaleFollower">
     <ul>

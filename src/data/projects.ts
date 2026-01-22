@@ -56,12 +56,12 @@ export const projects: Project[] = [
 
             },
             objectifs: {
-                description: "Structurer et simplifier des parcours utilisateurs complexes liés au financement de véhicules, tout en garantissant la fiabilité des interfaces face aux contraintes légales, opérationnelles et métiers.",
+                description: "Les objectifs se sont construits progressivement au fil de l’alternance. À mon arrivée, la place du design au sein de l’équipe technique n’était pas clairement définie : les fondateurs n’étaient pas encore convaincus de la valeur d’un designer UI/UX, en partie par méconnaissance du rôle. Les interfaces existantes reposaient principalement sur des composants Tailwind, avec des éléments graphiques peu structurés et difficilement exploitables par les développeurs.\n\nMon objectif principal a donc été de poser des bases solides pour le design produit, en collaboration étroite avec le CTO. Cela a impliqué un important travail de clarification et de structuration, reprendre l’ensemble des écrans, trier et organiser les fichiers Figma, et transformer un environnement de travail proche d’un véritable « syndrome de Diogène » graphique en un espace cohérent, lisible et réutilisable.\n\nJ’ai également cherché à donner un rôle fonctionnel au design, en construisant des composants et des règles UI capables de servir de véritable béquille pour l’équipe de développement, plutôt que de simples maquettes esthétiques. Enfin, un enjeu clé a été de dépasser les limites d’un design purement utilitaire lié à Tailwind, afin d’apporter plus de personnalité, de cohérence visuelle et de lisibilité aux interfaces, tout en restant compatible avec les contraintes techniques de la startup.",
                 image: "/images/projects/siko-mobility/Objectifs_image_siko.png"
             },
             role:
             {
-                description: "En tant que designer UI et concepteur d’application, j’ai travaillé sur la conception UX, les wireframes, l’UI finale et l’évolution des parcours de financement et des dashboards, dans un contexte de forte autonomie.",
+                description: "Chez Siko Mobility, mon rôle était de",
                 image: ""
             },
             demarche:

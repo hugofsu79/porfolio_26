@@ -59,6 +59,11 @@ header img {
     text-align: left;
 }
 
+.description {
+    white-space: pre-line;
+    font-size: 13px;
+}
+
 .tableContexte th,
 .tableContexte td {
     overflow: hidden;
@@ -99,6 +104,50 @@ header img {
     flex-direction: row;
     justify-content: space-between;
 
+}
+
+.elementproject p {
+    position: relative;
+    display: inline-block;
+    /* important si ton <p> ne doit pas prendre toute la largeur */
+    padding: 4px 8px;
+    /* ajuste selon ton design */
+}
+
+/* coins */
+.elementproject p::after {
+    content: "";
+    position: absolute;
+    inset: 1.35px;
+    pointer-events: none;
+
+    --c: currentColor;
+    --w: 1px;
+    --s: 6px;
+
+    background:
+        linear-gradient(var(--c) 0 0) top left / var(--s) var(--w) no-repeat,
+        linear-gradient(var(--c) 0 0) top left / var(--w) var(--s) no-repeat,
+        linear-gradient(var(--c) 0 0) top right / var(--s) var(--w) no-repeat,
+        linear-gradient(var(--c) 0 0) top right / var(--w) var(--s) no-repeat,
+        linear-gradient(var(--c) 0 0) bottom left / var(--s) var(--w) no-repeat,
+        linear-gradient(var(--c) 0 0) bottom left / var(--w) var(--s) no-repeat,
+        linear-gradient(var(--c) 0 0) bottom right / var(--s) var(--w) no-repeat,
+        linear-gradient(var(--c) 0 0) bottom right / var(--w) var(--s) no-repeat;
+
+    opacity: 0;
+    animation: cornerFadeIn 0.2s ease-out forwards;
+    animation-delay: .5s;
+}
+
+@keyframes cornerFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .marquee-cell {
@@ -165,9 +214,6 @@ header img {
     background-color: var(--color-punctal);
 }
 
-.modaleFollower hr {
-    background-color: var(--color-bg-muted);
-}
 
 
 #myProjects .projects-list {
@@ -200,6 +246,12 @@ header img {
     gap: 100px;
 }
 
+.section-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .project-page h4 {
     color: var(--color-text-punctal);
 }
@@ -223,9 +275,21 @@ header img {
     display: grid;
     grid-template-columns: 1fr 2fr;
     overflow: hidden;
-    gap: 50px;
+    gap: 20px;
+
 }
 
+.grid-mini:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+}
+
+.grid-mini:nth-child(1) .blocText{
+    width: 60%;
+}
+.grid-mini:nth-child(1) img {
+    height: auto;
+}
 .textGrid {
     /* position: sticky; */
     /* top: 20px; */
@@ -233,7 +297,7 @@ header img {
 }
 
 .objectifIllustration {
-    width: 100%;
+    width: 80%;
 }
 
 
@@ -292,7 +356,7 @@ header img {
 
 /* Mini Modale Follower */
 .modaleFollower {
-    z-index: 999;
+    z-index: 200;
     padding: 24px;
     background-color: var(--color-bg-secondary);
     bottom: 20px;
@@ -301,6 +365,29 @@ header img {
 
     transform: translate(120%, 60%);
     pointer-events: none;
+    position: fixed;
+    will-change: transform;
+}
+
+.modaleFollower hr {
+    background-color: var(--color-bg-muted);
+}
+
+.modaleFollower.is-visible {
+    pointer-events: auto;
+}
+
+.title__grid {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.grid-mini:nth-child(3) {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Tablet */
@@ -316,17 +403,69 @@ header img {
     .headerProject h2 {
         font-size: 24px;
     }
-
-    .grid-mini {
-        grid-template-columns: 1fr;
-    }
 }
 
 @media (max-width: 720px) {
+    .projetAll {
+        padding: 20px;
+    }
+
+    .project-hero {
+        height: 100%;
+    }
 
     .grid {
         display: flex;
         flex-direction: column;
         position: none;
+    }
+
+    .leftCorridor,
+    .context {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Mobile toggle sections */
+    .grid-mini {
+        gap: 12px;
+    }
+
+    .grid-mini h4 {
+        cursor: pointer;
+        position: relative;
+        padding-right: 24px;
+    }
+
+    /* Chevron */
+    .grid-mini h4::after {
+        content: "＋";
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-size: 18px;
+        transition: transform 0.25s ease;
+    }
+
+    .grid-mini.is-open h4::after {
+        content: "－";
+    }
+
+    /* Contenu masqué par défaut */
+    .grid-mini .section-content {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition:
+            max-height 0.35s ease,
+            opacity 0.25s ease;
+    }
+
+    /* Contenu visible */
+    .grid-mini.is-open .section-content {
+        max-height: 1000px;
+        /* volontairement large */
+        opacity: 1;
     }
 }

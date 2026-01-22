@@ -33,11 +33,11 @@ if (!project) {
     <Modale_follower />
     <section class="projetAll">
       <div class="headerProject">
+        <h2 class="project-title project-title--hero">{project.hero.title}</h2>
         <div class="elementproject">
           <p>{project.hero.year}</p>
           <p>{project.hero.tags}</p>
         </div>
-        <h2 class="project-title project-title--hero">{project.hero.title}</h2>
       </div>
       <div class="grid">
         <div class="leftCorridor">
@@ -47,83 +47,98 @@ if (!project) {
                 <h3 class="project-title project-title--context">
                   {project.hero.title}
                 </h3>
-                <div>
-                  <ul class="skill">
-                    {project.leftCorridor.skills.value.map((skill) => {
-                      const hue = Math.floor(Math.random() * 360);
-                      return (
-                        <li style={`--tag-color: hsl(${hue}, 70%, 50%)`}>
-                          {skill}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  <h4>Contexte</h4>
-                  <hr />
+                <>
+                  <div>
+                    <ul class="skill">
+                      {project.leftCorridor.skills.value.map((skill) => {
+                        const hue = Math.floor(Math.random() * 360);
+                        return (
+                          <li style={`--tag-color: hsl(${hue}, 70%, 50%)`}>
+                            {skill}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                  <div class="grid-mini">
+                    <div class="title__grid">
+                      <h4>Contexte</h4>
+                      <hr />
+                    </div>
+                    <div class="section-content">
+                      <p>{project.sections.context.description}</p>
+                      <table class="tableContexte">
+                        <tbody>
+                          {project.sections.context.details.map((item) => {
+                            const values = Array.isArray(item.value)
+                              ? item.value
+                              : [item.value];
 
-                  <p>{project.sections.context.description}</p>
-                </div>
-                <table class="tableContexte">
-                  <tbody>
-                    {project.sections.context.details.map((item) => {
-                      const values = Array.isArray(item.value)
-                        ? item.value
-                        : [item.value];
+                            const isContextLink = (
+                              v: string | { label: string; href: string },
+                            ): v is { label: string; href: string } => {
+                              return (
+                                typeof v === "object" &&
+                                v !== null &&
+                                "href" in v &&
+                                "label" in v
+                              );
+                            };
 
-                      const isLinkObject = (v) =>
-                        typeof v === "object" && "href" in v;
+                            const displayNodes = values.map((v, index) =>
+                              isContextLink(v) ? (
+                                <>
+                                  <a
+                                    href={v.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="external-link"
+                                  >
+                                    {v.label}
+                                  </a>
+                                  {index < values.length - 1 && " · "}
+                                </>
+                              ) : (
+                                <>
+                                  <span>{v}</span>
+                                  {index < values.length - 1 && " · "}
+                                </>
+                              ),
+                            );
 
-                      const displayNodes = values.map((v, index) =>
-                        isLinkObject(v) ? (
-                          <>
-                            <a
-                              href={v.href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              class="external-link"
-                            >
-                              {v.label}
-                            </a>
-                            {index < values.length - 1 && " · "}
-                          </>
-                        ) : (
-                          <>
-                            {v}
-                            {index < values.length - 1 && " · "}
-                          </>
-                        ),
-                      );
+                            const duration = 6 + values.length * 2;
 
-                      const duration = 6 + values.length * 2;
+                            return (
+                              <tr>
+                                <th scope="row">{item.label}</th>
 
-                      return (
-                        <tr>
-                          <th scope="row">{item.label}</th>
-
-                          <td class={item.marquee ? "marquee-cell" : ""}>
-                            {item.marquee ? (
-                              <div
-                                class="table-marquee"
-                                style={`--marquee-duration: ${duration}s`}
-                              >
-                                <div class="table-marquee__track">
-                                  <span class="table-marquee__item">
-                                    {displayNodes}
-                                  </span>
-                                  <span class="table-marquee__item">
-                                    {displayNodes}
-                                  </span>
-                                </div>
-                              </div>
-                            ) : (
-                              displayNodes
-                            )}
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
+                                <td class={item.marquee ? "marquee-cell" : ""}>
+                                  {item.marquee ? (
+                                    <div
+                                      class="table-marquee"
+                                      style={`--marquee-duration: ${duration}s`}
+                                    >
+                                      <div class="table-marquee__track">
+                                        <span class="table-marquee__item">
+                                          {displayNodes}
+                                        </span>
+                                        <span class="table-marquee__item">
+                                          {displayNodes}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  ) : (
+                                    displayNodes
+                                  )}
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </>
               </section>
             )
           }
@@ -133,19 +148,21 @@ if (!project) {
           {
             project.sections?.objectifs?.description && (
               <div class="grid-mini">
-                <div class="textGrid">
+                <div class="blocText"><div class="title__grid">
                   <h4>Objectifs</h4>
                   <hr />
-                  <p>{project.sections.objectifs.description}</p>
                 </div>
-
-                {project.sections.objectifs.image && (
-                  <img
-                    class="objectifIllustration"
-                    src={project.sections.objectifs.image}
-                    alt="Section du design system"
-                  />
-                )}
+                  <p class="description">
+                    {project.sections.objectifs.description}
+                  </p>
+                </div>
+                  {project.sections.objectifs.image && (
+                    <img
+                      class="objectifIllustration"
+                      src={project.sections.objectifs.image}
+                      alt="Section du design system"
+                    />
+                  )}
               </div>
             )
           }
@@ -154,12 +171,16 @@ if (!project) {
           </div>
           {
             project.sections?.role && (
-              <div class="grid-mini">
                 <img src={project.sections.role.image} alt="" />
+              <div class="grid-mini">
                 <div class="textGrid">
-                  <h4>Mon rôle</h4>
-                  <hr />
-                  <p>{project.sections.role.description}</p>
+                  <div class="title__grid">
+                    <h4>Mon rôle</h4>
+                    <hr />
+                  </div>
+                  <div class="section-content">
+                    <p>{project.sections.role.description}</p>
+                  </div>
                 </div>
               </div>
             )
@@ -203,6 +224,19 @@ if (!project) {
         onScroll();
         window.addEventListener("scroll", onScroll, { passive: true });
       }
+
+      const isMobile = window.matchMedia("(max-width: 720px)");
+
+  if (isMobile.matches) {
+    document.querySelectorAll(".grid-mini").forEach((section) => {
+      const title = section.querySelector("h4");
+      if (!title) return;
+
+      title.addEventListener("click", () => {
+        section.classList.toggle("is-open");
+      });
+    });
+  }
     </script>
   </main>
 </Layout>

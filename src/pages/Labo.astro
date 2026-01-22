@@ -3,6 +3,53 @@ import Layout from "../layouts/Layout.astro";
 import NavbarHome from "../components/layout/Navigation.astro";
 ---
 
+<style>
+    .musicCompo h2 {
+        font-variation-settings: "wght" 400;
+        transition: font-variation-settings 0.1s linear;
+        will-change: font-variation-settings;
+    }
+</style>
 <Layout title="Labo">
-    <NavbarHome />
+    <div class="page">
+        <NavbarHome />
+        <div class="headTitle">
+            <h2>Laboratoire</h2>
+        </div>
+        <section class="rubrique">
+            <div class="leftColumn">
+                <div class="titleRubrique">
+                    <h3>Musique</h3>
+                    <hr />
+                </div>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Vitae magnam iusto earum amet assumenda voluptatum officiis
+                    modi error aliquid animi nulla sequi nisi tempora.
+                </p>
+            </div>
+            <div class="rightColumn">
+                <div class="titleMusic">
+                    <div class="composant">
+                        <div class="morceau">
+                            <div
+                                class="player"
+                                data-audio="/public/audio/testPlayer1.mp3"
+                            >
+                                <p class="title">Moth – Parenzo</p>
+                                <div class="osc"></div>
+                            </div>
+
+                            <!-- ici : bouton déplacé -->
+                            <button
+                                class="play"
+                                aria-label="Lecture / Pause"
+                                data-player-control></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script type="module" src="/src/scripts/labo.js"></script>
 </Layout>
