@@ -9,3 +9,4 @@ export interface Jobs {
     slug: string;
     details: JobDetail[];
 }
+

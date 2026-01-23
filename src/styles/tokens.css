@@ -76,18 +76,3 @@
 }
 
 
-/* =========================
-   Page Labo
-========================= */
-:root {
-    /* Laboratoire Tokens */
-    --color-labo-font: #EAFFF7;
-    --color-labo-onde-punctal: #FF6421;
-    --color-labo-onde-punctal-secondary: #3E3C4C;
-    --color-labo-bg: #013723;
-    --color-labo-bg-punctuel: #242329;
-    --color-labo-bg-punctuel-secondary: #6E6C7E;
-    --color-labo-muted-light: #64A990;
-    /* Cuisine */
-    --color-labo-bg: #171715;
-}

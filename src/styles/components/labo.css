@@ -1,3 +1,30 @@
+/* =========================
+   Page Labo
+========================= */
+:root {
+    /* Laboratoire Tokens */
+    --color-labo-font: #EAFFF7;
+    --color-labo-onde-punctal: #FF6421;
+    --color-labo-onde-punctal-secondary: #3E3C4C;
+    --color-labo-bg: #013723;
+    --color-labo-bg-punctuel: #242329;
+    --color-labo-bg-punctuel-secondary: #6E6C7E;
+    --color-labo-muted-light: #64A990;
+    /* Cuisine */
+    --color-labo-bg: #171715;
+}
+
+:root {
+    --ease-audio: cubic-bezier(0.22, 1, 0.36, 1);
+    --audio-duration: 420ms;
+}
+
+.musicCompo h2 {
+    font-variation-settings: "wght" 400;
+    transition: font-variation-settings 0.1s linear;
+    will-change: font-variation-settings;
+}
+
 .page {
     background-color: var(--color-labo-bg);
     padding: 12px;
@@ -39,8 +66,7 @@
     width: 100%;
 }
 
-.leftColumn,
-.rightColumn {
+.leftColumn {
     border-radius: 12px;
     padding: 12px;
     background-color: var(--color-labo-bg-punctuel);
@@ -50,16 +76,46 @@
     width: 40%;
 }
 
+.rightColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.miniSection {
+    border-radius: 12px;
+    padding: 12px;
+    background-color: var(--color-labo-bg-punctuel);
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.infoTitle {
+    gap: 8px;
+}
+
+.infoTitle .title:nth-child(2) {
+    font-size: 14px;
+}
+
 .morceau {
     display: flex;
+    align-items: center;
     flex-direction: row;
     background-color: var(--color-labo-bg-punctuel-secondary);
     border-radius: 4px;
     padding: 20px;
+
+}
+
+/* Un morceau sur deux */
+.morceau:nth-child(even) {
+    background-color: var(--color-labo-onde-punctal-secondary);
 }
 
 .morceau p {
-    font-size: 0.875rem;
     white-space: nowrap;
 }
 
@@ -68,28 +124,233 @@
 .player {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
     width: 100%;
+    align-items: flex-start;
+    /* prevent osc from stretching full width */
 }
 
 /* Container de l’onde */
 .osc {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     /* centrage vertical */
     gap: 2px;
     height: 64px;
+    position: relative;
     cursor: pointer;
+
+    width: fit-content;
+    /* shrink-wrap to bars */
+    flex: 0 0 auto;
+    /* do not grow */
 }
 
 /* Rectangle (slice temporel) */
 .osc-bar {
     width: 6px;
     border-radius: 1.4px;
+    pointer-events: none;
 
     background: linear-gradient(to right,
             var(--color-labo-onde-punctal) 0%,
             var(--color-labo-onde-punctal) var(--fill, 0%),
             var(--color-labo-onde-punctal-secondary) var(--fill, 0%),
             var(--color-labo-onde-punctal-secondary) 100%);
+}
+
+.morceau:nth-child(even) .osc-bar {
+    background: linear-gradient(to right,
+            var(--color-labo-onde-punctal) 0%,
+            var(--color-labo-onde-punctal) var(--fill, 0%),
+            var(--color-labo-bg-punctuel-secondary) var(--fill, 0%),
+            var(--color-labo-bg-punctuel-secondary) 100%);
+
+}
+
+.morceau:nth-child(even) .volume-bar {
+    background: var(--color-labo-bg-punctuel-secondary);
+}
+
+/* Inactive state: compact */
+.morceau .activePlay {
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 0;
+    height: auto;
+
+    transition:
+        gap 220ms cubic-bezier(0.22, 1, 0.36, 1),
+        height 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Active state: expanded */
+.morceau.is-active .activePlay {
+    justify-content: space-between;
+    gap: 1rem;
+    height: 100%;
+}
+
+.volume {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.volumeModif {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+
+}
+
+/* Boutons volume */
+.volume button {
+    all: unset;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.volume button img {
+    width: 16px;
+    height: 16px;
+}
+
+/* Barre de volume */
+.volume-bar {
+    width: 120px;
+    height: 12px;
+    background: var(--color-labo-onde-punctal-secondary);
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Niveau de volume */
+.volume-level {
+    height: 100%;
+    width: 100%;
+    background: var(--color-labo-font);
+    pointer-events: none;
+}
+
+.morceau .osc,
+.morceau .volume {
+    opacity: 0;
+    pointer-events: none;
+
+    max-height: 0;
+    overflow: hidden;
+
+    transform: translateY(-6px);
+
+    transition:
+        opacity var(--audio-duration) var(--ease-audio),
+        max-height var(--audio-duration) var(--ease-audio),
+        transform var(--audio-duration) var(--ease-audio);
+}
+
+/* Quand le morceau est actif */
+.morceau.is-active .osc,
+.morceau.is-active .volume {
+    opacity: 1;
+    pointer-events: auto;
+
+    max-height: 120px;
+    /* assez grand pour waveform + volume */
+    transform: translateY(0);
+}
+
+
+/* Top 10 */
+.autoLayoutAlbum {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.albumAlone {
+    position: relative;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.albumAlone img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.albumAlone::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+            #171715 0%,
+            rgba(23, 23, 21, 0.65) 35%,
+            rgba(23, 23, 21, 0) 60%);
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.albumAlone:hover::after {
+    opacity: 0.9;
+    flex-direction: row;
+}
+
+.albumAlone .infoTitle {
+    display: flex;
+    position: absolute;
+    z-index: 2;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    opacity: 0;
+    transform: translateY(8px);
+
+    transition:
+        opacity 2020ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.albumAlone .infoTitle p {
+    font-size: 8px;
+}
+
+.albumAlone:hover .infoTitle {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive simple */
+@media (max-width: 1100px) {
+    .autoLayoutAlbum {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .autoLayoutAlbum {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .autoLayoutAlbum {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

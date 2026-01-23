@@ -2,7 +2,6 @@ export type ContextLink = {
     label: string;
     href: string;
 };
-
 export type ContextDetail = {
     label: string;
     value: (string | ContextLink)[];

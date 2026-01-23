@@ -1,0 +1,95 @@
+---
+import {
+    albumsInformation,
+    elementsCompo,
+} from "../../data/laboratoireElement";
+---
+
+<div class="leftColumn">
+    <div class="titleRubrique">
+        <h3>Musique</h3>
+        <hr />
+    </div>
+    <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae magnam
+        iusto earum amet assumenda voluptatum officiis modi error aliquid animi
+        nulla sequi nisi tempora.
+    </p>
+</div>
+<div class="rightColumn">
+    <div class="miniSection">
+        {
+            elementsCompo.map((CompositionEvent) => (
+                <div class="morceau">
+                    <div class="player" data-audio={CompositionEvent.song}>
+                        <div class="infoTitle">
+                            <p class="title">
+                                <b>{CompositionEvent.title}</b>
+                            </p>
+                            <p class="title">{CompositionEvent.artiste}</p>
+                        </div>
+                        <div class="osc" />
+                    </div>
+
+                    <div class="activePlay">
+                        <button
+                            class="play"
+                            aria-label="Lecture / Pause"
+                            data-player-control
+                        />
+
+                        <div class="volume">
+                            <div class="volume-bar">
+                                <div class="volume-level" />
+                            </div>
+                            <div class="volumeModif">
+                                <button
+                                    class="volume-toggle"
+                                    aria-label="Couper le son"
+                                >
+                                    <img
+                                        src="/public/icons/labo/player/Volume_off.svg"
+                                        alt="Volume coupé"
+                                    />
+                                </button>
+
+                                <button
+                                    class="volume-max"
+                                    aria-label="Volume maximum"
+                                >
+                                    <img
+                                        src="/public/icons/labo/player/Volume_on.svg"
+                                        alt="Volume maximum"
+                                    />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+    <div class="miniSection">
+        <h4>Top 10</h4>
+        <div class="autoLayoutAlbum">
+            {
+                albumsInformation.map((album) => (
+                    <div class="albumAlone">
+                        <img src={album.cover} alt={album.title} />
+                        <div class="infoTitle">
+                            <div class="leftInfo">
+                                <p class="title">
+                                    <b>{album.title}</b>
+                                </p>
+                                <p class="title">
+                                    <b>{album.artiste}</b>
+                                </p>
+                            </div>
+                            <p class="title">{album.year}</p>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</div>
