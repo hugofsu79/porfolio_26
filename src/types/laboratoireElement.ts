@@ -10,3 +10,11 @@ export type topAlbum = {
     year: number;
     cover: string
 }
+
+
+export type topMovie = {
+    realisateur: string[];
+    title: string;
+    year: number;
+    cover: string
+}

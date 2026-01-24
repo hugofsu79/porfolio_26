@@ -1,0 +1,14 @@
+---
+import { MoviesInformation } from "../../data/laboratoireElement";
+---
+
+<div class="miniSection">
+    {
+        MoviesInformation.map((CompositionEvent) => (
+            <img
+                src={CompositionEvent.cover}
+                alt={`Affiche de film " ${CompositionEvent.title}" réalisé par ${CompositionEvent.realisateur} en ${CompositionEvent.year}`}
+            />
+        ))
+    }
+</div>

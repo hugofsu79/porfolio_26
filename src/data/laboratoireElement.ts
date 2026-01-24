@@ -1,4 +1,4 @@
-import type { Composition, topAlbum } from "../types/laboratoireElement";
+import type { Composition, topAlbum, topMovie } from "../types/laboratoireElement";
 
 
 export const elementsCompo: Composition[] = [
@@ -26,11 +26,6 @@ export const elementsCompo: Composition[] = [
         artiste: "Moth",
         title: "Morpho",
         song: "/public/audio/8 Morpho.wav",
-    },
-    {
-        artiste: "Moth",
-        title: "Call radio",
-        song: "/public/audio/Call radio.mp3",
     },
     {
         artiste: "Moth",
@@ -132,3 +127,64 @@ export const albumsInformation: topAlbum[] = [
 
     },
 ]
+export const MoviesInformation: topMovie[] = [{
+    realisateur: ["Wayne Wang"],
+    title: "Smoke",
+    year: 1995,
+    cover: "/public/images/labo/movie/smoke.webp",
+},
+{
+    realisateur: ["Thomas Anderson"],
+    title: "une bataille après l'autre",
+    year: 2025,
+    cover: "/public/images/labo/movie/oneBattleAfterAnother.webp"
+},
+{
+    realisateur: ["Ben Safdie", "Josh Safdie"],
+    title: "Good Time",
+    year: 2025,
+    cover: "/public/images/labo/movie/goodTime.webp",
+
+},
+{
+    realisateur: ["Ben Safdie", "Josh Safdie"],
+    title: "Uncut Gems",
+    year: 2019,
+    cover: "/public/images/labo/movie/uncutGems.webp"
+},
+{
+    title: "O'Brother",
+    realisateur: ["Ethan Coen", "Joel Coen"],
+    year: 2000,
+    cover: "/public/images/labo/movie/obroter.webp"
+},
+{
+    realisateur: ["Alexander Payne"],
+    title: "Winter Break",
+    year: 2023,
+    cover: "/public/images/labo/movie/theholdovers.webp"
+},
+{
+    realisateur: ["Ari Aster"],
+    title: "Midsommar",
+    year: 2019,
+    cover: "/public/images/labo/movie/midsommar.webp"
+},
+{
+    realisateur: ["Brady Corbet"],
+    title: "The Brutalist",
+    year: 2025,
+    cover: "/public/images/labo/movie/brutalist.webp"
+},
+{
+    realisateur: ["Brad Bird"],
+    title: "Le Géant de fer",
+    year: 1999,
+    cover: "/public/images/labo/movie/le-geant-de-fer.webp"
+},
+{
+    realisateur: ["Wes Anderson"],
+    title: "Fantastic Mr. Fox",
+    year: 2025,
+    cover: "/public/images/labo/movie/mrfox.webp"
+},]
