@@ -1,0 +1,82 @@
+---
+import { mesRecettes } from "../../data/laboratoireElement"; // adapte juste CE chemin
+
+type Ingredient = {
+    name: string;
+    quantity?: number | string;
+    unit?: string;
+    note?: string;
+};
+
+function formatIngredient(ing: Ingredient) {
+    let quantity = "";
+
+    if (ing.quantity && ing.unit) {
+        quantity = `${ing.quantity} ${ing.unit}`;
+    } else if (ing.quantity) {
+        quantity = `${ing.quantity}`;
+    }
+
+    return {
+        name: ing.note ? `${ing.name} (${ing.note})` : ing.name,
+        quantity,
+    };
+}
+---
+
+<div class="rightColumn">
+    <div class="miniSection">
+        <div class="titleRubrique">
+            <h3>Recettes</h3>
+            <hr />
+        </div>
+        {
+            mesRecettes.map((recette) => (
+                <article>
+                    <img src={recette.cover} alt="" />
+                    <div class="recette">
+                        <div class="frontInformation">
+                            <p>{recette.origin}</p>
+                            <p>
+                                Publiée le {recette.date.day}{" "}
+                                {recette.date.mouth}, {recette.date.year}
+                            </p>
+                        </div>
+                        <details class="recipe">
+                            <summary class="recipeSummary">
+                                {recette.title}
+                            </summary>
+                            <h5>Ingrédients</h5>
+                            <ul>
+                                {recette.ingredients.map((ing) => {
+                                    const ingredient = formatIngredient(ing);
+                                    return (
+                                        <>
+                                            <hr />
+                                            <li class="ingredientLine">
+                                                <span class="ingredientName">
+                                                    {ingredient.name}
+                                                </span>
+                                                <span class="ingredientQty">
+                                                    {ingredient.quantity}
+                                                </span>
+                                            </li>
+                                        </>
+                                    );
+                                })}
+                            </ul>
+                        </details>
+                    </div>
+                </article>
+            ))
+        }
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll("article").forEach((card) => {
+        card.addEventListener("click", () =>
+            card.querySelector("details")?.toggleAttribute("open"),
+        );
+    });
+</script>

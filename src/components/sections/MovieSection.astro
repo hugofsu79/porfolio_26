@@ -2,13 +2,53 @@
 import { MoviesInformation } from "../../data/laboratoireElement";
 ---
 
-<div class="miniSection">
-    {
-        MoviesInformation.map((CompositionEvent) => (
-            <img
-                src={CompositionEvent.cover}
-                alt={`Affiche de film " ${CompositionEvent.title}" réalisé par ${CompositionEvent.realisateur} en ${CompositionEvent.year}`}
-            />
-        ))
-    }
+<div class="leftColumn">
+    <div class="context">
+        <div class="titleRubrique">
+            <h3>Film</h3>
+            <hr />
+        </div>
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
+            magnam iusto earum amet assumenda voluptatum officiis modi error
+            aliquid animi nulla sequi nisi tempora.
+        </p>
+    </div>
+    <a
+        class="lienCollection"
+        href="https://letterboxd.com/alter_hugo/"
+        target="_blank"
+        ><img
+            src="public/icons/labo/letterboxd.svg"
+            alt="Lien sur mon letterboxd"
+        /></a
+    >
+</div>
+
+<div class="rightColumn">
+    <div class="miniSection">
+        <div class="autoLayout">
+            {
+                MoviesInformation.map((CompositionEvent) => (
+                    <div class="coverAlone">
+                        <img
+                            src={CompositionEvent.cover}
+                            alt={`Affiche de film " ${CompositionEvent.title}" réalisé par ${CompositionEvent.realisateur} en ${CompositionEvent.year}`}
+                        />
+                        <div class="infoTitle">
+                            <div class="leftInfo">
+                                <p class="title">
+                                    <b>{CompositionEvent.title}</b>
+                                </p>
+                                <p class="title">
+                                    <b>{CompositionEvent.realisateur}</b>
+                                </p>
+                            </div>
+                            <p class="title">{CompositionEvent.year}</p>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
 </div>

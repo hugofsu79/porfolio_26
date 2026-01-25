@@ -82,6 +82,8 @@ body.is-home .bottomNav {
 /* ========================= */
 
 body.is-page nav.navbar_home {
+    inset: 0 0 auto 0;
+    z-index: 9999;
     background-color: var(--color-bg);
     position: fixed;
     display: flex;

@@ -1,4 +1,4 @@
-import type { Composition, topAlbum, topMovie } from "../types/laboratoireElement";
+import type { Composition, TopAlbum, TopMovie, Recettes, Ingredient } from "../types/laboratoireElement";
 
 
 export const elementsCompo: Composition[] = [
@@ -54,7 +54,7 @@ export const elementsCompo: Composition[] = [
     },
 ]
 
-export const albumsInformation: topAlbum[] = [
+export const albumsInformation: TopAlbum[] = [
     {
         artiste: "Oneohtrix point never",
         title: "Magic Oneohtrix Point Never",
@@ -127,7 +127,7 @@ export const albumsInformation: topAlbum[] = [
 
     },
 ]
-export const MoviesInformation: topMovie[] = [{
+export const MoviesInformation: TopMovie[] = [{
     realisateur: ["Wayne Wang"],
     title: "Smoke",
     year: 1995,
@@ -188,3 +188,28 @@ export const MoviesInformation: topMovie[] = [{
     year: 2025,
     cover: "/public/images/labo/movie/mrfox.webp"
 },]
+
+export const mesRecettes: Recettes[] = [
+    {
+        cover: "public/images/labo/recette/pho.webp",
+        title: "Phở",
+        origin: "Corée du sud",
+        date: {
+            day: 22,
+            mouth: "Janvier",
+            year: 2026
+        },
+        ingredients: [
+            { name: "Gingembre", quantity: 100, unit: "g" },
+            { name: "Oignon", quantity: 1 },
+            { name: "Échalotes", quantity: 2 },
+            { name: "Eau", quantity: 5, unit: "l" },
+            { name: "Jarrets de boeuf", quantity: 2, note: "ou paleron" },
+            { name: "Os a moelle", quantity: 5 },
+            { name: "Sauce poisson", quantity: 8, note: "à ajuster" },
+            { name: "Graine de coriandre", quantity: 1, unit: "càs" },
+            { name: "Anis étoilés", quantity: 2 },
+            { name: "Bâton de cannelle", quantity: 1 },
+        ],
+    },
+];

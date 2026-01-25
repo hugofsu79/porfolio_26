@@ -6,15 +6,40 @@ import {
 ---
 
 <div class="leftColumn">
-    <div class="titleRubrique">
-        <h3>Musique</h3>
-        <hr />
+    <div class="context">
+        <div class="titleRubrique">
+            <h3>Musique</h3>
+            <hr />
+        </div>
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
+            magnam iusto earum amet assumenda voluptatum officiis modi error
+            aliquid animi nulla sequi nisi tempora.
+        </p>
     </div>
-    <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae magnam
-        iusto earum amet assumenda voluptatum officiis modi error aliquid animi
-        nulla sequi nisi tempora.
-    </p>
+    <div class="liensCollection">
+        <a
+            href="https://pragmanewmusic.bandcamp.com/music"
+            target="_blank"
+            class="lienCollection"
+            ><img
+                src="public/icons/labo/Bandcamp.svg"
+                alt="Lien sur mon Bandcamp"
+            /></a
+        ><a href="https://soundcloud.com/pragma_newmusic" target="_blank">
+            <img
+                class="lienCollection"
+                src="public/icons/labo/Souncloud.svg"
+                alt="Lien sur mon Soundcloud"
+            /></a
+        ><a href="https://www.instagram.com/mellamohugo___/" target="_blank">
+            <img
+                class="lienCollection"
+                src="public/icons/labo/instagra.svg"
+                alt="Lien sur mon Soundcloud"
+            /></a
+        >
+    </div>
 </div>
 <div class="rightColumn">
     <div class="miniSection">
@@ -71,10 +96,10 @@ import {
     </div>
     <div class="miniSection">
         <h4>Top 10</h4>
-        <div class="autoLayoutAlbum">
+        <div class="autoLayout">
             {
                 albumsInformation.map((album) => (
-                    <div class="albumAlone">
+                    <div class="coverAlone">
                         <img src={album.cover} alt={album.title} />
                         <div class="infoTitle">
                             <div class="leftInfo">
