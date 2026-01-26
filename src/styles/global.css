@@ -115,7 +115,7 @@ button span {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 22px;
-    height: 80vh;
+    height: 76vh;
 }
 
 .maPomme,
@@ -409,13 +409,13 @@ Mes alliés */
 /* Premier paragraphe : haut gauche */
 .textPerso p:nth-child(1) {
     grid-column: 1;
-    grid-row: 1;
+    grid-row: 2;
 }
 
 /* Deuxième paragraphe : bas droite */
 .textPerso p:nth-child(2) {
     grid-column: 3;
-    grid-row: 2;
+    grid-row: 3;
 }
 
 

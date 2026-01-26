@@ -26,6 +26,7 @@ export type Ingredient = {
 };
 
 export type Recettes = {
+    slug: string;
     cover: string;
     title: string;
     origin: string;

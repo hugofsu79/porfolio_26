@@ -1,5 +1,6 @@
 ---
 import { mesRecettes } from "../../data/laboratoireElement"; // adapte juste CE chemin
+import ModaleRecipe from "../ui/ModalRecipe.astro";
 
 type Ingredient = {
     name: string;
@@ -24,6 +25,7 @@ function formatIngredient(ing: Ingredient) {
 }
 ---
 
+<ModaleRecipe />
 <div class="rightColumn">
     <div class="miniSection">
         <div class="titleRubrique">
@@ -37,8 +39,10 @@ function formatIngredient(ing: Ingredient) {
                         <button
                             class="mailSend"
                             type="button"
-                            data-open-contact
-                            aria-haspopup="dialog"
+                            data-open-recipe
+                            data-title={recette.title}
+                            data-pdf={`/pdf/${recette.slug}.pdf`}
+                            data-image={recette.cover}
                         >
                             <p>Recevoir la recette</p>
 
@@ -95,110 +99,49 @@ function formatIngredient(ing: Ingredient) {
     </div>
 </div>
 
-<script>
-    document.querySelectorAll("article").forEach((card) => {
-        card.addEventListener("click", () =>
-            card.querySelector("details")?.toggleAttribute("open"),
-        );
-    });
+<script lang="ts">
+    window.addEventListener("DOMContentLoaded", () => {
+        // ============================
+        // TOGGLE <details>
+        // ============================
+        document.querySelectorAll<HTMLElement>("article").forEach((card) => {
+            card.addEventListener("click", (e) => {
+                const target = e.target as HTMLElement | null;
+                if (!target) return;
 
-    // ============================
-    // Horizontal Recipe Slider
-    // ============================
+                if (target.closest("[data-open-recipe]")) return;
+                if (target.closest("summary")) return;
 
-    const slider = document.querySelector<HTMLElement>(".gridrSlide");
-    const arrowLeft =
-        document.querySelector<HTMLButtonElement>(".sliderArrow.left");
-    const arrowRight =
-        document.querySelector<HTMLButtonElement>(".sliderArrow.right");
+                const details =
+                    card.querySelector<HTMLDetailsElement>("details");
+                if (!details) return;
 
-    if (!slider || !arrowLeft || !arrowRight) {
-        console.warn("Slider ou flèches introuvables");
-        // on stoppe proprement
-    } else {
-        // ----------------------------
-        // CONFIG
-        // ----------------------------
-        const GAP = 12;
-
-        const firstCard = slider.querySelector<HTMLElement>("article");
-        const SLIDE_STEP = firstCard ? firstCard.offsetWidth + GAP : 280;
-
-        // ----------------------------
-        // DRAG SOURIS
-        // ----------------------------
-        let isDown = false;
-        let startX = 0;
-        let scrollStart = 0;
-
-        slider.addEventListener("mousedown", (e: MouseEvent) => {
-            isDown = true;
-            slider.classList.add("is-dragging");
-
-            startX = e.pageX - slider.offsetLeft;
-            scrollStart = slider.scrollLeft;
-        });
-
-        slider.addEventListener("mouseleave", () => {
-            isDown = false;
-            slider.classList.remove("is-dragging");
-        });
-
-        slider.addEventListener("mouseup", () => {
-            isDown = false;
-            slider.classList.remove("is-dragging");
-        });
-
-        slider.addEventListener("mousemove", (e: MouseEvent) => {
-            if (!isDown) return;
-            e.preventDefault();
-
-            const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 1.2; // vitesse drag
-            slider.scrollLeft = scrollStart - walk;
-        });
-
-        // ----------------------------
-        // TOUCH (mobile)
-        // ----------------------------
-        slider.addEventListener("touchstart", (e: TouchEvent) => {
-            startX = e.touches[0].pageX - slider.offsetLeft;
-            scrollStart = slider.scrollLeft;
-        });
-
-        slider.addEventListener("touchmove", (e: TouchEvent) => {
-            const x = e.touches[0].pageX - slider.offsetLeft;
-            slider.scrollLeft = scrollStart - (x - startX);
-        });
-
-        // ----------------------------
-        // FLÈCHES
-        // ----------------------------
-        arrowLeft.addEventListener("click", () => {
-            slider.scrollBy({
-                left: -SLIDE_STEP,
-                behavior: "smooth",
+                details.open = !details.open;
             });
         });
 
-        arrowRight.addEventListener("click", () => {
-            slider.scrollBy({
-                left: SLIDE_STEP,
-                behavior: "smooth",
-            });
-        });
+        // ============================
+        // SLIDER
+        // ============================
+        const slider = document.querySelector<HTMLElement>(".gridrSlide");
+        const arrowLeft =
+            document.querySelector<HTMLButtonElement>(".sliderArrow.left");
+        const arrowRight =
+            document.querySelector<HTMLButtonElement>(".sliderArrow.right");
 
-        // ----------------------------
-        // ÉTAT DES FLÈCHES
-        // ----------------------------
-        function updateArrows() {
-            arrowLeft.disabled = slider.scrollLeft <= 0;
-            arrowRight.disabled =
-                slider.scrollLeft + slider.clientWidth >=
-                slider.scrollWidth - 1;
+        if (slider && arrowLeft && arrowRight) {
+            const GAP = 12;
+            const firstCard = slider.querySelector<HTMLElement>("article");
+            const SLIDE_STEP = firstCard ? firstCard.offsetWidth + GAP : 280;
+
+            arrowLeft.addEventListener("click", () => {
+                slider.scrollBy({ left: -SLIDE_STEP, behavior: "smooth" });
+            });
+
+            arrowRight.addEventListener("click", () => {
+                slider.scrollBy({ left: SLIDE_STEP, behavior: "smooth" });
+            });
         }
 
-        slider.addEventListener("scroll", updateArrows);
-        updateArrows();
-    }
 </script>
+<script type="module" src="/src/scripts/recipeModal.ts"></script>

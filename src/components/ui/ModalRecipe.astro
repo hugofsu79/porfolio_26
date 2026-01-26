@@ -1,0 +1,52 @@
+<dialog id="recipeModal" class="recipeModal">
+    <div class="modalContent">
+        <div class="modaleAny">
+            <img id="modalImage" src="" alt="" class="modalRecipeImage" />
+            <div class="rightModal">
+                <h3 id="modalTitle"></h3>
+
+                <form class="modalForm">
+                    <input
+                        type="text"
+                        name="firstname"
+                        placeholder="Prénom"
+                        required
+                    />
+
+                    <input
+                        type="text"
+                        name="lastname"
+                        placeholder="Nom"
+                        required
+                    />
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Entrer votre adresse mail"
+                        required
+                    />
+
+                    <div class="buttonModal">
+                        <button
+                            type="button"
+                            class="modalClose"
+                            data-close-modal
+                            aria-label="Fermer la modale"
+                        >
+                            Annuler
+                        </button>
+
+                        <button type="submit" class="modalSubmit">
+                            Recevoir la recette
+                            <img
+                                src="public/icons/labo/menu/recite.svg"
+                                alt=""
+                            />
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</dialog>

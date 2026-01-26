@@ -368,15 +368,17 @@
 .gridrSlide {
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
+
     gap: 12px;
+    transition: gap 320ms cubic-bezier(0.22, 1, 0.36, 1);
 
     overflow-x: auto;
     overflow-y: hidden;
+}
 
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-
-    cursor: grab;
+.gridrSlide:has(article details[open]) {
+    gap: 32px;
 }
 
 .gridrSlide:active {
@@ -412,15 +414,13 @@
     right: 8px;
 }
 
-
-
-
-
 .gridrSlide {
     scrollbar-width: none;
 }
 
 article {
+    position: relative;
+    /* ← clé du problème */
     flex: 0 0 auto;
     background-color: var(--color-labo-font);
     border-radius: 12px;
@@ -430,27 +430,38 @@ article {
 }
 
 .mailSend {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
     position: absolute;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
     padding: 12px;
-    border-radius: 12px;
+    border-radius: 0 12px 0 12px;
+    overflow: hidden;
 
     background-color: hsla(157, 100%, 96%, 0.1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 
-    text-transform: none
+    text-transform: none;
+
+    /* ✨ transition clean */
+    transition:
+        background-color 0.35s ease,
+        backdrop-filter 0.35s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.mailSend:hover {
+    background-color: hsla(0, 0%, 0%, 0.15);
 }
 
 .mailSend img {
     height: 12px;
-}
-
-.mailSend:hover {
-    background-color: hsla(0, 0%, 0%, 0.1);
 }
 
 article .recette {
@@ -566,6 +577,176 @@ h5 {
     width: 100%;
     justify-content: space-between;
 }
+
+
+/* =========================
+   Modale Recette (<dialog>)
+========================= */
+
+/* état fermé : comportement natif */
+.recipeModal:not([open]) {
+    display: none;
+}
+
+/* conteneur dialog */
+.recipeModal {
+    border: none;
+    border-radius: 20px;
+    padding: 0;
+    width: 640px;
+    height: 280px;
+    background-color: var(--color-labo-bg-punctuel);
+    color: var(--color-labo-font);
+}
+
+/* backdrop natif */
+.recipeModal::backdrop {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+/* contenu interne */
+.modalContent {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.modaleAny {
+    padding: 32px;
+    position: absolute;
+    inset: 0;
+}
+
+#modalTitle {
+    margin: 0;
+    font-size: 21px;
+}
+
+/* image recette */
+.modaleAny img {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+    /* empêche l’écrasement */
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+
+/* formulaire */
+.modalForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modalForm input {
+    padding: 12px 14px;
+    border-radius: 4px;
+    border: 0.5px solid hsla(157, 100%, 96%, 0.2);
+}
+
+
+/* All bouton */
+.buttonModal {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* bouton submit */
+.modalSubmit {
+    display: flex;
+    gap: 0;
+    padding: 10px 14px;
+    border: none;
+    background-color: var(--color-labo-font);
+    color: var(--color-labo-menu);
+}
+
+.modalClose,
+.modalSubmit {
+    padding: 10px 14px;
+    text-transform: none;
+    border-radius: 999px;
+    font-weight: 100;
+    cursor: pointer;
+}
+
+/* .modalSubmit img {
+    object-fit:contain;
+    align-items: center;
+
+} */
+.modalSubmit:hover {
+    gap: 6px;
+}
+
+.modalSubmit img {
+    object-fit: contain;
+    align-items: center;
+
+    width: 0;
+    margin-left: 0;
+    overflow: hidden;
+
+    opacity: 0;
+
+    transition:
+        width 220ms cubic-bezier(0.22, 1, 0.36, 1),
+        margin-left 220ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 160ms ease;
+
+    pointer-events: none;
+}
+
+.modalSubmit:hover img {
+    width: 20px;
+
+    opacity: 1;
+}
+
+.modalSubmit:active img {
+    transform: translateX(0) scale(0.4);
+}
+
+
+
+
+
+/* bouton fermeture */
+.modalClose {
+    color: var(--color-labo-font);
+    opacity: 0.7;
+    border: 1px solid var(--color-labo-font);
+}
+
+.modalClose:hover {
+    opacity: 1;
+}
+
+
+.modaleAny {
+    gap: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.rightModal {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+}
+
 
 /* Responsive simple */
 @media (max-width: 1100px) {

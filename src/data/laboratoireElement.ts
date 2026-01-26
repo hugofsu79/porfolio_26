@@ -191,6 +191,7 @@ export const MoviesInformation: TopMovie[] = [{
 
 export const mesRecettes: Recettes[] = [
     {
+        slug: "Phở",
         cover: "public/images/labo/recette/pho.webp",
         title: "Phở",
         origin: "Corée du sud",
@@ -213,6 +214,7 @@ export const mesRecettes: Recettes[] = [
         ],
     },
     {
+        slug: "Focaccia d’automne",
         cover: "public/images/labo/recette/foccacia.webp",
         title: "Focaccia d’automne",
         origin: "Italie",
@@ -234,6 +236,7 @@ export const mesRecettes: Recettes[] = [
         ],
     },
     {
+        slug: "Tirami Brest",
         cover: "public/images/labo/recette/tiraparisBrest.webp",
         title: "Tirami Brest",
         origin: "Italie",
@@ -255,6 +258,7 @@ export const mesRecettes: Recettes[] = [
         ],
     },
     {
+        slug: "Saumon Gravlax",
         cover: "public/images/labo/recette/saumonGrav.webp",
         title: "Saumon Gravlax",
         origin: "Suède",
@@ -275,6 +279,7 @@ export const mesRecettes: Recettes[] = [
         ],
     },
     {
+        slug: "Lemon posset",
         cover: "public/images/labo/recette/lemonposset.webp",
         title: "Lemon posset",
         origin: "Grande-Bretagne",

@@ -48,7 +48,7 @@
     color: var(--color-text-primary);
 }
 
-.bottomNav {
+.cityMaps {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -120,7 +120,7 @@ nav.navbar.navbar--hidden {
     font-size: 14px;
 }
 
-.bottomNav,
+.cityMaps,
 .downloadCV {
     display: none;
 }
@@ -178,7 +178,7 @@ nav.navbar.navbar--hidden {
         font-size: 14px;
     }
 
-    .bottomNav,
+    .cityMaps,
     .downloadCV {
         display: none;
     }
