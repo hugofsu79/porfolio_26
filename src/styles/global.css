@@ -30,9 +30,11 @@ textarea {
     min-width: 0;
     min-height: 0;
 }
-.page{
+
+.page {
     margin-top: 46px;
 }
+
 /* Points communs typographies */
 h1,
 h2,
@@ -315,6 +317,10 @@ Mes alliés */
     gap: 8px;
     overflow: hidden;
     padding-bottom: 1rem;
+}
+
+#about .miniSection {
+    background: none;
 }
 
 .allies {

@@ -30,46 +30,68 @@ function formatIngredient(ing: Ingredient) {
             <h3>Recettes</h3>
             <hr />
         </div>
-        {
-            mesRecettes.map((recette) => (
-                <article>
-                    <img src={recette.cover} alt="" />
-                    <div class="recette">
-                        <div class="frontInformation">
-                            <p>{recette.origin}</p>
-                            <p>
-                                Publiée le {recette.date.day}{" "}
-                                {recette.date.mouth}, {recette.date.year}
-                            </p>
+        <div class="gridrSlide">
+            {
+                mesRecettes.map((recette) => (
+                    <article>
+                        <button
+                            class="mailSend"
+                            type="button"
+                            data-open-contact
+                            aria-haspopup="dialog"
+                        >
+                            <p>Recevoir la recette</p>
+
+                            <img
+                                src="/public/icons/labo/send_recet.svg"
+                                alt={"M'envoyer la recette de " + recette.title}
+                            />
+                        </button>
+                        <img src={recette.cover} alt={recette.title} />
+                        <div class="recette">
+                            <div class="frontInformation">
+                                <p>{recette.origin}</p>
+                                <p>
+                                    Publiée le {recette.date.day}{" "}
+                                    {recette.date.mouth}, {recette.date.year}
+                                </p>
+                            </div>
+                            <details class="recipe">
+                                <summary class="recipeSummary">
+                                    {recette.title}
+                                </summary>
+                                <h5>Ingrédients</h5>
+                                <ul>
+                                    {recette.ingredients.map((ing) => {
+                                        const ingredient =
+                                            formatIngredient(ing);
+                                        return (
+                                            <>
+                                                <hr />
+                                                <li class="ingredientLine">
+                                                    <span class="ingredientName">
+                                                        {ingredient.name}
+                                                    </span>
+                                                    <span class="ingredientQty">
+                                                        {ingredient.quantity}
+                                                    </span>
+                                                </li>
+                                            </>
+                                        );
+                                    })}
+                                </ul>
+                            </details>
                         </div>
-                        <details class="recipe">
-                            <summary class="recipeSummary">
-                                {recette.title}
-                            </summary>
-                            <h5>Ingrédients</h5>
-                            <ul>
-                                {recette.ingredients.map((ing) => {
-                                    const ingredient = formatIngredient(ing);
-                                    return (
-                                        <>
-                                            <hr />
-                                            <li class="ingredientLine">
-                                                <span class="ingredientName">
-                                                    {ingredient.name}
-                                                </span>
-                                                <span class="ingredientQty">
-                                                    {ingredient.quantity}
-                                                </span>
-                                            </li>
-                                        </>
-                                    );
-                                })}
-                            </ul>
-                        </details>
-                    </div>
-                </article>
-            ))
-        }
+                    </article>
+                ))
+            }
+        </div>
+        <button class="sliderArrow left" aria-label="Recettes précédentes">
+            ←
+        </button>
+        <button class="sliderArrow right" aria-label="Recettes suivantes">
+            →
+        </button>
     </div>
 </div>
 
@@ -79,4 +101,104 @@ function formatIngredient(ing: Ingredient) {
             card.querySelector("details")?.toggleAttribute("open"),
         );
     });
+
+    // ============================
+    // Horizontal Recipe Slider
+    // ============================
+
+    const slider = document.querySelector<HTMLElement>(".gridrSlide");
+    const arrowLeft =
+        document.querySelector<HTMLButtonElement>(".sliderArrow.left");
+    const arrowRight =
+        document.querySelector<HTMLButtonElement>(".sliderArrow.right");
+
+    if (!slider || !arrowLeft || !arrowRight) {
+        console.warn("Slider ou flèches introuvables");
+        // on stoppe proprement
+    } else {
+        // ----------------------------
+        // CONFIG
+        // ----------------------------
+        const GAP = 12;
+
+        const firstCard = slider.querySelector<HTMLElement>("article");
+        const SLIDE_STEP = firstCard ? firstCard.offsetWidth + GAP : 280;
+
+        // ----------------------------
+        // DRAG SOURIS
+        // ----------------------------
+        let isDown = false;
+        let startX = 0;
+        let scrollStart = 0;
+
+        slider.addEventListener("mousedown", (e: MouseEvent) => {
+            isDown = true;
+            slider.classList.add("is-dragging");
+
+            startX = e.pageX - slider.offsetLeft;
+            scrollStart = slider.scrollLeft;
+        });
+
+        slider.addEventListener("mouseleave", () => {
+            isDown = false;
+            slider.classList.remove("is-dragging");
+        });
+
+        slider.addEventListener("mouseup", () => {
+            isDown = false;
+            slider.classList.remove("is-dragging");
+        });
+
+        slider.addEventListener("mousemove", (e: MouseEvent) => {
+            if (!isDown) return;
+            e.preventDefault();
+
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 1.2; // vitesse drag
+            slider.scrollLeft = scrollStart - walk;
+        });
+
+        // ----------------------------
+        // TOUCH (mobile)
+        // ----------------------------
+        slider.addEventListener("touchstart", (e: TouchEvent) => {
+            startX = e.touches[0].pageX - slider.offsetLeft;
+            scrollStart = slider.scrollLeft;
+        });
+
+        slider.addEventListener("touchmove", (e: TouchEvent) => {
+            const x = e.touches[0].pageX - slider.offsetLeft;
+            slider.scrollLeft = scrollStart - (x - startX);
+        });
+
+        // ----------------------------
+        // FLÈCHES
+        // ----------------------------
+        arrowLeft.addEventListener("click", () => {
+            slider.scrollBy({
+                left: -SLIDE_STEP,
+                behavior: "smooth",
+            });
+        });
+
+        arrowRight.addEventListener("click", () => {
+            slider.scrollBy({
+                left: SLIDE_STEP,
+                behavior: "smooth",
+            });
+        });
+
+        // ----------------------------
+        // ÉTAT DES FLÈCHES
+        // ----------------------------
+        function updateArrows() {
+            arrowLeft.disabled = slider.scrollLeft <= 0;
+            arrowRight.disabled =
+                slider.scrollLeft + slider.clientWidth >=
+                slider.scrollWidth - 1;
+        }
+
+        slider.addEventListener("scroll", updateArrows);
+        updateArrows();
+    }
 </script>

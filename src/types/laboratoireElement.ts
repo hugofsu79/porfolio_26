@@ -20,7 +20,7 @@ export type TopMovie = {
 
 export type Ingredient = {
     name: string;
-    quantity: number;
+    quantity?: number;
     unit?: string;
     note?: string;
 };

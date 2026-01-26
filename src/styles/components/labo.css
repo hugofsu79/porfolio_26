@@ -110,6 +110,8 @@
 }
 
 .miniSection {
+    overflow: hidden;
+    position: relative;
     border-radius: 12px;
     padding: 12px;
     background-color: var(--color-labo-bg-punctuel);
@@ -363,12 +365,92 @@
 }
 
 /* Recettes */
+.gridrSlide {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+
+    cursor: grab;
+}
+
+.gridrSlide:active {
+    cursor: grabbing;
+}
+
+/* Cache scrollbar (clean) */
+.gridrSlide::-webkit-scrollbar {
+    display: none;
+}
+
+.sliderArrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+
+    background: var(--color-labo-bg-punctuel-secondary);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.sliderArrow.left {
+    left: 8px;
+}
+
+.sliderArrow.right {
+    right: 8px;
+}
+
+
+
+
+
+.gridrSlide {
+    scrollbar-width: none;
+}
+
 article {
+    flex: 0 0 auto;
     background-color: var(--color-labo-font);
     border-radius: 12px;
     overflow: hidden;
     width: fit-content;
     cursor: pointer;
+}
+
+.mailSend {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    position: absolute;
+    padding: 12px;
+    border-radius: 12px;
+
+    background-color: hsla(157, 100%, 96%, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    text-transform: none
+}
+
+.mailSend img {
+    height: 12px;
+}
+
+.mailSend:hover {
+    background-color: hsla(0, 0%, 0%, 0.1);
 }
 
 article .recette {
@@ -377,6 +459,10 @@ article .recette {
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+article img {
+    height: 400px;
 }
 
 .recette details ul li,
@@ -391,7 +477,7 @@ article .recette {
     margin: 0;
     overflow: hidden;
     opacity: 0;
-    transform: translateY(-16px);
+    transform: translateY(16px);
 
     transition:
         max-height var(--audio-duration) var(--ease-audio),
@@ -443,7 +529,7 @@ article .recette {
     top: 50%;
     width: 16px;
     height: 16px;
-    transform: translateY(-50%);
+    /* transform: translateY(-50%); */
     background-repeat: no-repeat;
     background-size: contain;
     background-image: url("/public/icons/labo/menu/plus.svg");
