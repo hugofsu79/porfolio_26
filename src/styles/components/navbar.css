@@ -1,25 +1,16 @@
-/* Navbar variables */
-body.is-home .navbar_home {
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 40px;
-    display: inline-flex;
-
-    white-space: nowrap;
-}
-
-
-.navbar_home a {
+.navbar a,
+.buttonNav {
+    font-weight: 400;
     text-decoration: none;
     color: inherit;
     display: inline-block;
 }
 
-.navbar_home li:hover a {
+.navbar li:hover a {
     color: var(--color-text-primary);
 }
 
-body.is-home .navbar_home ul li {
+.navbar li {
     display: flex;
     gap: 1.25rem;
     font-size: 48px;
@@ -32,19 +23,19 @@ body.is-home .navbar_home ul li {
     overflow: hidden;
 }
 
-.navbar_home li {
+.navbar li {
     overflow: hidden;
 }
 
-.navbar_home li .clip {
+.navbar li .clip {
     display: inline-block;
 }
 
-.navbar_home li .clip {
+.navbar li .clip {
     display: inline-block;
 }
 
-.navbar_home li {
+.navbar li {
     white-space: nowrap;
     cursor: pointer;
 
@@ -52,12 +43,12 @@ body.is-home .navbar_home ul li {
     transition: color 0.25s ease;
 }
 
-.navbar_home li:hover,
-.navbar_home li.is-active {
+.navbar li:hover,
+.navbar li.is-active {
     color: var(--color-text-primary);
 }
 
-body.is-home .bottomNav {
+.bottomNav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -81,7 +72,7 @@ body.is-home .bottomNav {
 /* PAGE (default navbar) */
 /* ========================= */
 
-body.is-page nav.navbar_home {
+nav.navbar {
     inset: 0 0 auto 0;
     z-index: 9999;
     background-color: var(--color-bg);
@@ -94,11 +85,11 @@ body.is-page nav.navbar_home {
 }
 
 
-body.is-page .navbar_home li:nth-last-child(-n+2) {
+.navbar li:nth-last-child(-n+2) {
     width: 40px;
 }
 
-nav.navbar_home {
+nav.navbar {
     display: flex;
     justify-content: space-between;
     transition: transform 0.3s ease;
@@ -108,11 +99,11 @@ nav.navbar_home {
 
 
 
-body.is-page nav.navbar_home.navbar--hidden {
+nav.navbar.navbar--hidden {
     transform: translateY(-100%);
 }
 
-body.is-page .navbar_home ul {
+.navbar ul {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -120,30 +111,28 @@ body.is-page .navbar_home ul {
 }
 
 /* Push the last two items (e.g., Labo + CV) to the right */
-body.is-page .navbar_home ul li:nth-last-child(2) {
+.navbar ul li:nth-last-child(2) {
     margin-left: auto;
 }
 
 
-body.is-page .navbar_home ul li {
+.navbar ul li {
     font-size: 14px;
 }
 
-body.is-page .bottomNav,
-body.is-page .downloadCV {
+.bottomNav,
+.downloadCV {
     display: none;
 }
 
 /* Logo SVG base styles */
-body.is-home .logoNavbar,
-body.is-page .logoNavbar {
+.logoNavbar {
     height: 31px;
     color: var(--color-primary);
     transition: color 0.25s ease;
 }
 
-body.is-home .logoNavbar:hover,
-body.is-page .logoNavbar:hover {
+.logoNavbar:hover {
     color: var(--color-punctal);
 }
 
@@ -154,12 +143,7 @@ body.is-page .logoNavbar:hover {
 /* Tablet */
 @media (max-width: 1024px) {
 
-    body.is-page nav.navbar_home.navbar--hidden {
-        transform: translateY(-60%);
-    }
-
-
-    body.is-page nav.navbar_home.navbar--hidden {
+    nav.navbar.navbar--hidden {
         transform: translateY(0);
     }
 
@@ -177,36 +161,29 @@ body.is-page .logoNavbar:hover {
         align-items: center;
     }
 
-    body.is-home .navbar_home {
-        margin: 0;
-        padding: 0px 14px 0px 14px;
-        background-color: var(--color-bg)
-    }
-
-    body.is-home nav.navbar_home {
+    nav.navbar {
         position: fixed;
         display: flex;
         flex-direction: row;
     }
 
-    .navbar_home ul {
+    .navbar ul {
         display: flex;
         flex-direction: row;
         justify-content: end;
         gap: 18px;
     }
 
-    body.is-home .navbar_home ul li,
-    body.is-page body.is-home .navbar_home ul li {
+    .navbar ul li {
         font-size: 14px;
     }
 
-    body.is-home .bottomNav,
+    .bottomNav,
     .downloadCV {
         display: none;
     }
 
-    body.is-home .logoNavbar {
+    .logoNavbar {
         display: block;
         height: 32px;
     }

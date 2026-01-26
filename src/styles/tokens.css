@@ -3,7 +3,7 @@
 ========================= */
 :root {
     /* Brand */
-    --color-primary: #00643F;
+    --color-primary: #040015;
     --color-secondary: #E8EBE4;
     --color-punctal: #FF6421;
     --color-secondary-opacity-50: hsla(86, 15%, 91%, 0.5);
@@ -11,17 +11,17 @@
 
     /* Text */
     --color-text-muted-bg-light: #64A990;
-    --color-text-primary: #00643F;
+    --color-text-primary: #040015;
     --color-text-all: #013723;
     --color-text-secondary: #FBFFF6;
     --color-text-secondary-opacity-25: hsla(87, 100%, 98%, 0.25);
-    --color-text-muted: #8EDEC1;
+    --color-text-muted: hsla(252, 100%, 4%, 0.5);
     --color-text-punctal: #FF6421;
     --color-text-punctal-bg-green: #FFDDAD;
 
     /* Background */
-    --color-bg: #FBFFF6;
-    --color-bg-secondary: #00643F;
+    --color-bg: #F5F0E9;
+    --color-bg-secondary: #040015;
     --color-bg-muted: hsla(80, 13%, 91%, 0.10);
 
 }
@@ -74,5 +74,3 @@
     --radius-S: 4px;
     --radius-L: 15px;
 }
-
-
