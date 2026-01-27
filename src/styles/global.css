@@ -36,7 +36,7 @@ textarea {
 }
 
 /* Points communs typographies */
-.nameFoio,
+h1,
 h2,
 h3,
 h4,
@@ -51,8 +51,18 @@ li {
     list-style-type: none;
 }
 
+h1 {
+    font-size: 130px;
+    margin: 0;
+}
 
-.nameFoio,
+.heroTitle [data-char] {
+    display: inline-block;
+    will-change: transform, opacity;
+}
+
+
+h1,
 h2 {
     color: var(--color-primary);
 }
@@ -115,7 +125,7 @@ button span {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 22px;
-    height: 76vh;
+    height: 71vh;
 }
 
 .maPomme,
@@ -269,10 +279,6 @@ td {
     cursor: pointer;
 }
 
-#heroTitle {
-    position: relative;
-    z-index: 2;
-}
 
 /* Le texte ne capte aucun event */
 .titleText h2 {
@@ -356,12 +362,13 @@ Mes alliés */
     /* IMPORTANT pour le marquee */
 }
 
-
+.Foliolabel {
+    max-width: 400px;
+}
 
 .miniSection {
     gap: 8px;
     overflow: hidden;
-    padding-bottom: 1rem;
 }
 
 #about .miniSection {

@@ -9,6 +9,11 @@ export const elementsCompo: Composition[] = [
     },
     {
         artiste: "Moth",
+        title: "Flamens",
+        song: "/public/audio/flamens.wav",
+    },
+    {
+        artiste: "Moth",
         title: "Smaltown",
         song: "/public/audio/SmallTown.wav",
     },
@@ -41,16 +46,6 @@ export const elementsCompo: Composition[] = [
         artiste: "Moth",
         title: "Careless",
         song: "/public/audio/Careless.wav",
-    },
-    {
-        artiste: "Moth",
-        title: "Flamens",
-        song: "/public/audio/flamens.wav",
-    },
-    {
-        artiste: "Moth",
-        title: "Sequential",
-        song: "/public/audio/sezquencial.wav",
     },
 ]
 

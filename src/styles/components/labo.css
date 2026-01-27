@@ -40,8 +40,14 @@
     color: var(--color-labo-font);
 }
 
+.page hr {
+    opacity: .2;
+    border-top: 0.25px solid hsla(157, 62%, 39%, 0.3);
+}
+
 .page p {
     font-size: 14px;
+    
 }
 
 .headTitle h2 {
@@ -77,7 +83,7 @@
     align-items: flex-end;
     border-radius: 12px;
     padding: 12px;
-    background-color: var(--color-labo-bg-punctuel);
+    border: solid 1px var(--color-labo-bg-punctuel);
 }
 
 .leftColumn {
@@ -114,7 +120,7 @@
     position: relative;
     border-radius: 12px;
     padding: 12px;
-    background-color: var(--color-labo-bg-punctuel);
+    border: solid 1px var(--color-labo-bg-punctuel);
 
     display: flex;
     flex-direction: column;
@@ -137,7 +143,7 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-    background-color: var(--color-labo-bg-punctuel-secondary);
+    border: solid 1px var(--color-labo-bg-punctuel-secondary);
     border-radius: 4px;
     padding: 20px;
 
@@ -145,7 +151,7 @@
 
 /* Un morceau sur deux */
 .morceau:nth-child(even) {
-    background-color: var(--color-labo-onde-punctal-secondary);
+    border: solid 1px var(--color-labo-onde-punctal-secondary);
 }
 
 .morceau p {
@@ -374,7 +380,8 @@
     transition: gap 320ms cubic-bezier(0.22, 1, 0.36, 1);
 
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow: hidden;
+    border-radius: 6px;
 }
 
 .gridrSlide:has(article details[open]) {
@@ -390,29 +397,75 @@
     display: none;
 }
 
+.carouselRecipe {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* =========================
+   Flèches du carrousel
+========================= */
+
+.arrowMoove {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    /* petit espace constant entre les 2 flèches */
+}
+
+/* bouton */
 .sliderArrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 5;
-
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-
-    background: var(--color-labo-bg-punctuel-secondary);
-    color: white;
+    background: none;
     border: none;
+    padding: 0;
     cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
 }
 
-.sliderArrow.left {
-    left: 8px;
+.sliderArrow svg {
+    width: 109px;
+    height: 15px;
+    display: block;
+    flex: 0 0 auto;
 }
 
-.sliderArrow.right {
-    right: 8px;
+.arrowInner {
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+
+    width: 109px;
+    /* largeur neutre */
+    opacity: 1;
+
+    transition:
+        width 240ms cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 240ms cubic-bezier(0.22, 1, 0.36, 1);
 }
+
+.sliderArrow.left .arrowInner {
+    justify-content: flex-start;
+}
+
+.sliderArrow.right .arrowInner {
+    justify-content: flex-end;
+}
+
+.sliderArrow.is-reduced .arrowInner {
+    width: 54px;
+    opacity: 0.5;
+}
+
+/* =========================
+   Fin Flèches du carrousel
+========================= */
+
+
+
 
 .gridrSlide {
     scrollbar-width: none;
@@ -625,10 +678,26 @@ h5 {
     font-size: 21px;
 }
 
-/* image recette */
-.modaleAny img {
+.allimageMenu {
+    flex-shrink: 0;
     height: 100%;
     aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+}
+
+.backgroundMenu {
+    z-index: 2;
+    position: absolute;
+    top: 20px;
+    height: 80%;
+}
+
+/* image recette */
+.modaleAny img:nth-child(2) {
+    z-index: 2;
+    border: solid 4px var(--color-labo-font);
+    height: 100%;
     flex-shrink: 0;
     /* empêche l’écrasement */
     border-radius: 12px;
@@ -677,11 +746,6 @@ h5 {
     cursor: pointer;
 }
 
-/* .modalSubmit img {
-    object-fit:contain;
-    align-items: center;
-
-} */
 .modalSubmit:hover {
     gap: 6px;
 }
@@ -762,7 +826,55 @@ h5 {
 }
 
 @media (max-width: 600px) {
+    .context {
+        position: static;
+        top: auto;
+    }
+
+    .leftColumn {
+        width: 100%;
+    }
+
+    .rubrique {
+        display: flex;
+        flex-direction: column;
+    }
+
     .autoLayout {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    #recipeModal {
+        height: 680px;
+    }
+
+    .backgroundMenu {
+        width: 0px;
+    }
+
+    .allimageMenu {
+        height: auto;
+        width: 100%;
+    }
+
+    .modaleAny {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .arrowMoove {
+        display: none;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .arrowMoove {
+        display: none;
+    }
+
+    .coverAlone::after {
+        opacity: 0.9;
     }
 }
