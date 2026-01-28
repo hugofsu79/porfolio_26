@@ -1,14 +1,12 @@
 export function modalFollow() {
   const modal = document.querySelector(".modaleFollower");
 
-  // Nothing to animate if the component isn't on the page
   if (!modal) {
     return;
   }
 
   let hasAnimated = false;
 
-  // Run once we are sure DOM is ready (DOMContentLoaded may have already fired)
   const onReady = (fn) => {
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", fn, {

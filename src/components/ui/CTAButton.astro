@@ -23,12 +23,11 @@ const {
       target={target}
       rel={target === "_blank" ? "noopener noreferrer" : undefined}
     >
-        <span class="ctaLabelLink">{label}</span>
+      <span class="ctaLabelLink">{label}</span>
     </a>
   ) : (
     <button class="cta" type={type}>
       <span class="ctaLabel">{label}</span>
-      
     </button>
   )
 }

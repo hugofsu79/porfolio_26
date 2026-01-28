@@ -39,3 +39,29 @@ export function labo() {
 
   animate();
 }
+
+
+export function recipeModal() {
+  const modal = document.getElementById("recipeModal");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalImage = document.getElementById("modalImage");
+  const modalRecipe = document.getElementById("modalRecipe");
+
+  if (!modal || !modalTitle || !modalImage || !modalRecipe) return;
+
+  document.querySelectorAll("[data-open-recipe]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      modalTitle.textContent = btn.dataset.title || "";
+      modalImage.src = btn.dataset.image || "";
+      modalImage.alt = btn.dataset.title || "";
+      modalRecipe.value = btn.dataset.slug || "";
+
+      modal.showModal();
+    });
+  });
+
+  const closeBtn = document.querySelector("[data-close-modal]");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => modal.close());
+  }
+}

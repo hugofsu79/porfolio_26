@@ -212,13 +212,6 @@ td {
     gap: 22px;
 }
 
-.navbarHome {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-
 .titleHome {
     display: inline-flex;
     flex-direction: column;
@@ -571,7 +564,7 @@ Mes alliés */
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    /* espace entre les tags */
+
     padding: 0;
     margin: 0px 24px 0px 24px;
     list-style: none;
@@ -581,7 +574,7 @@ Mes alliés */
     font-size: 12px;
     border-radius: 20px;
     width: fit-content;
-    /* hug contents */
+
     white-space: nowrap;
     padding: 8px 12px 8px 12px;
     text-transform: none;
@@ -595,6 +588,10 @@ Mes alliés */
 
 .muted {
     color: var(--color-text-muted);
+}
+
+#myProjects {
+    padding-top: 49px;
 }
 
 @media (max-width: 1420px) {

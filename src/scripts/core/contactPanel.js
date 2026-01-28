@@ -1,67 +1,60 @@
-import { animate, splitText, stagger } from "animejs";
+import { animate } from "animejs";
 
-function getPanel() {
-  return document.getElementById("contactPanel");
-}
-
-function openContact() {
-  const panel = getPanel();
-  if (!panel) return;
-
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-  animate(panel, {
-    translateX: ["100%", "0%"],
-    duration: isMobile ? 600 : 1200,
-    easing: isMobile
-      ? "cubicBezier(0.4, 0, 0.2, 1)"
-      : "in(3)",
-  });
-
-  setTimeout(() => {
-    animateContactText();
-  }, 250);
-
-  document.body.style.overflow = "hidden";
-}
-
-function animateContactText() {
+document.addEventListener("DOMContentLoaded", () => {
   const panel = document.getElementById("contactPanel");
   if (!panel) return;
 
-  const paragraph = panel.querySelector(".textContact p");
-  if (!paragraph) return;
+  let isOpen = false;
+  let currentAnimation = null;
 
-  splitText(paragraph, {
-    lines: { wrap: "clip" },
-  }).addEffect(({ lines }) =>
-    animate(lines, {
-      y: [{ to: ["100%", "0%"] }],
-      delay: stagger(0, { start: 800 }),
-      duration: 800,
-      easing: "in(3)",
-    })
-  );
-}
+  function openContact() {
+    if (isOpen) return;
+    isOpen = true;
 
-function closeContact() {
-  const panel = getPanel();
-  if (!panel) return;
+    panel.classList.add("is-open");
+    document.body.style.overflow = "hidden";
 
-  animate(panel, {
-    translateX: ["0vw", "100vw"],
-    duration: 1200,
-    easing: "out(3)",
+    // Stop previous animation if any
+    if (currentAnimation) currentAnimation.pause();
+
+    currentAnimation = animate({
+      targets: panel,
+      keyframes: [
+        { translateX: "100%", opacity: 0 },
+        { translateX: "0%", opacity: 1 },
+      ],
+      duration: 550,
+      easing: "cubicBezier(0.4, 0.0, 0.2, 1)",
+    });
+  }
+
+  function closeContact() {
+    if (!isOpen) return;
+    isOpen = false;
+
+    // Stop any running animation safely
+    if (currentAnimation && typeof currentAnimation.pause === "function") {
+      currentAnimation.pause();
+    }
+
+    // Let CSS handle the exit transition
+    panel.classList.remove("is-open");
+    document.body.style.overflow = "";
+  }
+
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("[data-open-contact]")) {
+      openContact();
+    }
+
+    if (e.target.closest(".closed")) {
+      closeContact();
+    }
   });
 
-  document.body.style.overflow = "";
-}
-
-document.addEventListener("click", (e) => {
-  if (e.target.closest?.("[data-open-contact]")) openContact();
-  if (e.target.closest?.(".closed")) closeContact();
-});
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeContact();
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeContact();
+    }
+  });
 });

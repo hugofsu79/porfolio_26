@@ -1,19 +1,11 @@
----
-import CTAButton from "./CTAButton.astro";
----
+<form id="contact-form" class="allForm">
+    <input type="text" name="firstname" placeholder="Prénom" required />
 
-<form id="contact-form" class="contact-form">
-    <div class="allForm">
-        <div class="formelement">
-            <input name="firstname" placeholder="Prénom" required />
-        </div>
-        <div class="formelement">
-            <input name="email" type="email" placeholder="Email" required />
-        </div>
-        <div class="formelement">
-            <textarea name="message" placeholder="Message" required></textarea>
-        </div>
-        <CTAButton label="Envoyer" type="submit" />
-    </div>
+    <input type="email" name="email" placeholder="Email" required />
+
+    <textarea name="message" placeholder="Message" required></textarea>
+
+    <button class="sendButton" type="submit">Envoyer</button>
 </form>
-<div id="toast" class="toast" aria-live="polite"></div>
+
+<div id="toast" class="toast"></div>

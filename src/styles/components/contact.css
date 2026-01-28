@@ -1,18 +1,52 @@
-.contact {
-    position: fixed;
-    padding: 40px;
-    background-color: var(--color-bg-secondary);
+/* 🔒 IMPORTANT : dialog fermé = jamais visible */
+/* Removed dialog related rules as per instructions */
 
+aside {
+
+    position: fixed;
+    justify-content: space-between;
     top: 0;
     right: 0;
+
     width: 38vw;
+    z-index: 998;
+    border: none;
+    padding: 30px 20px 20px 20px;
+
     height: 100vh;
 
-    z-index: 998;
+    background-color: var(--color-bg-secondary);
+    z-index: 9999;
+
+    display: block;
 
     transform: translateX(100%);
-    will-change: transform;
+    opacity: 0;
+    pointer-events: none;
+
+    transition:
+        transform 0.35s ease,
+        opacity 0.25s ease;
 }
+
+aside.contact.is-open {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+hr {
+    opacity: .2;
+    border-top: 0.25px solid hsla(157, 62%, 39%, 0.3);
+}
+
+/* Empêche le backdrop natif */
+.contact::backdrop {
+    display: none;
+}
+
+/* Accessibilité */
+/* Removed .contact[aria-hidden="true"] rule as per instructions */
 
 .container h2 {
     color: var(--color-text-secondary);
@@ -28,7 +62,7 @@
 /* button closed */
 .closed {
     position: fixed;
-    top: 20px;
+    top: calc(48px + 20px);
     right: 20px;
 
     cursor: pointer;
@@ -59,12 +93,14 @@ button {
 .formulaire {
     display: flex;
     flex-direction: row;
+    gap: 14px;
 }
 
 .formulaire h3 {
     margin: 0;
     color: var(--color-text-secondary);
 }
+
 
 
 button.cta,
@@ -89,7 +125,7 @@ button.cta {
 
 button.cta:hover,
 .ctaLabelLink:hover {
-    border-color: var(--color-text-muted);
+    border-color: var(--color-text-muted-bg-light);
     opacity: 80%;
 }
 
@@ -129,20 +165,16 @@ button.cta:hover,
 }
 
 .contactRow:hover span {
-    border-color: var(--color-text-muted);
+    border-color: var(--color-text-muted-bg-light);
 }
 
 .contactRow:focus-visible span {
     border-color: var(--color-text-muted);
 }
 
-.label {
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--color-secondary);
-}
 
-.value {
+.value,
+.label {
     font-size: 16px;
     font-weight: 200;
     color: var(--color-secondary);
@@ -164,7 +196,7 @@ textarea {
     background: none;
     color: var(--color-text-secondary);
     width: 100%;
-    margin: -.5px;
+    font-weight: 100;
     padding: 12px 16px;
     border-radius: var(--radius-S);
     border: 1px solid var(--color-secondary);
@@ -193,23 +225,20 @@ textarea::placeholder {
 
 .toast {
     position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    padding: 0.75rem 1rem;
-    border-radius: var(--radius-S);
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
     background: #111;
-    color: var(--color-text-primary);
-    font-size: 0.9rem;
+    color: white;
+    padding: 12px 20px;
+    border-radius: var(--radius-S);
     opacity: 0;
-    transform: translateY(10px);
     pointer-events: none;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    z-index: 9999;
+    transition: opacity 0.3s;
 }
 
 .toast.show {
     opacity: 1;
-    transform: translateY(0);
 }
 
 .toast.success {
@@ -219,6 +248,39 @@ textarea::placeholder {
 .toast.error {
     background: #dc2626;
     /* rouge */
+}
+
+.sendButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--color-bg);
+    padding: 20px;
+    border-radius: var(--radius-S);
+
+    border: 1px solid var(--color-secondary);
+    cursor: pointer;
+
+    /* animation douce */
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+/* HOVER — feedback élégant */
+.sendButton:hover {
+    color: var(--color-secondary);
+    background-color: var(--color-bg-secondary);
+    border-color: var(--color-text-muted-bg-light);
+
+}
+
+/* ACTIVE / CLICK — sensation physique */
+.sendButton:active {
+    background-color: var(--color-bg);
 }
 
 .cta {

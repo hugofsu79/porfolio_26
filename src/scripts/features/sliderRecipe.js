@@ -1,67 +1,42 @@
-
 // ============================
-// Slider Recettes – Full Script
+// Slider Recettes – Init Function
 // ============================
 
-// Elements
-const slider = document.querySelector(".gridrSlide");
-const arrowLeft = document.querySelector(".sliderArrow.left");
-const arrowRight = document.querySelector(".sliderArrow.right");
+export function sliderRecipe() {
+    const slider = document.querySelector(".gridrSlide");
+    const arrowLeft = document.querySelector(".sliderArrow.left");
+    const arrowRight = document.querySelector(".sliderArrow.right");
 
-if (!slider || !arrowLeft || !arrowRight) {
-    console.warn("❌ Slider ou flèches introuvables");
-} else {
-    // ----------------------------
-    // CONFIG
-    // ----------------------------
+    // Page sans slider → on sort proprement
+    if (!slider || !arrowLeft || !arrowRight) return;
+
+    // Evite les double-bind si le script est appelé plusieurs fois
+    if (slider.dataset.bound === "true") return;
+    slider.dataset.bound = "true";
+
     const GAP = 12;
     const firstCard = slider.querySelector("article");
     const SLIDE_STEP = firstCard ? firstCard.offsetWidth + GAP : 300;
 
-    // ----------------------------
-    // UPDATE ARROWS (LOGIQUE VALIDÉE)
-    // ----------------------------
     function updateArrows() {
         const maxScroll = slider.scrollWidth - slider.clientWidth;
-
         const atStart = slider.scrollLeft <= 1;
         const atEnd = slider.scrollLeft >= maxScroll - 1;
 
-        // reset
-        arrowLeft.classList.remove("is-reduced");
-        arrowRight.classList.remove("is-reduced");
-
-        // début du carrousel
-        if (atStart) {
-            arrowLeft.classList.add("is-reduced");
-        }
-
-        // fin du carrousel
-        if (atEnd) {
-            arrowRight.classList.add("is-reduced");
-        }
+        arrowLeft.classList.toggle("is-reduced", atStart);
+        arrowRight.classList.toggle("is-reduced", atEnd);
     }
 
-    // ----------------------------
-    // ARROWS CLICK
-    // ----------------------------
+    // Click flèches
     arrowLeft.addEventListener("click", () => {
-        slider.scrollBy({
-            left: -SLIDE_STEP,
-            behavior: "smooth",
-        });
+        slider.scrollBy({ left: -SLIDE_STEP, behavior: "smooth" });
     });
 
     arrowRight.addEventListener("click", () => {
-        slider.scrollBy({
-            left: SLIDE_STEP,
-            behavior: "smooth",
-        });
+        slider.scrollBy({ left: SLIDE_STEP, behavior: "smooth" });
     });
 
-    // ----------------------------
-    // DRAG (SOURIS + TOUCH)
-    // ----------------------------
+    // Drag
     let isDragging = false;
     let startX = 0;
     let scrollStart = 0;
@@ -82,47 +57,31 @@ if (!slider || !arrowLeft || !arrowRight) {
         isDragging = false;
     }
 
-    // Souris
-    slider.addEventListener("mousedown", (e) => {
-        startDrag(e.pageX);
-    });
-
+    // Mouse
+    slider.addEventListener("mousedown", (e) => startDrag(e.pageX));
     slider.addEventListener("mousemove", (e) => {
         if (!isDragging) return;
         e.preventDefault();
         moveDrag(e.pageX);
     });
-
-    slider.addEventListener("mouseup", endDrag);
+    window.addEventListener("mouseup", endDrag);
     slider.addEventListener("mouseleave", endDrag);
 
     // Touch
     slider.addEventListener(
         "touchstart",
-        (e) => {
-            startDrag(e.touches[0].pageX);
-        },
-        { passive: true },
+        (e) => startDrag(e.touches[0].pageX),
+        { passive: true }
     );
-
     slider.addEventListener(
         "touchmove",
-        (e) => {
-            moveDrag(e.touches[0].pageX);
-        },
-        { passive: true },
+        (e) => moveDrag(e.touches[0].pageX),
+        { passive: true }
     );
-
     slider.addEventListener("touchend", endDrag);
 
-    // ----------------------------
-    // LISTENERS
-    // ----------------------------
     slider.addEventListener("scroll", updateArrows);
     window.addEventListener("resize", updateArrows);
 
-    // ----------------------------
-    // INIT
-    // ----------------------------
     updateArrows();
 }

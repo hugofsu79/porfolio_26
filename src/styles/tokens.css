@@ -10,8 +10,9 @@
     --color-secondary-opacity-25: hsla(86, 15%, 91%, 0.25);
 
     /* Text */
-    --color-text-muted-bg-light: #64A990;
+    --color-text-muted-bg-light: hsla(86, 15%, 91%, 0.5);
     --color-text-primary: #040015;
+    --color-text-nav: #64A990;
     --color-text-all: #013723;
     --color-text-secondary: #FBFFF6;
     --color-text-secondary-opacity-25: hsla(87, 100%, 98%, 0.25);

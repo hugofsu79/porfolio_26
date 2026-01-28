@@ -25,6 +25,7 @@
 
 .navbar li {
     overflow: hidden;
+    color: var(--color-text-nav);
 }
 
 .navbar li .clip {
@@ -39,7 +40,6 @@
     white-space: nowrap;
     cursor: pointer;
 
-    color: var(--color-text-muted-bg-light);
     transition: color 0.25s ease;
 }
 

@@ -1,26 +1,33 @@
 import type { APIRoute } from "astro";
 import { Resend } from "resend";
 
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
+export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
     try {
-        const data = await request.formData();
-
-        const firstname = data.get("firstname");
-        const email = data.get("email");
-        const message = data.get("message");
-
-        if (!firstname || !email || !message) {
-            return new Response("Missing fields", { status: 400 });
+        if (!import.meta.env.RESEND_API_KEY) {
+            return new Response(
+                JSON.stringify({ success: false, error: "Missing API key" }),
+                { status: 500 }
+            );
         }
 
-        console.log("FORM DATA →", { firstname, email, message });
+        const body = await request.json();
+        const { firstname, email, message } = body;
+
+        if (!firstname || !email || !message) {
+            return new Response(
+                JSON.stringify({ success: false, error: "Missing fields" }),
+                { status: 400 }
+            );
+        }
+
+        const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
         const result = await resend.emails.send({
             from: "Contact Portfolio <contact@hugofoisseau.fr>",
-            to: import.meta.env.CONTACT_RECEIVER_EMAIL,
-            replyTo: email as string,
+            to: "contact@hugofoisseau.fr",
+            replyTo: email,
             subject: `Nouveau message de ${firstname}`,
             html: `
         <p><strong>Prénom :</strong> ${firstname}</p>
@@ -29,20 +36,21 @@ export const POST: APIRoute = async ({ request }) => {
       `,
         });
 
-        console.log("RESEND RESULT →", result);
+        if (!result || result.error) {
+            return new Response(
+                JSON.stringify({ success: false, error: "Email failed" }),
+                { status: 502 }
+            );
+        }
 
         return new Response(
             JSON.stringify({ success: true }),
-            {
-                status: 200,
-                headers: { "Content-Type": "application/json" },
-            }
+            { status: 200 }
         );
-    } catch (error) {
-        console.error("RESEND ERROR →", error);
-
+    } catch (err) {
+        console.error(err);
         return new Response(
-            JSON.stringify({ success: false, error: "Email not sent" }),
+            JSON.stringify({ success: false, error: "Server error" }),
             { status: 500 }
         );
     }

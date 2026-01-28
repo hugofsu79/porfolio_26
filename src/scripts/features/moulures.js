@@ -1,4 +1,4 @@
-const COLORS = ["#013723", "#DAECC2"];
+const COLORS = ["#E8EBE4", "#FF6421"];
 
 const randomColor = () => COLORS[Math.floor(Math.random() * COLORS.length)];
 

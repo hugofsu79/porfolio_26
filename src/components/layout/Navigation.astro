@@ -23,11 +23,11 @@ const isLabo = path.startsWith("/Labo");
   </a>
 
   <ul>
-    <li><a href="/#about">À propos</a></li>
+    <li class="navPage"><a href="/#about">À propos</a></li>
     <li class={isProjects ? "is-active" : ""}>
       <a href="/projects">Mes projets</a>
     </li>
-    <li>
+    <li class="navPage">
       <button
         type="button"
         class="buttonNav"
@@ -41,7 +41,7 @@ const isLabo = path.startsWith("/Labo");
       <a href="/Labo">Labo</a>
     </li>
     <div class="cv">
-      <li class="cv">
+      <li class="navPage">
         <a
           href="public/cv/cv - Hugo Foisseau.pdf"
           download
