@@ -1,5 +1,7 @@
 ---
+import BootIntro from "../components/BootIntro.astro";
 import "../styles/global.css";
+import NavbarHome from "../components/layout/Navigation.astro";
 import ContactMe from "../components/layout/Contact.astro";
 import { Code } from "astro:components";
 const { title = "Hugofolio" } = Astro.props;
@@ -17,10 +19,15 @@ const { isHome = false } = Astro.props;
   </head>
 
   <body class={isHome ? "is-home" : "is-page"}>
-    <ContactMe />
-    <slot />
-    <footer></footer>
+    <BootIntro />
 
+    <NavbarHome />
+
+    <main class="page">
+      <ContactMe />
+      <slot />
+      <footer></footer>
+    </main>
     <script is:inline type="module">
       import "/src/scripts/app.js";
       import "/src/scripts/core/contactPanel.js";

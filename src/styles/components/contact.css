@@ -306,7 +306,9 @@ textarea::placeholder {
     .contact {
         width: 100vw;
         padding: 12px;
+        padding-top: 30px;
     }
+
 
     .closed {
         width: 30px;

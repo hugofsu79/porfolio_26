@@ -1,70 +1,209 @@
-document.querySelectorAll(".carousel").forEach((root) => {
-  const viewport = root.querySelector(".carousel__viewport");
-  const slides = root.querySelectorAll(".carousel__slide");
-  const steps = root.querySelectorAll(".carousel__step");
+// ============================
+// Carousel mask transition
+// ============================
+// Ce script gère :
+// - la navigation next / prev
+// - l’état des slides (active / entering / leaving)
+// - la direction (gauche → droite / droite → gauche)
+// Toute l’animation est en CSS (clip-path)
 
-  if (!viewport || slides.length === 0 || steps.length === 0) return;
 
-  let current = 0;
-  const total = slides.length;
-  const delay = 4000;
-  let intervalId = null;
+// Initialise UN carousel
+function initCarousel(carousel) {
 
-  function goTo(index) {
-    if (index < 0) index = total - 1;
-    if (index >= total) index = 0;
+  // Sécurité :
+  // - si le carousel n’existe pas
+  // - ou s’il a déjà été initialisé
+  // on sort pour éviter les doublons
+  if (!carousel || carousel.__carouselBound) return;
 
-    slides[current].classList.remove("is-active");
-    steps[current].classList.remove("is-active");
+  // Flag interne pour empêcher un double bind
+  carousel.__carouselBound = true;
 
-    slides[index].classList.add("is-active");
-    steps[index].classList.add("is-active");
 
-    current = index;
+  // Récupère toutes les slides
+  const slides = Array.from(
+    carousel.querySelectorAll(".carousel__slide")
+  );
+
+  // Récupère les flèches DANS le carousel
+  const prevBtn = carousel.querySelector(".sliderArrow.left");
+  const nextBtn = carousel.querySelector(".sliderArrow.right");
+
+
+  // Si aucune slide → on arrête (carousel invalide)
+  if (!slides.length) {
+    console.warn("[carousel] no slides found", carousel);
+    return;
   }
 
+  // Si les flèches ne sont pas trouvées
+  // (le carousel peut encore fonctionner autrement)
+  if (!prevBtn || !nextBtn) {
+    console.warn(
+      "[carousel] arrows not found (.sliderArrow.left/.right)",
+      carousel
+    );
+  }
+
+
+  // ============================
+  // État initial
+  // ============================
+
+  // Cherche la slide qui a déjà .is-active
+  let currentIndex = slides.findIndex(slide =>
+    slide.classList.contains("is-active")
+  );
+
+  // Si aucune slide active → on prend la première
+  if (currentIndex === -1) currentIndex = 0;
+
+
+  // Accessibilité :
+  // - la slide active est visible
+  // - les autres sont aria-hidden
+  slides.forEach((slide, index) => {
+    slide.setAttribute(
+      "aria-hidden",
+      index === currentIndex ? "false" : "true"
+    );
+  });
+
+  // Force la slide active (sécurité)
+  slides[currentIndex].classList.add("is-active");
+
+
+  // Flag pour bloquer les clics pendant l’animation
+  let isAnimating = false;
+
+  // Durée de l’animation
+  // ⚠️ DOIT matcher le CSS (0.8s)
+  const DURATION = 800;
+
+
+  // ============================
+  // Fonction centrale de navigation
+  // ============================
+  function goTo(nextIndex, direction) {
+
+    // Empêche :
+    // - double clic
+    // - navigation vers la même slide
+    if (isAnimating) return;
+    if (nextIndex === currentIndex) return;
+
+    const currentSlide = slides[currentIndex];
+    const nextSlide = slides[nextIndex];
+    if (!currentSlide || !nextSlide) return;
+
+    // Bloque les interactions
+    isAnimating = true;
+
+    // Définit la direction pour le CSS
+    // data-direction="next" ou "prev"
+    carousel.setAttribute("data-direction", direction);
+
+
+    // ============================
+    // ÉTATS CSS
+    // ============================
+
+    // Slide actuelle : sort
+    currentSlide.classList.remove("is-active");
+    currentSlide.classList.add("is-leaving");
+    currentSlide.setAttribute("aria-hidden", "true");
+
+    // Slide suivante : entre
+    nextSlide.classList.add("is-entering");
+    nextSlide.setAttribute("aria-hidden", "false");
+
+    // Force un repaint pour que le clip-path
+    // démarre bien depuis l’état masqué
+    nextSlide.getBoundingClientRect();
+
+
+    // ============================
+    // Fin d’animation
+    // ============================
+    window.setTimeout(() => {
+
+      // Nettoyage des classes temporaires
+      currentSlide.classList.remove("is-leaving");
+
+      nextSlide.classList.remove("is-entering");
+      nextSlide.classList.add("is-active");
+
+      // Mise à jour de l’index courant
+      currentIndex = nextIndex;
+
+      // Débloque les interactions
+      isAnimating = false;
+
+    }, DURATION);
+  }
+
+
+  // ============================
+  // Navigation next / prev
+  // ============================
+
   function next() {
-    goTo(current + 1);
+    const nextIndex = (currentIndex + 1) % slides.length;
+    goTo(nextIndex, "next");
   }
 
   function prev() {
-    goTo(current - 1);
+    const prevIndex =
+      (currentIndex - 1 + slides.length) % slides.length;
+    goTo(prevIndex, "prev");
   }
 
-  function startAutoPlay() {
-    stopAutoPlay();
-    intervalId = setInterval(next, delay);
-  }
 
-  function stopAutoPlay() {
-    if (intervalId) {
-      clearInterval(intervalId);
-      intervalId = null;
-    }
-  }
+  // ============================
+  // Bind des événements
+  // ============================
 
-  /* Stepper */
-  steps.forEach((btn, index) => {
-    btn.addEventListener("click", () => {
-      goTo(index);
-      startAutoPlay(); // 🔥 reset du timer
-    });
+  if (nextBtn) nextBtn.addEventListener("click", next);
+  if (prevBtn) prevBtn.addEventListener("click", prev);
+
+
+  // Log utile pour debug
+  console.log("[carousel] bound", {
+    carousel,
+    slides: slides.length,
+    currentIndex,
   });
+}
 
-  /* Clic gauche / droite */
-  viewport.addEventListener("click", (e) => {
-    const rect = viewport.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
 
-    if (clickX > rect.width / 2) {
-      next();
-    } else {
-      prev();
-    }
+// ============================
+// Initialise TOUS les carousels
+// ============================
+function initAllCarousels() {
+  const carousels = document.querySelectorAll("[data-carousel]");
 
-    startAutoPlay(); // 🔥 reset du timer
-  });
+  if (!carousels.length) {
+    console.warn("[carousel] no [data-carousel] found on the page");
+    return;
+  }
 
-  /* Lancement initial */
-  startAutoPlay();
-});
+  carousels.forEach(initCarousel);
+}
+
+
+// ============================
+// Lancement au bon moment
+// ============================
+
+if (document.readyState === "loading") {
+  document.addEventListener(
+    "DOMContentLoaded",
+    initAllCarousels,
+    { once: true }
+  );
+} else {
+  initAllCarousels();
+}
+
+document.querySelector("[data-carousel]")?.getAttribute("data-direction")

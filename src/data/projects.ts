@@ -61,8 +61,8 @@ export const projects: Project[] = [
             },
             role:
             {
-                description: "Chez Siko Mobility, mon rôle était de",
-                image: ""
+                description: "Chez Siko Mobility, mon rôle consistait à structurer et faire évoluer les parcours clés du produit dans un contexte fintech en forte croissance. J’ai travaillé sur la conception d’un nouveau parcours assurance, ainsi que sur la création et l’amélioration des dashboards marchands, en tenant compte des enjeux B2B et des besoins opérationnels des partenaires\n\nJ’ai également mené une refonte des parcours de financement, en les adaptant aux différents types d’offres proposées(paiement fractionné, crédit, LLD, LOA).Chaque parcours impliquait des contraintes spécifiques, notamment en matière d’informations utilisateurs, de documents requis et de règles contractuelles, nécessitant une conception précise et rigoureuse.\n\n En parallèle, j’ai initié et construit un Design System, avec pour objectif d’apporter une interface plus cohérente, lisible et moderne, tout en servant de véritable support pour l’équipe de développement.Ce travail visait à dépasser un design purement utilitaire pour renforcer la clarté des interfaces, la cohérence visuelle et la maintenabilité du produit.",
+                image: "/public/icons/projets/Siko/role_svg.svg"
             },
             demarche:
             {
@@ -98,7 +98,7 @@ export const projects: Project[] = [
 
         hero: {
             entreprise: "Rhizome",
-            cover: "/images/projects/siko-mobility",
+            cover: "/public/images/projects/rhizome/coverRhizome.webp",
             image: "/icons/projets/rhizome_logo.svg",
             tags: ["UI/UX Designer"],
             title: "Rhizome, le vinted des plantes",
@@ -165,16 +165,16 @@ export const projects: Project[] = [
         carousel: {
             images: [
                 {
-                    src: "/images/projects/siko/screen-1.jpg",
-                    alt: "Dashboard Siko Mobility",
+                    src: "/public/images/projects/rhizome/Rhiziome_slide3.webp",
+                    alt: "Logo Rhizome",
                 },
                 {
-                    src: "/images/projects/siko/screen-2.jpg",
-                    alt: "Parcours utilisateur",
+                    src: "/public/images/projects/rhizome/Rhiziome_slide2.webp",
+                    alt: "écran",
                 },
                 {
-                    src: "/images/projects/siko/screen-3.jpg",
-                    alt: "Écran mobile",
+                    src: "/public/images/projects/rhizome/Rhiziome_slide1.webp",
+                    alt: "Écran",
                 },
             ],
         },

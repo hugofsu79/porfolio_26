@@ -74,7 +74,7 @@
 
 nav.navbar {
     inset: 0 0 auto 0;
-    z-index: 9999;
+    z-index: 9900;
     background-color: var(--color-bg);
     position: fixed;
     display: flex;
@@ -127,6 +127,7 @@ nav.navbar.navbar--hidden {
 
 /* Logo SVG base styles */
 .logoNavbar {
+    z-index: 9999;
     height: 31px;
     color: var(--color-primary);
     transition: color 0.25s ease;

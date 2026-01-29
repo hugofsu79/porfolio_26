@@ -26,7 +26,7 @@
     will-change: font-variation-settings;
 }
 
-.page {
+.pageLabo {
     background-color: var(--color-labo-bg);
     padding: 12px;
     display: flex;
@@ -34,20 +34,20 @@
     gap: 12px;
 }
 
-.page h2,
-.page h3,
-.page p {
+.pageLabo h2,
+.pageLabo h3,
+.pageLabo p {
     color: var(--color-labo-font);
 }
 
-.page hr {
+.pageLabo hr {
     opacity: .2;
     border-top: 0.25px solid hsla(157, 62%, 39%, 0.3);
 }
 
-.page p {
+.pageLabo p {
     font-size: 14px;
-    
+
 }
 
 .headTitle h2 {
@@ -137,6 +137,7 @@
 
 .infoTitle .title:nth-child(2) {
     font-size: 14px;
+    opacity: .6;
 }
 
 .morceau {

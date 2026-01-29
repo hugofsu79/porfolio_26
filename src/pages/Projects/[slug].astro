@@ -2,7 +2,6 @@
 import { projects } from "../../data/projects";
 import type { Project } from "../../types/project";
 import Layout from "../../layouts/Layout.astro";
-import NavbarHome from "../../components/layout/Navigation.astro";
 import Carousel from "../../components/sections/Carousel.astro";
 import Modale_follower from "../../components/ui/ModaleFollow.astro";
 
@@ -23,9 +22,7 @@ if (!project) {
 ---
 
 <Layout title={project.slug}>
-  <NavbarHome />
 
-  <main class="project-page">
     <header class="project-hero">
       <img src={project.hero.cover} alt={project.slug} />
     </header>
@@ -171,6 +168,7 @@ if (!project) {
           <div class="carousel">
             <Carousel images={project.carousel.images} />
           </div>
+          <div class="role">
           {
             project.sections?.role && (
                 <img src={project.sections.role.image} alt="" />
@@ -188,57 +186,7 @@ if (!project) {
             )
           }
         </div>
+        </div>
       </div>
     </section>
-    <script type="module">
-      const heroTitle = document.querySelector(".project-title--hero");
-      const contextTitle = document.querySelector(".project-title--context");
-      const context = document.querySelector(".context");
-
-      if (!heroTitle || !contextTitle || !context) {
-        console.warn("Missing title elements");
-      } else {
-        const threshold =
-          context.getBoundingClientRect().top + window.scrollY - 120;
-
-        function onScroll() {
-          if (window.scrollY >= threshold) {
-            // Hero title disparaît doucement
-            heroTitle.style.opacity = "0";
-            heroTitle.style.pointerEvents = "none";
-
-            // Context title apparaît progressivement
-            contextTitle.style.maxHeight = "80px"; // assez pour un h3
-            contextTitle.style.opacity = "1";
-            contextTitle.style.transform = "translateY(0)";
-          } else {
-            // Hero title revient
-            heroTitle.style.opacity = "1";
-            heroTitle.style.pointerEvents = "auto";
-
-            // Context title disparaît sans shape
-            contextTitle.style.maxHeight = "0";
-            contextTitle.style.opacity = "0";
-            contextTitle.style.transform = "translateY(6px)";
-          }
-        }
-
-        onScroll();
-        window.addEventListener("scroll", onScroll, { passive: true });
-      }
-
-      const isMobile = window.matchMedia("(max-width: 720px)");
-
-  if (isMobile.matches) {
-    document.querySelectorAll(".grid-mini").forEach((section) => {
-      const title = section.querySelector("h4");
-      if (!title) return;
-
-      title.addEventListener("click", () => {
-        section.classList.toggle("is-open");
-      });
-    });
-  }
-    </script>
-  </main>
 </Layout>

@@ -1,101 +1,146 @@
-.carousel {
+/* ============================
+   Carousel wrapper
+============================ */
+
+.carouselAll {
     position: relative;
+    width: 100%;
 }
+
+/* ============================
+   Viewport (masque global)
+============================ */
 
 .carousel__viewport {
-    aspect-ratio: 16/9;
-    border-radius: var(--radius-S);
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
 
     overflow: hidden;
+    border-radius: var(--radius-S);
+    margin-bottom: 20px;
 }
+
+/* ============================
+   Track (superposition)
+============================ */
 
 .carousel__track {
-    overflow: hidden;
-    border-radius: var(--radius-S);
+    position: absolute;
+    inset: 0;
 
-    position: relative;
-    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
+
+/* ============================
+   Slide (surface animée)
+============================ */
 
 .carousel__slide {
     position: absolute;
     inset: 0;
 
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    display: flex;
 
     pointer-events: none;
+
+    /* État par défaut (plein) */
+    clip-path: inset(0 0 0 0);
+    -webkit-clip-path: inset(0 0 0 0);
 }
 
-.carousel__slide.is-active {
-    opacity: 1;
-}
+/* ============================
+   Image
+============================ */
 
 .carousel__slide img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
     display: block;
 }
 
-/* conteneur du stepper */
-.carousel__stepper {
-    position: absolute;
-    left: 20px;
-    bottom: 20px;
-
-    display: flex;
-    gap: 8px;
-
-    padding: 6px 8px;
-    border-radius: 999px;
-    background-color: var(--color-secondary-opacity-25);
-    backdrop-filter: blur(6px);
+.carousel__slide img {
+    transform: scale(1);
+    transition: none;
 }
 
-/* état par défaut : DOT */
-.carousel__step {
-    width: 8px;
-    height: 8px;
-
-    border-radius: 50%;
-    background-color: var(--color-secondary-opacity-50);
-
-    border: none;
-    padding: 0;
-    cursor: pointer;
-
-    transition:
-        width 0.35s ease,
-        background-color 0.35s ease,
-        border-radius 0.35s ease;
-    opacity: 0.35s ease;
+.carousel__slide.is-entering img {
+    transform: scale(1.06);
+    /* subtil, surtout pas plus */
+    animation: imageDezoom 0.8s cubic-bezier(0.85, 0, 0.15, 1) forwards;
 }
 
+/* ============================
+   États
+============================ */
 
-/* état actif : PILL */
-.carousel__step.is-active {
-    width: 40px;
-    border-radius: 999px;
-    background-color: var(--color-secondary);
+.carousel__slide.is-active {
+    opacity: 1;
+    z-index: 1;
+    pointer-events: auto;
 }
 
-.carousel__step:hover {
-    opacity: 0.8;
+/* Slide sortante (reste dessous) */
+.carousel__slide.is-leaving {
+    z-index: 2;
 }
 
-.carousel__step:focus-visible {
-    outline: none;
+/* ============================
+   Direction → masque de départ
+============================ */
+
+/* NEXT : gauche → droite */
+.carouselAll[data-direction="next"] .carousel__slide.is-entering {
+    z-index: 3;
+    opacity: 1;
+    --clip-from: inset(0 100% 0 0);
 }
 
-@media (max-width: 768px) {
-    .carousel__viewport {
-        aspect-ratio: 4 / 5;
+/* PREV : droite → gauche */
+.carouselAll[data-direction="prev"] .carousel__slide.is-entering {
+    z-index: 3;
+    opacity: 1;
+    --clip-from: inset(0 0 0 100%);
+}
+
+/* ============================
+   Animation d’entrée
+============================ */
+
+.carousel__slide.is-entering {
+    clip-path: var(--clip-from);
+    -webkit-clip-path: var(--clip-from);
+
+    will-change: clip-path;
+
+    animation: carouselReveal 0.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+/* ============================
+   Keyframes
+============================ */
+
+@keyframes carouselReveal {
+    from {
+        clip-path: var(--clip-from);
+        -webkit-clip-path: var(--clip-from);
     }
 
-    .carousel__stepper {
-        display: none;
+    to {
+        clip-path: inset(0 0 0 0);
+        -webkit-clip-path: inset(0 0 0 0);
     }
 }
 
-@media (max-width: 420px) {}
+@keyframes imageDezoom {
+    from {
+        transform: scale(1.16);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}

@@ -12,7 +12,6 @@
 }
 
 header {
-    padding-top: 40px;
     width: 100vw;
     height: 60vh;
     overflow: hidden
@@ -207,7 +206,7 @@ header img {
 }
 
 
-.project-page hr {
+.page hr {
     width: 100%;
     border: none;
     height: .5px;
@@ -252,7 +251,7 @@ header img {
     gap: 20px;
 }
 
-.project-page h4 {
+.page h4 {
     color: var(--color-text-punctal);
 }
 
@@ -263,7 +262,7 @@ header img {
 .rightCorridor {
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 40px;
 }
 
 
@@ -273,7 +272,7 @@ header img {
 
 .grid-mini {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1fr;
     overflow: hidden;
     gap: 20px;
 
@@ -335,7 +334,7 @@ header img {
     opacity: 100%;
 }
 
-.project-page.projetAll hr {
+.page.projetAll hr {
     border: none;
     height: .5px;
     background-color: var(--color-primary);
@@ -365,18 +364,26 @@ header img {
 
 /* Mini Modale Follower */
 .modaleFollower {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
     z-index: 200;
     padding: 24px;
     background-color: var(--color-bg-secondary);
-    bottom: 20px;
-    right: 20px;
     border-radius: var(--radius-S);
 
-    transform: translate(120%, 60%);
-    pointer-events: none;
-    position: fixed;
+    transform: translate(0, 0);
+    pointer-events: auto;
+
+    transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
     will-change: transform;
 }
+
+.modaleFollower.is-tucked {
+    transform: translate(120px, 120px);
+}
+
 
 .modaleFollower hr {
     background-color: var(--color-bg-muted);
@@ -385,6 +392,7 @@ header img {
 .modaleFollower.is-visible {
     pointer-events: auto;
 }
+
 
 .title__grid {
     display: flex;
@@ -440,6 +448,12 @@ header img {
         display: flex;
         flex-direction: column;
         position: none;
+    }
+
+    .rightCorridor .role {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
     }
 
     .leftCorridor,

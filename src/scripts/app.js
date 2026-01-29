@@ -1,3 +1,5 @@
+import { pageTransition } from "./pages/pageTransition.ts";
+import "./features/carouselEffect.js";
 import { marquee } from "./features/marquee";
 import { moulures } from "./features/moulures";
 import { player } from "./core/player";
@@ -8,10 +10,12 @@ import { recipeModal } from "./features/recipeModal.ts"
 import { labo } from "./pages/labo";
 import { recipeToggle } from "./core/recipeToggle.js";
 import { sliderRecipe } from "./features/sliderRecipe.js";
+import { projetAnim } from "./pages/projetAnime.js";
 
 import { $ } from "animejs";
 
 function initApp() {
+    pageTransition();
     marquee();
     moulures();
     player();
@@ -22,6 +26,8 @@ function initApp() {
     recipeModal();
     sliderRecipe();
     recipeToggle();
+    projetAnim();
+
     $();
 }
 
