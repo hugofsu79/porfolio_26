@@ -1,14 +1,136 @@
-<h1 class="heroTitle">Hugo Foisseau</h1>
+<div class="heroIntro is-step1">
+  <h1 class="heroTitle">Hugo</h1>
 
-<img
-  class="Foliolabel"
-  src="public/images/folioLabel.png"
-  alt="Portfolio 2026"
-/>
+  <div class="gridJob">
+    <h3>Designer</h3>
+    <h3>UI</h3>
+    <h3>Designer</h3>
+    <h3>UX</h3>
+    <h3>Concepteur</h3>
+    <h3>D'app</h3>
+    <h3>Front</h3>
+    <h3>Developpeur</h3>
+  </div>
 
-<style>
-  .heroTitle [data-char] {
-    display: inline-block;
-    will-change: transform, opacity;
+  <h1 class="heroTitle">Folio</h1>
+</div>
+<script type="module">
+  import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
+
+  const hero = document.querySelector(".heroIntro");
+  if (!hero) {
+    console.warn("[heroIntro] introuvable");
+  } else {
+    const gridJob = hero.querySelector(".gridJob");
+    const titles = hero.querySelectorAll(".heroTitle");
+
+    if (!gridJob || titles.length !== 2) {
+      console.warn("[heroIntro] gridJob ou heroTitle introuvable");
+    } else {
+      const getVarPx = (name, fallback) => {
+        const raw = getComputedStyle(hero).getPropertyValue(name).trim();
+        const n = parseFloat(raw);
+        return Number.isFinite(n) ? n : fallback;
+      };
+
+      const OPEN = getVarPx("--hero-open-distance", 120);
+      const SQUEEZE = getVarPx("--hero-squeeze-distance", 44);
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+      hero.classList.remove("is-step2", "is-step3");
+      hero.classList.add("is-step1");
+
+      gridJob.style.overflow = "hidden";
+      gridJob.style.height = "0px";
+
+      gridJob.querySelectorAll("h3").forEach((h3) => {
+        h3.style.transform = "translateY(12px)";
+        h3.style.opacity = "0";
+      });
+
+      const measureGridHeight = () => {
+        const prev = gridJob.style.height;
+        gridJob.style.height = "auto";
+        const h = gridJob.scrollHeight;
+        gridJob.style.height = prev;
+        return h;
+      };
+
+      const tl = anime.timeline({ autoplay: true });
+      tl.add({}, 150);
+
+      if (isMobile) {
+        tl.add({
+          targets: titles,
+          translateY: (el, i) => (i === 0 ? -OPEN : OPEN),
+          duration: 420,
+          easing: "cubicBezier(0.2, 0, 0.38, 1)",
+        });
+
+        tl.add(
+          {
+            targets: gridJob,
+            height: [0, () => measureGridHeight()],
+            duration: 520,
+            easing: "cubicBezier(0.4, 0, 0.2, 1)",
+            complete: () => (gridJob.style.height = "auto"),
+          },
+          "-=140",
+        );
+
+        // ✅ MODIF ICI
+        tl.add({
+          targets: gridJob.querySelectorAll("h3"),
+          translateY: [12, 0],
+          opacity: [0, 1],
+          duration: 360,
+          delay: anime.stagger(40),
+          easing: "easeOutElastic(.8, .3)",
+        });
+      } else {
+        tl.add({
+          begin: () => {
+            hero.classList.remove("is-step1");
+            hero.classList.add("is-step2");
+          },
+          targets: titles,
+          translateY: (el, i) => (i === 0 ? -OPEN : OPEN),
+          duration: 900,
+          easing: "cubicBezier(0.6, 0.002, 0.199, 1.001)",
+        });
+
+        tl.add({
+          begin: () => {
+            hero.classList.remove("is-step2");
+            hero.classList.add("is-step3");
+          },
+          targets: titles,
+          translateY: (el, i) => (i === 0 ? -SQUEEZE : SQUEEZE),
+          duration: 800,
+          easing: "cubicBezier(0.6, 0.002, 0.199, 1.001)",
+        });
+
+        tl.add(
+          {
+            targets: gridJob,
+            height: [0, () => measureGridHeight()],
+            duration: 520,
+            easing: "cubicBezier(0.6, 0.002, 0.199, 1.001)",
+            complete: () => (gridJob.style.height = "auto"),
+          },
+          "-=240",
+        );
+
+        // ✅ MODIF ICI
+        tl.add({
+          targets: gridJob.querySelectorAll("h3"),
+          translateY: [12, 0],
+          opacity: [0, 1],
+          duration: 1000,
+          delay: anime.stagger(50),
+          easing: "cubicBezier(0.6, 0.002, 0.199, 1.001)",
+        });
+      }
+    }
   }
-</style>
+</script>

@@ -1,0 +1,206 @@
+:root {
+    --hero-open-distance: 280px;
+    /* ADD */
+    --hero-squeeze-distance: 178px;
+}
+
+/* Home page */
+
+.header {
+    margin-top: 48px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 100vh;
+    overflow: hidden;
+
+}
+
+.titleHome {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* ADD */
+    width: 100vw;
+    gap: 44px;
+    padding: 80px;
+}
+
+h1 {
+    font-size: 300px;
+    margin: 0;
+    color: var(--color-text-primary);
+}
+
+.gridJob h3 {
+    transform: translateY(12px);
+    opacity: 0;
+    will-change: transform, opacity;
+    margin: 0;
+    font-size: 30px;
+}
+
+
+.gridJob h3:nth-child(even) {
+    font-weight: 200;
+}
+
+.coverProperty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+.coverProperty img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =========================
+   HERO INTRO (wrapper)
+========================= */
+
+.heroIntro {
+    /* Tout le monde dans la même "case" pour pouvoir se superposer */
+    display: grid;
+    place-items: center;
+    align-content: center;
+    /* ADD */
+    justify-items: center;
+    /* ADD */
+    position: relative;
+    width: 100%;
+}
+
+/* À partir du step 2, on superpose */
+.heroIntro.is-step2,
+.heroIntro.is-step3 {
+    display: grid;
+    place-items: center;
+}
+
+.heroIntro.is-step2>*,
+.heroIntro.is-step3>* {
+    grid-area: 1 / 1;
+}
+
+/* Titres au-dessus par défaut (on ajustera au step3) */
+.heroTitle {
+    position: relative;
+    z-index: 1;
+    will-change: transform;
+}
+
+/* GridJob : invisible par CLIP (pas d’opacité) */
+.gridJob {
+    position: relative;
+    z-index: 0;
+    /* deviendra au-dessus au step3 */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    padding: 2rem 10rem;
+
+    overflow: hidden;
+    height: 0;
+    /* IMPORTANT : invisible */
+    will-change: height;
+
+    /* Sert au "crop" au step3 */
+    background: var(--color-bg);
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =========================
+   STEP 1 : STACK (H1 non écartés)
+========================= */
+
+.heroIntro.is-step1 .heroTitle:first-of-type,
+.heroIntro.is-step1 .heroTitle:last-of-type {
+    transform: translateY(0);
+}
+
+/* =========================
+   STEP 2 : OPEN (Quick)
+   Hugo monte / Folio descend
+========================= */
+
+.heroIntro.is-step2 .heroTitle:first-of-type {
+    transform: translateY(calc(-1 * var(--hero-open-distance)));
+}
+
+.heroIntro.is-step2 .heroTitle:last-of-type {
+    transform: translateY(var(--hero-open-distance));
+}
+
+/* gridJob toujours height:0 */
+
+
+/* =========================
+   STEP 3 : SQUEEZE + CROP
+   Les H1 reviennent vers le centre
+   GridJob passe au-dessus avec background (crop)
+========================= */
+
+.heroIntro.is-step3 .heroTitle:first-of-type {
+    transform: translateY(calc(-1 * var(--hero-squeeze-distance)));
+}
+
+.heroIntro.is-step3 .heroTitle:last-of-type {
+    transform: translateY(var(--hero-squeeze-distance));
+}
+
+/* GridJob devient le “masque” au-dessus */
+.heroIntro.is-step3 .gridJob {
+    z-index: 3;
+}
+
+/* =========================
+   MOBILE — version simplifiée
+   (pas d’elastic, pas de superposition)
+========================= */
+
+@media (max-width: 768px) {
+    :root {
+        --hero-open-distance: 56px;
+        --hero-squeeze-distance: 56px;
+    }
+
+    .titleHome {
+        padding: 28px;
+        gap: 22px;
+    }
+
+    h1 {
+        font-size: 22vw;
+        line-height: 0.9;
+        text-align: center;
+    }
+
+    /* Sur mobile : PAS de superposition */
+    .heroIntro,
+    .heroIntro.is-step2,
+    .heroIntro.is-step3 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .heroIntro.is-step2>*,
+    .heroIntro.is-step3>* {
+        grid-area: auto;
+    }
+
+    .gridJob {
+        padding: 1rem 1.25rem;
+        width: 100%;
+        max-width: 720px;
+    }
+}

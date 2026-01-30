@@ -2,20 +2,24 @@ import { animate } from "animejs";
 
 document.addEventListener("DOMContentLoaded", () => {
   const panel = document.getElementById("contactPanel");
-  if (!panel) return;
+  if (!panel) {
+    console.warn("[contactPanel] #contactPanel introuvable");
+    return;
+  }
 
   let isOpen = false;
   let currentAnimation = null;
 
-  function openContact() {
+  const openContact = () => {
     if (isOpen) return;
     isOpen = true;
 
     panel.classList.add("is-open");
     document.body.style.overflow = "hidden";
 
-    // Stop previous animation if any
-    if (currentAnimation) currentAnimation.pause();
+    if (currentAnimation && typeof currentAnimation.pause === "function") {
+      currentAnimation.pause();
+    }
 
     currentAnimation = animate({
       targets: panel,
@@ -26,28 +30,27 @@ document.addEventListener("DOMContentLoaded", () => {
       duration: 550,
       easing: "cubicBezier(0.4, 0.0, 0.2, 1)",
     });
-  }
+  };
 
-  function closeContact() {
+  const closeContact = () => {
     if (!isOpen) return;
     isOpen = false;
 
-    // Stop any running animation safely
     if (currentAnimation && typeof currentAnimation.pause === "function") {
       currentAnimation.pause();
     }
 
-    // Let CSS handle the exit transition
     panel.classList.remove("is-open");
     document.body.style.overflow = "";
-  }
+  };
 
   document.addEventListener("click", (e) => {
     if (e.target.closest("[data-open-contact]")) {
       openContact();
+      return;
     }
 
-    if (e.target.closest(".closed")) {
+    if (e.target.closest("[data-close-contact]")) {
       closeContact();
     }
   });

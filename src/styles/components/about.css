@@ -1,0 +1,71 @@
+/* =========================
+   ABOUT – Learn section
+   ========================= */
+
+.learnMore {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 64px;
+}
+
+/* LEFT COLUMN – TITLES */
+.titleLearn {
+    position: sticky;
+    top: 50vh;
+    padding: 20px;
+}
+
+.titleLearn h2 {
+    font-size: 20px;
+    opacity: 0.2;
+    margin: 0 0 12px;
+    transition: font-size 0.4s cubic-bezier(0.2, 0, 0.38, 1),
+        opacity 0.4s cubic-bezier(0.2, 0, 0.38, 1);
+}
+
+.titleLearn h2.is-active {
+    font-size: 38px;
+    opacity: 1;
+    border-block-end: solid 0.5px var(--color-primary);
+}
+
+/* RIGHT COLUMN – TEXT FLOW */
+.textLearn {
+    position: relative;
+    padding: 0 100px;
+}
+
+/* Each section = one scroll chapter */
+.learnSection {
+    min-height: 60vh;
+    /* THIS controls scroll distance between chapters */
+    display: flex;
+    align-items: center;
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+@media (max-width: 768px) {
+    .learnMore {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .titleLearn {
+        position: static;
+        padding: 0;
+    }
+
+    .textLearn {
+        padding: 0;
+    }
+
+    .learnSection {
+        min-height: auto;
+        opacity: 1 !important;
+        padding: 32px 0;
+    }
+}

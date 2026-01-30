@@ -1,5 +1,7 @@
 @import "./tokens.css";
 @import "./components/carousel.css";
+@import "./components/about.css";
+@import "./components/home.css";
 @import "./components/contact.css";
 @import "./components/navbar.css";
 @import "./components/project.css";
@@ -52,10 +54,6 @@ li {
     list-style-type: none;
 }
 
-h1 {
-    font-size: 130px;
-    margin: 0;
-}
 
 .heroTitle [data-char] {
     display: inline-block;
@@ -123,19 +121,6 @@ button span {
 
 /* Home - header */
 
-.informations {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 22px;
-    height: 71vh;
-}
-
-.maPomme,
-.maPomme h4 {
-    color: var(--color);
-    overflow: hidden;
-}
-
 /* moulures */
 .frontMoulure path,
 .buttomMoulure path {
@@ -195,33 +180,9 @@ td {
     font-weight: 200;
 }
 
-/* Home page */
 
-.header {
-    margin-top: 48px;
-    padding: 20px;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
 
-    min-height: 100vh;
-    min-height: 100dvh;
 
-    width: 100%;
-    max-width: 100vw;
-    overflow: hidden;
-    gap: 22px;
-}
-
-.titleHome {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    /* important */
-    width: 100vw;
-    gap: 44px;
-}
 
 .titleText {
     display: flex;
@@ -247,13 +208,6 @@ td {
     height: 64px;
     /* ou ce que tu veux */
     width: auto;
-}
-
-
-.titleHome {
-    display: inline-flex;
-    align-items: center;
-    height: 100%;
 }
 
 /* anim Canvas */
@@ -313,24 +267,7 @@ ul {
     color: var(--color-text-primary);
 }
 
-/* Effet métier slide */
-.marquee {
-    display: flex;
-    gap: 3rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
 
-    width: max-content;
-    /* 🔥 CRUCIAL */
-    white-space: nowrap;
-
-    will-change: transform;
-}
-
-.marquee li {
-    flex-shrink: 0;
-}
 
 /* Section À propos
 Mes alliés */
@@ -369,9 +306,6 @@ Mes alliés */
     overflow: hidden;
 }
 
-#about .miniSection {
-    background: none;
-}
 
 .allies {
     margin-top: 14px;
@@ -394,10 +328,6 @@ Mes alliés */
 .icons svg {
     width: 64px;
     height: auto;
-}
-
-.moreInformation {
-    height: 100%;
 }
 
 .textPerso {
@@ -486,31 +416,6 @@ Mes alliés */
     transform: scale(1.05);
 }
 
-/* Mes passions */
-.about {
-    padding: 25px;
-    background-color: var(--color-bg-secondary);
-    color: var(--color-text-secondary);
-
-}
-
-.aboutMe {
-    display: grid;
-    grid-template-columns: max-content 1fr;
-    gap: 90px;
-}
-
-
-.AboutTitle {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.AboutTitle table {
-    width: fit-content;
-}
-
 .content {
     margin: 2rem 0rem 2rem 0rem;
 }
@@ -525,12 +430,6 @@ Mes alliés */
     overflow: hidden;
     display: flex;
     flex-direction: row-reverse;
-}
-
-/* Mes autres vies */
-.col-l .AboutTitle {
-    justify-self: start;
-    width: fit-content;
 }
 
 .table {
@@ -554,11 +453,6 @@ Mes alliés */
     border-bottom: .5px solid var(--color-secondary);
 }
 
-.aboutMe .col-r {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
 
 .miniSection {
     display: flex;
@@ -617,10 +511,6 @@ Mes alliés */
 
 
 @media (max-width: 780px) {
-    .about {
-        padding: 20px;
-    }
-
     h2 {
         font-size: 24px;
     }
@@ -629,12 +519,6 @@ Mes alliés */
         margin-inline: auto;
         border-collapse: collapse;
     }
-
-    .aboutMe {
-        grid-template-columns: 1fr;
-        gap: 48px;
-    }
-
 
     .textPerso p {
         max-width: 100vw;

@@ -23,20 +23,15 @@ const lines: string[] = [
     "│  ├─ siko-mobility.platform",
     "│  └─ oneiro.ai",
     "│",
-    "├─ interface",
-    "│  ├─ grid: swiss",
-    "│  ├─ motion: minimal",
-    "│  └─ typography: functional",
-    "│",
     "└─ system status: ready",
     "",
     "> mounting interface…",
     "> waiting for user input, Merci :)",
 ];
 
-const LINE_DELAY = 60; // ms between lines
+const LINE_DELAY = 20; // ms between lines
 const CHAR_DELAY = 9; // ms between characters
-const END_RETENTION = 1000; // ms pause at the end
+const END_RETENTION = 900; // ms pause at the end
 const LOGO_DRAW_DURATION = 900; // ms (must match CSS animation)
 const LOGO_DELAY_AFTER_TEXT = 120; // small delay after last char
 

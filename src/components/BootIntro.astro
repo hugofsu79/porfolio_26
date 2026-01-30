@@ -33,57 +33,10 @@ const showIntro = true; // optionnel si tu veux conditionner plus tard
         clip-path: inset(50% 0% 50% 0%);
         pointer-events: none;
     }
-    .docs-demo-html svg {
-        width: 32vw;
-    }
-    @media (max-width: 780px) {
-        #bootIntro {
-            display: flex;
-            flex-direction: column-reverse;
-            justify-content: space-between;
-        }
-    }
-    /* =========================
-   SVG draw animation (logo)
-   ========================= */
 </style>
 
 <section id="bootIntro" class="boot">
     <pre id="terminal"></pre>
-    <div class="docs-demo-html">
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="269"
-            height="313"
-            fill="none"
-            viewBox="0 0 269 313"
-            aria-hidden="true"
-        >
-            <path
-                class="line"
-                stroke-width="2"
-                d="M9.678.5h87.186c2.498 0 4.35 1.851 4.35 4.35v43.204c-.322 2.192-2.21 4.029-4.35 4.029H67.11c-2.665 0-5.35 2.275-5.35 5.35v64.019c0 2.393 1.663 4.328 3.9 4.991h.001c21.218 6.194 34.854 22.956 34.854 44.118v63.659c0 9.396 2.001 16.03 5.928 20.312 3.937 4.293 9.721 6.129 17.062 6.129h14.527c2.499 0 4.35 1.851 4.35 4.35v42.905c0 1.045-.527 2.137-1.365 2.978-.838.84-1.93 1.373-2.985 1.373h-40.13c-32.253-.001-58.67-26.396-58.67-58.67v-81.299c0-14.439-11.581-26.318-30.26-29.503H8.97C4.334 141.992.5 138.169.5 133.565V10.038C.5 4.775 4.778.5 9.678.5Zm120.865 0h40.131c32.256 0 58.669 26.083 58.669 58.309v81.637c0 14.507 11.671 26.405 30.504 29.546 4.667 1.005 8.228 4.652 8.228 9.186v123.505c0 5.263-4.278 9.538-9.178 9.538h-87.186c-2.498 0-4.35-1.852-4.35-4.35v-43.205c.323-2.191 2.21-4.027 4.35-4.027h29.754c2.665 0 5.35-2.277 5.35-5.351v-63.996c0-2.317-1.541-4.229-3.796-4.965l-.008-.003-.008-.002c-21.263-6.171-34.92-22.933-34.92-44.139V78.524c0-9.397-2.001-16.03-5.929-20.313-3.936-4.292-9.72-6.128-17.061-6.128h-14.528c-2.498 0-4.349-1.852-4.349-4.35v-1.208l-.023.023V4.85c0-1.045.528-2.136 1.366-2.977.837-.84 1.929-1.373 2.984-1.373Z"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"></path>
-        </svg>
-    </div>
 </section>
 
 <script src="/src/scripts/pages/bootIntro.ts" defer></script>
-<script>
-    import { animate, svg, stagger } from "https://esm.sh/animejs";
-
-    animate(svg.createDrawable(".line"), {
-        draw: ["1 1", "0 1"],
-        ease: "inOutQuad",
-        duration: 9000,
-        delay: stagger(200),
-        loop: false,
-    });
-
-    if (sessionStorage.getItem("bootSeen")) {
-        document.getElementById("bootIntro")?.remove();
-    }
-</script>

@@ -11,24 +11,6 @@
     top: 68px;
 }
 
-header {
-    width: 100vw;
-    height: 60vh;
-    overflow: hidden
-}
-
-header img {
-    width: 100%;
-    object-fit: cover;
-    /* display: block; */
-}
-
-.headerProject {
-    margin-bottom: 60px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
 
 /* Effet follow et sticky du titre */
 .project-title {

@@ -65,3 +65,56 @@ export function recipeModal() {
     closeBtn.addEventListener("click", () => modal.close());
   }
 }
+
+document.querySelectorAll(".morceau").forEach((el) => {
+  el.addEventListener("mouseenter", (e) => {
+    const rect = el.getBoundingClientRect();
+    const y = e.clientY - rect.top;
+    const fromTop = y < rect.height / 2;
+
+    el.classList.remove(
+      "from-top",
+      "from-bottom",
+      "leave-top",
+      "leave-bottom"
+    );
+
+    el.classList.add(fromTop ? "from-top" : "from-bottom");
+  });
+
+  el.addEventListener("mouseleave", (e) => {
+    const rect = el.getBoundingClientRect();
+    const y = e.clientY - rect.top;
+    const toTop = y < rect.height / 2;
+
+    el.classList.remove(
+      "from-top",
+      "from-bottom",
+      "leave-top",
+      "leave-bottom"
+    );
+
+    el.classList.add(toTop ? "leave-top" : "leave-bottom");
+  });
+});
+
+
+
+//\ hover stylé musiques\//
+document.querySelectorAll(".morceau").forEach((el) => {
+  el.addEventListener("mouseenter", (e) => {
+    const rect = el.getBoundingClientRect();
+    const fromTop = e.clientY - rect.top < rect.height / 2;
+
+    el.classList.remove("leave-top", "leave-bottom");
+    el.classList.add("enter", fromTop ? "from-top" : "from-bottom");
+  });
+
+  el.addEventListener("mouseleave", (e) => {
+    const rect = el.getBoundingClientRect();
+    const toTop = e.clientY - rect.top < rect.height / 2;
+
+    el.classList.remove("enter", "from-top", "from-bottom");
+    el.classList.add(toTop ? "leave-top" : "leave-bottom");
+  });
+});
