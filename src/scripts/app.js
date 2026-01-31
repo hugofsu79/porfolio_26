@@ -3,7 +3,7 @@ import "./features/carouselEffect.js";
 import { marquee } from "./features/marquee";
 import { moulures } from "./features/moulures";
 import { player } from "./core/player";
-import { title } from "./core/titleEffect";
+import { coverFx } from "./core/coverEffectBase.js";
 import { formMessage } from "./core/formMessage.js";
 import { modalFollow } from "./core/modalFollow";
 import { recipeModal } from "./features/recipeModal.ts"
@@ -19,7 +19,7 @@ function initApp() {
     marquee();
     moulures();
     player();
-    title();
+    coverFx();
     formMessage();
     modalFollow();
     labo();
