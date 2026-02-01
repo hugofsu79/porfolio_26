@@ -47,7 +47,7 @@ li,
 th,
 button {
     text-transform: uppercase;
-    font-weight: bold;
+
 }
 
 li {
@@ -55,11 +55,6 @@ li {
 }
 
 
-.heroTitle [data-char] {
-    display: inline-block;
-    will-change: transform, opacity;
-    overflow: hidden;
-}
 
 
 h1,
@@ -68,11 +63,16 @@ h2 {
 }
 
 h2 {
-    font-size: 43px;
+    font-weight: bold;
+    font-size: 1.5em;
+
+    font-weight: 300;
 }
 
 h3 {
     font-size: 24px;
+
+    margin: 0;
 }
 
 h4 {
@@ -114,12 +114,12 @@ button span {
 }
 
 .icon {
-    color: var(--color-punctal);
     width: 50%;
 }
 
 
-/* Home - header */
+
+
 
 /* moulures */
 .frontMoulure path,
@@ -268,6 +268,9 @@ ul {
 }
 
 
+.allies-wrap {
+    transform: rotate(45deg);
+}
 
 /* Section À propos
 Mes alliés */
@@ -285,8 +288,8 @@ Mes alliés */
 
 .icons {
     position: relative;
-    width: 64px;
-    height: 64px;
+    width: 80px;
+    height: 80px;
 
 
     display: flex;
@@ -306,11 +309,6 @@ Mes alliés */
     overflow: hidden;
 }
 
-
-.allies {
-    margin-top: 14px;
-}
-
 .miniSectionFront {
     display: flex;
     flex-direction: row;
@@ -326,7 +324,7 @@ Mes alliés */
 }
 
 .icons svg {
-    width: 64px;
+    width: 80px;
     height: auto;
 }
 
@@ -354,67 +352,7 @@ Mes alliés */
 }
 
 
-.icons::after {
-    content: attr(data-label);
-    text-transform: none;
 
-    position: absolute;
-    bottom: calc(100% + 10px);
-    left: 50%;
-    transform: translateX(-50%) translateY(4px);
-
-    padding: 6px 10px;
-    font-size: 12px;
-    font-weight: 500;
-    white-space: nowrap;
-
-    background: var(--color-bg-muted);
-    color: var(--color-bg-primary);
-
-    border-radius: 6px;
-
-    opacity: 0;
-    pointer-events: none;
-
-    transition:
-        opacity 0.2s ease,
-        transform 0.2s ease;
-}
-
-.icons::before {
-    content: "";
-
-    position: absolute;
-    bottom: calc(100% + 4px);
-    left: 50%;
-    transform: translateX(-50%);
-
-    width: 0;
-    height: 0;
-
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid var(--color-bg-muted);
-
-    opacity: 0;
-    pointer-events: none;
-
-    transition: opacity 0.2s ease;
-}
-
-.icons:hover::after,
-.icons:hover::before {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-}
-
-.icons svg {
-    transition: transform 0.2s ease;
-}
-
-.icons:hover svg {
-    transform: scale(1.05);
-}
 
 .content {
     margin: 2rem 0rem 2rem 0rem;

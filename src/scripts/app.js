@@ -1,6 +1,6 @@
 import { pageTransition } from "./pages/pageTransition.ts";
 import "./features/carouselEffect.js";
-import { marquee } from "./features/marquee";
+import { marquee } from "./features/marquee.js";
 import { moulures } from "./features/moulures";
 import { player } from "./core/player";
 import { coverFx } from "./core/coverEffectBase.js";

@@ -64,7 +64,7 @@
 
 .rubrique {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 10px;
 }
 
@@ -115,9 +115,6 @@
 .miniSectionMusic {
     overflow: hidden;
     position: relative;
-    border-radius: 12px;
-    padding: 12px;
-    border: solid 1px var(--color-labo-bg-punctuel);
 
     display: flex;
     flex-direction: column;
@@ -152,7 +149,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-color: rgba(255, 255, 255, 0.045);
+    background-color: #f9e9d643;
     transform: translateY(100%);
     transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
     pointer-events: none;
@@ -416,7 +413,6 @@
 
     overflow-x: auto;
     overflow: hidden;
-    border-radius: 6px;
 }
 
 .gridrSlide:has(article details[open]) {
@@ -433,9 +429,9 @@
 }
 
 .carouselRecipe {
+    gap: 12px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
 }
 
 /* =========================
@@ -469,6 +465,7 @@
 }
 
 .arrowInner {
+    color: black;
     display: inline-flex;
     align-items: center;
     overflow: hidden;
@@ -502,16 +499,13 @@
 
 
 
-.gridrSlide {
-    scrollbar-width: none;
-}
 
 article {
     position: relative;
     /* ← clé du problème */
     flex: 0 0 auto;
-    background-color: var(--color-labo-font);
-    border-radius: 12px;
+    /* border-radius: 12px; */
+    background-color: var(--color-bg-nuance);
     overflow: hidden;
     width: fit-content;
     cursor: pointer;
@@ -546,6 +540,11 @@ article {
 
 .mailSend:hover {
     background-color: hsla(0, 0%, 0%, 0.15);
+}
+
+.mailSend p {
+    color: var(--color-text-secondary);
+
 }
 
 .mailSend img {

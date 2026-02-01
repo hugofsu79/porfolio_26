@@ -1,136 +1,25 @@
-<div class="heroIntro is-step1">
-  <h1 class="heroTitle">Hugo</h1>
+<svg
+  width="1419"
+  height="378"
+  viewBox="0 0 1419 378"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M1247.59 1C1298.14 1.00004 1336.93 14.7564 1363.8 42.4121C1399.62 75.0278 1417.44 123.806 1417.44 188.552C1417.44 252.041 1399.61 300.809 1363.79 334.692C1336.93 362.347 1298.14 376.102 1247.59 376.103C1197.03 376.103 1158.23 362.34 1131.36 334.672C1095.41 300.79 1077.5 252.029 1077.5 188.552C1077.5 123.804 1095.4 75.0255 1131.38 42.4102C1158.25 14.7556 1197.04 1 1247.59 1ZM865.159 2.67383C910.132 2.67384 946.333 14.1196 973.662 37.1055C1001.12 59.9041 1016.88 88.4362 1020.89 122.663L1021.03 123.78H946.639L946.459 123.006C940.946 99.221 927.514 82.6639 906.132 73.2305V73.2295C894.156 68.0303 880.822 65.4229 866.116 65.4229C838.027 65.4229 814.946 76.0582 796.801 97.3594L796.8 97.3584C778.841 118.468 769.774 150.401 769.774 193.335C769.774 236.592 779.64 266.938 799.104 284.676C818.704 302.537 840.95 311.44 865.877 311.44C890.387 311.44 910.385 304.41 925.957 290.411C941.292 276.469 950.854 258.334 954.627 235.95H873.248V175.114H1022.1V366.297H971.461L971.32 365.463L964.262 323.568C950.596 339.484 938.226 350.828 927.148 357.538C907.504 369.614 883.396 375.625 854.875 375.625C807.904 375.625 769.368 359.342 739.352 326.765L737.895 325.22C707.555 292.605 692.437 248.365 692.437 192.617C692.437 135.345 708.199 89.3248 739.813 54.6611C771.435 19.9893 813.251 2.67383 865.159 2.67383ZM432.308 11.7627V229.449C432.308 253.647 435.18 271.146 440.807 282.087L440.818 282.11L440.829 282.133C449.534 301.409 468.515 311.201 498.274 311.201C527.871 311.201 546.775 301.411 555.481 282.133L555.491 282.11L555.503 282.087C561.13 271.146 564.003 253.648 564.003 229.449V11.7627H640.862V229.449C640.862 267.002 635.033 296.374 623.276 317.472L623.273 317.478C601.345 356.174 559.545 375.386 498.274 375.386C437.004 375.386 395.127 356.174 373.039 317.48L373.033 317.472C361.277 296.374 355.447 267.002 355.447 229.449V11.7627H432.308ZM75.9463 11.7627V146.176H211.707V11.7627H286.893V366.297H211.707V208.924H75.9463V366.297H1V11.7627H75.9463ZM1247.59 65.4229C1218.69 65.4229 1195.71 76.0633 1178.53 97.3389C1161.35 118.623 1152.68 148.981 1152.68 188.552C1152.68 228.122 1161.35 258.48 1178.53 279.764C1195.71 301.039 1218.69 311.68 1247.59 311.68C1276.48 311.68 1299.39 301.04 1316.41 279.768C1333.28 258.483 1341.78 228.123 1341.78 188.552C1341.78 149.14 1333.2 118.859 1316.17 97.5742L1316.16 97.5684C1299.3 76.1404 1276.48 65.4229 1247.59 65.4229Z"
+    stroke="#00643F"
+    stroke-width="2"></path>
+</svg>
 
-  <div class="gridJob">
-    <h3>Designer</h3>
-    <h3>UI</h3>
-    <h3>Designer</h3>
-    <h3>UX</h3>
-    <h3>Concepteur</h3>
-    <h3>D'app</h3>
-    <h3>Front</h3>
-    <h3>Developpeur</h3>
-  </div>
-
-  <h1 class="heroTitle">Folio</h1>
-</div>
-<script type="module">
-  import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
-
-  const hero = document.querySelector(".heroIntro");
-  if (!hero) {
-    console.warn("[heroIntro] introuvable");
-  } else {
-    const gridJob = hero.querySelector(".gridJob");
-    const titles = hero.querySelectorAll(".heroTitle");
-
-    if (!gridJob || titles.length !== 2) {
-      console.warn("[heroIntro] gridJob ou heroTitle introuvable");
-    } else {
-      const getVarPx = (name, fallback) => {
-        const raw = getComputedStyle(hero).getPropertyValue(name).trim();
-        const n = parseFloat(raw);
-        return Number.isFinite(n) ? n : fallback;
-      };
-
-      const OPEN = getVarPx("--hero-open-distance", 120);
-      const SQUEEZE = getVarPx("--hero-squeeze-distance", 44);
-      const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-      hero.classList.remove("is-step2", "is-step3");
-      hero.classList.add("is-step1");
-
-      gridJob.style.overflow = "hidden";
-      gridJob.style.height = "0px";
-
-      gridJob.querySelectorAll("h3").forEach((h3) => {
-        h3.style.transform = "translateY(12px)";
-        h3.style.opacity = "0";
-      });
-
-      const measureGridHeight = () => {
-        const prev = gridJob.style.height;
-        gridJob.style.height = "auto";
-        const h = gridJob.scrollHeight;
-        gridJob.style.height = prev;
-        return h;
-      };
-
-      const tl = anime.timeline({ autoplay: true });
-      tl.add({}, 150);
-
-      if (isMobile) {
-        tl.add({
-          targets: titles,
-          translateY: (el, i) => (i === 0 ? -OPEN : OPEN),
-          duration: 420,
-          easing: "cubicBezier(0.2, 0, 0.38, 1)",
-        });
-
-        tl.add(
-          {
-            targets: gridJob,
-            height: [0, () => measureGridHeight()],
-            duration: 520,
-            easing: "cubicBezier(0.4, 0, 0.2, 1)",
-            complete: () => (gridJob.style.height = "auto"),
-          },
-          "-=140",
-        );
-
-        // ✅ MODIF ICI
-        tl.add({
-          targets: gridJob.querySelectorAll("h3"),
-          translateY: [12, 0],
-          opacity: [0, 1],
-          duration: 360,
-          delay: anime.stagger(40),
-          easing: "easeOutElastic(.8, .3)",
-        });
-      } else {
-        tl.add({
-          begin: () => {
-            hero.classList.remove("is-step1");
-            hero.classList.add("is-step2");
-          },
-          targets: titles,
-          translateY: (el, i) => (i === 0 ? -OPEN : OPEN),
-          duration: 900,
-          easing: "cubicBezier(0.6, 0.002, 0.199, 1.001)",
-        });
-
-        tl.add({
-          begin: () => {
-            hero.classList.remove("is-step2");
-            hero.classList.add("is-step3");
-          },
-          targets: titles,
-          translateY: (el, i) => (i === 0 ? -SQUEEZE : SQUEEZE),
-          duration: 800,
-          easing: "cubicBezier(0.6, 0.002, 0.199, 1.001)",
-        });
-
-        tl.add(
-          {
-            targets: gridJob,
-            height: [0, () => measureGridHeight()],
-            duration: 520,
-            easing: "cubicBezier(0.6, 0.002, 0.199, 1.001)",
-            complete: () => (gridJob.style.height = "auto"),
-          },
-          "-=240",
-        );
-
-        // ✅ MODIF ICI
-        tl.add({
-          targets: gridJob.querySelectorAll("h3"),
-          translateY: [12, 0],
-          opacity: [0, 1],
-          duration: 1000,
-          delay: anime.stagger(50),
-          easing: "cubicBezier(0.6, 0.002, 0.199, 1.001)",
-        });
-      }
-    }
-  }
-</script>
+<svg
+  width="1446"
+  height="378"
+  viewBox="0 0 1446 378"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M457.377 1C507.925 1.00002 546.716 14.7565 573.585 42.4121C609.403 75.0278 627.229 123.806 627.229 188.552C627.229 252.041 609.392 300.809 573.582 334.692C546.713 362.346 507.924 376.103 457.377 376.103C406.817 376.103 368.02 362.34 341.15 334.672C305.195 300.79 287.285 252.029 287.285 188.552C287.285 123.804 305.191 75.0255 341.17 42.4102C368.039 14.7556 406.83 1 457.377 1ZM1274.38 1C1324.93 1.00009 1363.72 14.7564 1390.58 42.4121C1426.4 75.0278 1444.23 123.806 1444.23 188.552C1444.23 252.041 1426.39 300.809 1390.58 334.692C1363.71 362.347 1324.92 376.102 1274.38 376.103C1223.82 376.103 1185.02 362.34 1158.15 334.672C1122.2 300.79 1104.28 252.029 1104.28 188.552C1104.28 123.804 1122.19 75.0255 1158.17 42.4102C1185.04 14.7557 1223.83 1 1274.38 1ZM252.931 12.2412V76.1855H76.1855V155.264H230.928V218.491H76.1855V366.297H1V12.2412H252.931ZM757.338 11.7627V300.917H931.931V366.297H681.674V11.7627H757.338ZM1050.56 11.7627V366.297H975.372V11.7627H1050.56ZM457.377 65.4229C428.482 65.4229 405.495 76.0633 388.317 97.3389C371.132 118.623 362.471 148.981 362.471 188.552C362.471 228.122 371.133 258.48 388.317 279.764C405.495 301.039 428.482 311.68 457.377 311.68C486.272 311.68 509.176 301.04 526.194 279.768C543.063 258.483 551.566 228.123 551.566 188.552C551.566 149.14 542.983 118.859 525.955 97.5742L525.95 97.5684C509.091 76.1404 486.269 65.4229 457.377 65.4229ZM1274.38 65.4229C1245.48 65.4229 1222.5 76.0633 1205.32 97.3389C1188.13 118.623 1179.47 148.981 1179.47 188.552C1179.47 228.122 1188.13 258.48 1205.32 279.764C1222.5 301.039 1245.48 311.68 1274.38 311.68C1303.27 311.68 1326.18 301.04 1343.19 279.768C1360.06 258.483 1368.57 228.123 1368.57 188.552C1368.57 149.14 1359.98 118.859 1342.95 97.5742L1342.95 97.5684C1326.09 76.1405 1303.27 65.423 1274.38 65.4229Z"
+    stroke="#00643F"
+    stroke-width="2"></path>
+</svg>

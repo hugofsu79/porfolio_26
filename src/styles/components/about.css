@@ -2,52 +2,153 @@
    ABOUT – Learn section
    ========================= */
 
+/* ---------- ALLIES / MARQUEE ---------- */
+
+.alliesStack {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: hidden;
+}
+
+.allies {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    transform: translate3d(0, 0, 0) rotate(var(--allies-rotate, 0deg));
+    transform-origin: left center;
+}
+
+.icons {
+    position: relative;
+    border-radius: var(--radius-S);
+    border: solid 1px var(--color-primary);
+}
+
+.icons svg {
+    transition: transform 0.2s ease;
+}
+
+.icons:hover svg {
+    transform: scale(1.05);
+}
+
+.icons::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    background: var(--color-bg);
+    border: solid 1px var(--color-primary);
+    color: var(--color-text-primary);
+    border-radius: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.icons::before {
+    content: "";
+    position: absolute;
+    bottom: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--color-bg-muted);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.icons:hover::after,
+.icons:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ---------- LAYOUT ---------- */
+
 .learnMore {
     min-height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 32vw 1fr;
     align-items: start;
-    gap: 64px;
 }
 
-/* LEFT COLUMN – TITLES */
+/* ---------- LEFT COLUMN – TITLES ---------- */
+
 .titleLearn {
     position: sticky;
     top: 50vh;
     padding: 20px;
 }
 
+/* BASE STATE (single source of truth) */
 .titleLearn h2 {
+    cursor: pointer;
+    margin: 0 0 12px;
+
     font-size: 20px;
     opacity: 0.2;
-    margin: 0 0 12px;
-    transition: font-size 0.4s cubic-bezier(0.2, 0, 0.38, 1),
+
+    /* VARIABLE FONT BASELINE */
+    font-variation-settings: "wght" 300;
+    font-weight: 300;
+
+    transition:
+        font-size 0.4s cubic-bezier(0.2, 0, 0.38, 1),
         opacity 0.4s cubic-bezier(0.2, 0, 0.38, 1);
 }
 
+/* ACTIVE STATE – layout only */
 .titleLearn h2.is-active {
+    cursor: default;
     font-size: 38px;
     opacity: 1;
     border-block-end: solid 0.5px var(--color-primary);
 }
 
-/* RIGHT COLUMN – TEXT FLOW */
+.leftInfo p {
+    color: var(--color-secondary);
+}
+
+/* ---------- RIGHT COLUMN – TEXT ---------- */
+
 .textLearn {
     position: relative;
-    padding: 0 100px;
+    min-width: 0;
 }
 
 /* Each section = one scroll chapter */
 .learnSection {
     min-height: 60vh;
-    /* THIS controls scroll distance between chapters */
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    gap: 60px;
 }
 
-/* =========================
-   MOBILE
-   ========================= */
+.rubrique h3 {
+    font-size: 38px;
+}
+
+.text-xl {
+    font-size: 28px;
+    margin: 0 130px;
+}
+
+/* ---------- MOBILE ---------- */
+
 @media (max-width: 768px) {
     .learnMore {
         grid-template-columns: 1fr;
@@ -65,7 +166,6 @@
 
     .learnSection {
         min-height: auto;
-        opacity: 1 !important;
         padding: 32px 0;
     }
 }

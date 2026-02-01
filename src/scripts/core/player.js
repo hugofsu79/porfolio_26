@@ -36,10 +36,34 @@ export function player() {
 
     const BAR_COUNT = 18;
 
-    const PLAY_ICON = `<img src="/public/icons/labo/player/player.svg" alt="Play" />`;
-    const PAUSE_ICON = `<img src="/public/icons/labo/player/pause.svg" alt="Pause" />`;
-    const VOLUME_OFF_ICON = `<img src="/public/icons/labo/player/Volume_off.svg" alt="Volume" />`;
-    const VOLUME_MUTE_ICON = `<img src="/public/icons/labo/player/Volume_mute.svg" alt="Mute" />`;
+    const PLAY_ICON = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="23" fill="none">
+    <path fill="currentColor"
+        d="M18.935 9.377c1.42.82 1.42 2.868 0 3.688l-15.74 9.088C1.774 22.973 0 21.948 0 20.31V2.133C0 .493 1.774-.531 3.194.288l15.741 9.089Z" />
+</svg>
+`;
+
+    const PAUSE_ICON = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#currentColor">
+    <path
+        d="M0 1a1 1 0 0 1 1-1h6.431a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1ZM10.594 1a1 1 0 0 1 1-1h6.432a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1h-6.432a1 1 0 0 1-1-1V1Z" />
+</svg>`;
+    const VOLUME_OFF_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="10" fill="none">
+    <g clip-path="url(#a)">
+        <path fill="currentColor"
+            d="M4.644 1.072 2.385 2.984a.32.32 0 0 1-.208.077H.642A.641.641 0 0 0 0 3.703V6.3c0 .356.288.642.642.642h1.535a.32.32 0 0 1 .208.077l2.259 1.912a.643.643 0 0 0 1.059-.49v-6.88a.643.643 0 0 0-1.059-.49Z" />
+    </g>
+    <defs>
+        <clipPath id="a">
+            <path fill="currentColor" d="M0 0h12.723v10H0z" />
+        </clipPath>
+    </defs>
+</svg>`;
+    const VOLUME_MUTE_ICON = `<svg xmlns="http://www.w3.org/2000/svg"  width="13" height="10" fill="#currentColor">
+  <path
+    d="m6.18 7.99 2.17-2.18v2.63c0 .54-.65.84-1.06.49l-1.11-.94ZM10.21 2.54 3.82 8.93c-.1.1-.23.15-.36.15-.12 0-.25-.05-.35-.15-.2-.19-.2-.51 0-.7L4.4 6.94H3.29c-.36 0-.65-.29-.65-.64V3.7c0-.36.29-.64.65-.64h1.53c.08 0 .15-.03.21-.08l2.26-1.91a.641.641 0 0 1 1.06.49v1.43l1.16-1.16c.19-.19.51-.19.7 0 .2.2.2.51 0 .71Z"
+    />
+</svg>`;
 
     playBtn.innerHTML = PLAY_ICON;
     volumeToggle.innerHTML = VOLUME_OFF_ICON;

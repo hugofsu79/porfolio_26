@@ -1,6 +1,9 @@
 ---
-import Icon from "../ui/Icon.astro";
+import MusicSection from "./MusicSection.astro";
+import KitchenMusic from "./KitchenSection.astro";
+import MoviesInformation from "./MovieSection.astro";
 
+import Icon from "../ui/Icon.astro";
 const allies = [
   { name: "figma", label: "Figma" },
   { name: "ableton", label: "Ableton" },
@@ -25,250 +28,100 @@ const allies = [
 <div class="containerLearn">
   <div class="learnMore">
     <div class="titleLearn">
-      <h2 data-index="0" class="is-active">Introduction</h2>
+      <h2 data-index="0">Introduction</h2>
       <h2 data-index="1">Ce que je recherche</h2>
       <h2 data-index="2">Mes alliés</h2>
+      <h2 data-index="3">Mes passions</h2>
     </div>
 
     <div class="textLearn">
       <div class="learnMarker" data-index="0"></div>
-      <section data-index="0" class="learnSection">
+      <section data-index="0" class="learnSection intro">
         <p class="text-xl">
           Je suis un designer au profil hybride, guidé par une curiosité
           constante. J’aime explorer des univers variés comme la musique, la
           botanique, la cuisine ou le code, parce qu’ils nourrissent ma façon de
           penser et de concevoir. Comprendre ce qui motive les gens clients,
-          utilisateurs ou collaborateurs est au cœur de ma démarche.<br />Je
-          m’intéresse aussi à des domaines qui sortent des parcours classiques,
-          mais qui enrichissent ma pratique au quotidien. La rhétorique m’aide à
-          mieux comprendre la logique derrière les décisions et à affiner ma
-          communication, tandis que le développement me permet de parler le même
-          langage que les développeurs et de concevoir des interfaces plus
-          justes, en phase avec leurs contraintes.
+          utilisateurs ou collaborateurs est au cœur de ma démarche.
         </p>
-      </section>
-
-      <div class="learnMarker" data-index="1"></div>
-      <section data-index="1" class="learnSection">
         <p class="text-xl">
-          Je souhaite travailler sur des produits exigeants, où la conception
-          d’interface n’est pas un simple habillage, mais un véritable levier de
-          compréhension, d’usage et de cohérence produit. Mon profil hybride de
-          designer UI/UX et de développeur front-end n’est pas un compromis,
-          mais un choix assumé. Cette double compétence me permet de concevoir
-          des interfaces pensées jusque dans le détail, en lien étroit avec leur
-          mise en œuvre technique. Je cherche des équipes qui accordent de
-          l’importance à la qualité, à la méthode et à la vision produit, ainsi
-          que des projets suffisamment complexes pour continuer à progresser,
-          sans tomber dans une exécution répétitive.
+          Je m’intéresse aussi à des domaines qui sortent des parcours
+          classiques, mais qui enrichissent ma pratique au quotidien. La
+          rhétorique par exemple m’aide à mieux comprendre la logique derrière
+          les décisions et à affiner ma communication, tandis que le
+          développement me permet de parler le même langage que les développeurs
+          et de concevoir des interfaces plus justes, en phase avec leurs
+          contraintes.
         </p>
       </section>
-
-      <div class="learnMarker" data-index="2"></div>
-      <section data-index="2" class="learnSection"></section>
     </div>
+
+    <div class="learnMarker" data-index="1"></div>
+    <section data-index="1" class="learnSection">
+      <p class="text-xl">
+        Je souhaite travailler sur des produits exigeants, où la conception
+        d’interface n’est pas un simple habillage, mais un véritable levier de
+        compréhension, d’usage et de cohérence produit. Mon profil hybride de
+        designer UI/UX et de développeur front-end n’est pas un compromis, mais
+        un choix assumé. Cette double compétence me permet de concevoir des
+        interfaces pensées jusque dans le détail, en lien étroit avec leur mise
+        en œuvre technique. Je cherche des équipes qui accordent de l’importance
+        à la qualité, à la méthode et à la vision produit, ainsi que des projets
+        suffisamment complexes pour continuer à progresser, sans tomber dans une
+        exécution répétitive.
+      </p>
+    </section>
+
+    <div class="learnMarker" data-index="2"></div>
+    <section data-index="2" class="learnSection">
+      <div class="alliesStack">
+        {
+          Array.from({ length: 4 }).map((_, i) => (
+            <ul class="allies" data-direction={i % 2 === 0 ? "left" : "right"}>
+              {allies.map((a) => (
+                <li class="icons" data-label={a.label}>
+                  <Icon name={a.name} />
+                </li>
+              ))}
+            </ul>
+          ))
+        }
+      </div>
+    </section>
+
+    <div class="learnMarker" data-index="3"></div>
+    <section data-index="3" class="learnSection">
+      <section class="rubrique">
+        <h3>Musique</h3>
+        <p>
+          Composer a toujours été pour un exutoire, je créé h24 avec les
+          supports qui font partie de moi. Avec Ableton je créé des choses très
+          varié en témoigne la liste non exostive de quelque production sonore,
+          ça ma été aussi iutlise sur le plan professioonel car j'ai durans mon
+          parcours été Sound designer, avec cette casquette je tiens a
+          l'utiliser avec mes productions graphiques.
+        </p>
+        <MusicSection />
+      </section>
+      <section class="rubrique">
+        <h3>Cuisine</h3>
+        <KitchenMusic />
+      </section>
+      <section class="rubrique">
+        <h3>Ciné</h3>
+
+        <MoviesInformation />
+
+        <a
+          class="lienCollection"
+          href="https://letterboxd.com/alter_hugo/"
+          target="_blank"
+          ><img
+            src="public/icons/labo/letterboxd.svg"
+            alt="Lien sur mon letterboxd"
+          /></a
+        >
+      </section>
+    </section>
   </div>
 </div>
-<script type="module">
-  // Scroll-driven, precise, progressive reveal (no TypeScript syntax)
-  const sections = document.querySelectorAll(".learnSection");
-  const titles = document.querySelectorAll(".titleLearn h2");
-
-  // Store prepared lines per <p>
-  const linesMap = new WeakMap();
-
-  const setActiveTitle = (index) => {
-    titles.forEach((h2) => h2.classList.remove("is-active"));
-    const t = document.querySelector(`.titleLearn h2[data-index="${index}"]`);
-    if (t) t.classList.add("is-active");
-  };
-
-  // Wrap text into clipped lines once, and return the line inner spans.
-  const wrapLines = (p) => {
-    if (linesMap.has(p)) return linesMap.get(p);
-
-    // Keep original HTML once
-    const original = p.dataset.originalHtml || p.innerHTML;
-    p.dataset.originalHtml = original;
-
-    // Convert <br> to sentinel, then split into words while keeping spaces
-    const html = original.replace(/<br\s*\/?>/gi, "\n");
-    const parts = html.split(/(\s+)/); // keep whitespace tokens
-
-    // Build temporary word spans for measuring line breaks
-    p.innerHTML = "";
-    const temp = document.createDocumentFragment();
-
-    parts.forEach((token) => {
-      if (!token) return;
-
-      if (token === "\n") {
-        temp.appendChild(document.createElement("br"));
-        return;
-      }
-
-      // pure whitespace -> text node (preserve spacing)
-      if (/^\s+$/.test(token)) {
-        temp.appendChild(document.createTextNode(token));
-        return;
-      }
-
-      // word token -> span for measuring
-      const w = document.createElement("span");
-      w.textContent = token;
-      w.style.display = "inline-block";
-      w.dataset.word = "1";
-      temp.appendChild(w);
-    });
-
-    p.appendChild(temp);
-
-    // Group nodes by offsetTop into line wrappers
-    const nodes = Array.from(p.childNodes);
-
-    const out = document.createDocumentFragment();
-    let lineWrap = document.createElement("span");
-    lineWrap.className = "reveal-line";
-    lineWrap.style.display = "block";
-    lineWrap.style.overflow = "hidden";
-
-    let lineInner = document.createElement("span");
-    lineInner.className = "reveal-inner";
-    lineInner.style.display = "inline-block";
-    lineInner.style.transform = "translateY(100%)";
-    lineInner.style.willChange = "transform";
-    lineWrap.appendChild(lineInner);
-    out.appendChild(lineWrap);
-
-    let currentTop = null;
-
-    nodes.forEach((n) => {
-      // Preserve explicit <br>
-      if (n.nodeType === Node.ELEMENT_NODE && n.nodeName === "BR") {
-        currentTop = null;
-
-        lineWrap = document.createElement("span");
-        lineWrap.className = "reveal-line";
-        lineWrap.style.display = "block";
-        lineWrap.style.overflow = "hidden";
-
-        lineInner = document.createElement("span");
-        lineInner.className = "reveal-inner";
-        lineInner.style.display = "inline-block";
-        lineInner.style.transform = "translateY(100%)";
-        lineInner.style.willChange = "transform";
-        lineWrap.appendChild(lineInner);
-        out.appendChild(lineWrap);
-        return;
-      }
-
-      // Spaces (text nodes) just go into current line
-      if (n.nodeType === Node.TEXT_NODE) {
-        lineInner.appendChild(n);
-        return;
-      }
-
-      // Words: measure line by offsetTop
-      const top = n.offsetTop;
-      if (currentTop === null) currentTop = top;
-
-      if (top !== currentTop) {
-        currentTop = top;
-
-        lineWrap = document.createElement("span");
-        lineWrap.className = "reveal-line";
-        lineWrap.style.display = "block";
-        lineWrap.style.overflow = "hidden";
-
-        lineInner = document.createElement("span");
-        lineInner.className = "reveal-inner";
-        lineInner.style.display = "inline-block";
-        lineInner.style.transform = "translateY(100%)";
-        lineInner.style.willChange = "transform";
-        lineWrap.appendChild(lineInner);
-        out.appendChild(lineWrap);
-      }
-
-      lineInner.appendChild(n);
-    });
-
-    // Replace content with wrapped lines
-    p.innerHTML = "";
-    p.appendChild(out);
-
-    const lines = Array.from(p.querySelectorAll(".reveal-inner"));
-    linesMap.set(p, lines);
-    return lines;
-  };
-
-  const clamp01 = (x) => Math.min(1, Math.max(0, x));
-
-  // Progress for a section: starts revealing when the section enters,
-  // completes when it reaches the upper part of the viewport.
-  const getSectionProgress = (section) => {
-    const rect = section.getBoundingClientRect();
-    const vh = window.innerHeight;
-
-    const start = vh * 0.8;
-    const end = vh * 0.2;
-
-    return clamp01((start - rect.top) / (start - end));
-  };
-
-  let activeIndex = 0;
-  let ticking = false;
-
-  const updateFromScroll = () => {
-    const viewportCenter = window.innerHeight / 2;
-    let closestIdx = activeIndex;
-    let closestDist = Infinity;
-
-    sections.forEach((section) => {
-      const idx = Number(section.dataset.index);
-      if (!Number.isFinite(idx)) return;
-
-      // Title sync (closest center)
-      const rect = section.getBoundingClientRect();
-      const center = rect.top + rect.height / 2;
-      const dist = Math.abs(center - viewportCenter);
-      if (dist < closestDist) {
-        closestDist = dist;
-        closestIdx = idx;
-      }
-
-      // Progressive text reveal
-      const p = section.querySelector(".text-xl");
-      if (!p) return;
-
-      const lines = wrapLines(p);
-      const progress = getSectionProgress(section);
-
-      const n = lines.length || 1;
-      lines.forEach((line, i) => {
-        // Stagger reveal along progress (line by line)
-        const local = clamp01(progress * n - i);
-        line.style.transform = `translateY(${(1 - local) * 100}%)`;
-      });
-    });
-
-    if (closestIdx !== activeIndex) {
-      activeIndex = closestIdx;
-      setActiveTitle(activeIndex);
-    }
-  };
-
-  const onScroll = () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      updateFromScroll();
-      ticking = false;
-    });
-  };
-
-  window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", onScroll);
-
-  // Init after first paint so measurements are correct
-  requestAnimationFrame(updateFromScroll);
-</script>

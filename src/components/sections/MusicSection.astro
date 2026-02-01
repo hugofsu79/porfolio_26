@@ -5,7 +5,7 @@ import {
 } from "../../data/laboratoireElement";
 ---
 
-<div class="leftColumn">
+<!-- <div class="leftColumn">
     <div class="context">
         <div class="titleRubrique">
             <h3>Musique</h3>
@@ -40,7 +40,7 @@ import {
             /></a
         >
     </div>
-</div>
+</div> -->
 <div class="rightColumn">
     <div class="miniSectionMusic">
         {
@@ -72,20 +72,58 @@ import {
                                     class="volume-toggle"
                                     aria-label="Couper le son"
                                 >
-                                    <img
-                                        src="/public/icons/labo/player/Volume_off.svg"
-                                        alt="Volume coupé"
-                                    />
+                                    <svg
+                                        width="13"
+                                        height="10"
+                                        viewBox="0 0 13 10"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <g clip-path="url(#clip0_1110_425)">
+                                            <path
+                                                d="M4.64399 1.07244L2.38549 2.984C2.32653 3.03389 2.25397 3.0611 2.17687 3.0611H0.641723C0.285714 3.0611 0 3.34908 0 3.70282V6.30146C0 6.65747 0.287982 6.94318 0.641723 6.94318H2.17687C2.25397 6.94318 2.32653 6.97039 2.38549 7.02028L4.64399 8.93185C5.06122 9.28559 5.70295 8.98853 5.70295 8.44205V1.56223C5.70295 1.01575 5.06349 0.718694 4.64399 1.07244Z"
+                                                fill="currentColor"
+                                            />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_1110_425">
+                                                <rect
+                                                    width="12.7234"
+                                                    height="10"
+                                                    fill="currentColor"
+                                                />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
                                 </button>
 
                                 <button
                                     class="volume-max"
                                     aria-label="Volume maximum"
                                 >
-                                    <img
-                                        src="/public/icons/labo/player/Volume_on.svg"
-                                        alt="Volume maximum"
-                                    />
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="13"
+                                        height="10"
+                                        fill="none"
+                                    >
+                                        <g
+                                            fill="currentColor"
+                                            clip-path="url(#a)"
+                                        >
+                                            <path d="M4.644 1.072 2.385 2.984a.32.32 0 0 1-.208.077H.642A.641.641 0 0 0 0 3.703V6.3c0 .356.288.642.642.642h1.535a.32.32 0 0 1 .208.077l2.259 1.912a.643.643 0 0 0 1.059-.49v-6.88a.643.643 0 0 0-1.059-.49ZM10.556.118a.452.452 0 1 0-.608.671 5.688 5.688 0 0 1 1.869 4.21 5.69 5.69 0 0 1-1.871 4.212.455.455 0 0 0 .61.673 6.59 6.59 0 0 0 2.17-4.882c0-1.857-.791-3.64-2.17-4.884Z" />
+                                            <path d="M9.18 1.478a.453.453 0 1 0-.593.687 3.737 3.737 0 0 1 .003 5.67.453.453 0 0 0 .297.797c.104 0 .21-.036.294-.108A4.642 4.642 0 0 0 10.796 5c0-1.356-.59-2.637-1.615-3.522H9.18Z" />
+                                            <path d="M7.79 2.828a.452.452 0 1 0-.55.72c.459.35.72.878.72 1.452s-.264 1.102-.72 1.451a.453.453 0 1 0 .55.721A2.71 2.71 0 0 0 8.865 5c0-.86-.392-1.65-1.077-2.172Z" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="a">
+                                                <path
+                                                    fill="currentColor"
+                                                    d="M0 0h12.723v10H0z"
+                                                />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
                                 </button>
                             </div>
                         </div>
@@ -94,7 +132,7 @@ import {
             ))
         }
     </div>
-    <div class="miniSection">
+    <!-- <div class="miniSection">
         <h4>Top 10 du moment</h4>
         <div class="autoLayout">
             {
@@ -116,5 +154,5 @@ import {
                 ))
             }
         </div>
-    </div>
+    </div> -->
 </div>

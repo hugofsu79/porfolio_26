@@ -22,6 +22,7 @@
 
     /* Background */
     --color-bg: #fffbf6;
+    --color-bg-nuance: #f6eee3;
     --color-bg-secondary: #040015;
     --color-bg-muted: hsla(80, 13%, 91%, 0.10);
 
@@ -51,7 +52,7 @@
    Typography tokens
 ========================= */
 :root {
-    --font-sans: 'Helvetica', sans-serif;
+    --font-sans: "Roboto", sans-serif;
     --font-size-sm: 0.875rem;
     --font-size-base: 1rem;
     --font-size-lg: 1.125rem;
